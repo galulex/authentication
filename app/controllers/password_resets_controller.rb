@@ -4,20 +4,18 @@ class PasswordResetsController < ApplicationController
 
   def create
     user = User.find_by_email(params[:email])
-    if user
-      user.send_password_reset
-      redirect_to root_url, :notice => "Email sent with password reset instructions."
+    if @success = user
+      user.reset_password
+      UserMailer.password_reset(user).deliver
+      flash[:notice] = "Email sent with password reset instructions."
     else
-      flash.now[:error] = params[:email].blank? ? 'Enter email address please' : 'User does not exist'
-      render :new
+      @error = params[:email].blank? ? 'Enter email address please' : 'User does not exist'
     end
   end
 
   def update
-    if @user.update_attributes(params[:user])
-      redirect_to root_url, :notice => "Password has been reset."
-    else
-      render :edit
+    if @success = @user.update_attributes(params[:user])
+      flash[:notice] = "Password has been reset."
     end
   end
 

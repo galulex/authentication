@@ -1,0 +1,9 @@
+= simple_form_for @partner, remote: true do |f|
+  = f.fields_for :company, @partner.company || @partner.build_company do |form|
+    = form.input :name
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.button :submit

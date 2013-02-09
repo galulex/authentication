@@ -1,29 +1,28 @@
 class UsersController < ApplicationController
 
   def new
-    @user = User.new
+    @partner = User::Partner.new
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to root_path, :notice => "Success"
-    else
-      render :new
+    @partner = User::Partner.new(params[:user])
+    if @success = @partner.valid?
+      @partner.save
+      UserMailer.confirmation(@partner).deliver
+      flash[:notice] = 'Registration mail sent'
     end
   end
 
   def edit
     if current_user
-      @user = current_user
+      @partner = current_user
     else
-      @user = User.find_by_token(params[:id])
-      unless @user.nil?
-        @user.activate
+      @partner = User::Partner.find_by_token(params[:id])
+      unless @partner.nil?
+        @partner.activate
         flash[:notice] = 'Registration confirmed'
+        redirect_to root_path
       end
-      redirect_to :root
     end
   end
-
 end

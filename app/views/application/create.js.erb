@@ -1,0 +1,5 @@
+<% if @success %>
+    window.location = '/'
+<% else %>
+  $('#modal .modal-body').html("<%= j(render partial: 'form') %>");
+<% end %>
