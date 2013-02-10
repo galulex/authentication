@@ -9,6 +9,7 @@ gem 'simple_form'
 gem 'has_draft', git: 'git://github.com/galulex/has_draft.git'
 gem 'paperclip'
 gem 'state_machine'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,7 +22,6 @@ end
 
 group :development, :test do
   gem 'mysql2'
-  gem 'thin'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
