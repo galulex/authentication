@@ -3,7 +3,9 @@ ul
     = link_to t('.manage_products'), ''
   li
     = link_to t('.manage_people'), admin_people_path
-  li
-    = link_to t('.manage_company'), edit_admin_company_path
-  li
-    = link_to t('.manage_partners'), admin_partners_path
+  - if current_user.tenant?
+    li
+      = link_to t('.manage_partners'), admin_partners_path
+  - else
+    li
+      = link_to t('.manage_company'), edit_admin_company_path

@@ -11,17 +11,22 @@ html
     = csrf_meta_tags
     = yield(:head)
   body
+    = render 'layouts/messages'
     header.navbar
       nav.navbar-inner
         .container
           = render 'layouts/navigation'
-    main role="main"
+    #wrap
       .container
         .content
           .row
             .span12
-              = render 'layouts/messages'
               = yield
-          footer
+    /#footer
+      .container
+        = link_to t('.contact_us'), ''
+        = link_to t('.legal'), ''
+        = link_to t('.privacy'), ''
+        = link_to t('.support'), ''
   #modal class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
     .modal-body

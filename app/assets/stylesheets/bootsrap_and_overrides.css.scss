@@ -1,3 +1,20 @@
+$linkColor: #99CC00;
+
+$navbarBackground: white;
+$navbarHeight: 50px;
+
+@import "bootstrap";
 .container { width: 1110px; }
+.navbar-inner { border-bottom: 40px solid #99CC00; }
 .navbar-inner > .container { width: 1110px; }
-.navbar .nav { float: right; }
+.navbar .nav { float: right; margin-top: 20px; }
+.nav a { font-size: 12px; }
+
+.modal {
+  width: auto;
+  min-width: 560px;
+  max-width: 700px;
+}
+.modal-body { max-height: 700px; }
+
+body { background: #FBFBFB }

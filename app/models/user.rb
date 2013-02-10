@@ -50,4 +50,12 @@ class User < ActiveRecord::Base
     ROLES[role_id]
   end
 
+  def admin?
+    role == ADMIN
+  end
+
+  def tenant?
+    is_a?(User::Tenant)
+  end
+
 end

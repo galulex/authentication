@@ -1,2 +1,16 @@
-h1 Dashboard#index
-p Find me in app/views/dashboard/index.html.slim
+h3 Featured Applications
+ul.thumbnails
+  - 6.times do
+    li.span4
+      .thumbnail
+        = image_tag('rails.png', size: '55x55')
+        h3 Thumbnail label
+        p Thumbnail caption...
+h3 Resent Applications
+ul.thumbnails
+  - 8.times do
+    li.span3
+      .thumbnail
+        = image_tag('rails.png', size: '25x25')
+        h4 Thumbnail label
+        p Thumbnail caption...
