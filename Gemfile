@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'mysql2'
 gem 'slim'
 gem 'slim-rails'
 gem 'simple_form'
@@ -21,10 +20,16 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'mysql2'
   gem 'thin'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'faker'
   gem 'shoulda'
+end
+
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
 end
