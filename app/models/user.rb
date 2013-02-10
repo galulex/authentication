@@ -42,4 +42,12 @@ class User < ActiveRecord::Base
     self.update_attribute(:password_reset_sent_at, Time.zone.now)
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def role
+    ROLES[role_id]
+  end
+
 end

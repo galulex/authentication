@@ -2,11 +2,16 @@
 ul.nav
   - if current_user
     li
-      = link_to current_user.email, edit_user_path(current_user), remote: true
+      = link_to t('.administration'), admin_path
     li
-      = link_to 'Logout', session_path, method: :delete
+      = link_to t('.visit_marketplace'), root_path
+    li
+      = link_to t('.my_account'), edit_user_path(current_user), remote: true
+    li
+      = link_to t('.logout'), session_path, method: :delete
   - else
+    li= t('.welcome')
     li
-      = link_to 'Register', new_user_path, remote: true
+      = link_to t('.register'), new_user_path, remote: true
     li
-      = link_to 'Login', new_session_path, remote: true
+      = link_to t('.login'), new_session_path, remote: true

@@ -15,13 +15,36 @@ ActiveRecord::Schema.define(:version => 20130209181635) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
-    t.integer  "employee_limit"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.text     "synopsis"
+    t.text     "description"
+    t.integer  "employee_limit",    :default => 20
+    t.string   "status"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "company_drafts", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "name"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.text     "synopsis"
+    t.text     "description"
+    t.integer  "employee_limit",    :default => 20
+    t.string   "status"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "company_id_id"
+    t.integer  "company_id"
+    t.integer  "role_id"
     t.string   "type"
     t.string   "first_name"
     t.string   "last_name"

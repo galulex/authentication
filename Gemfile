@@ -8,6 +8,9 @@ gem 'slim'
 gem 'slim-rails'
 gem 'thin'
 gem 'simple_form'
+gem 'has_draft', git: 'git://github.com/galulex/has_draft.git'
+gem 'paperclip'
+gem 'state_machine'
 
 # Gems used only for assets and not required
 # in production environments by default.

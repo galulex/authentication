@@ -1,12 +1,6 @@
 h1 Reset Password
 
-= form_for @user, url: password_reset_path(params[:id]), remote: true do |f|
-  - if @user.errors.any?
-    ul
-      - for message in @user.errors.full_messages
-        li= message
-  = f.label :password
-  = f.password_field :password
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
-  = f.submit "Update Password"
+= simple_form_for @user, url: password_reset_path(params[:id]), remote: true do |f|
+  = f.input :password
+  = f.input :password_confirmation
+  = f.button :submit

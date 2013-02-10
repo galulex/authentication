@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     @partner = User::Partner.new(params[:user])
     if @success = @partner.valid?
+      @partner.role_id = USER::ROLES.invert[ADMIN]
       @partner.save
       UserMailer.confirmation(@partner).deliver
       flash[:notice] = 'Registration mail sent'
@@ -25,4 +26,10 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def update
+    @partner = User.find(params[:id])
+    @success = @partner.update_attributes(params[:user])
+  end
+
 end

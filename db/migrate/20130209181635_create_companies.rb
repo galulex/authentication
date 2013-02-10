@@ -1,10 +1,17 @@
 class CreateCompanies < ActiveRecord::Migration
   def change
-    create_table :companies do |t|
-      t.string :name
-      t.integer :employee_limit, default: 20
+    [:companies, :company_drafts].each do |table|
+      create_table table do |t|
+        t.references  :company if table == :company_drafts
+        t.string      :name
+        t.attachment  :logo
+        t.text        :synopsis
+        t.text        :description
+        t.integer     :employee_limit, default: 20
+        t.string      :status
 
-      t.timestamps
+        t.timestamps
+      end
     end
   end
 end
