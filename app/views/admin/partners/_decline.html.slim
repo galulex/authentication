@@ -1,0 +1,3 @@
+= form_tag admin_partner_path(@company), method: :delete, remote: true do
+  = text_area_tag :reason
+  = submit_tag 'Decline', class: :btn

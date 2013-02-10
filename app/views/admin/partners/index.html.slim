@@ -1,0 +1,15 @@
+- if @companies.blank?
+  ' No partners
+- else
+  table.table.table-hover.table-striped
+    thead
+      tr
+        th= t('.name')
+        th= t('.employees')
+        th= t('.products')
+        th= t('.published')
+        th= t('.status')
+        th= t('.featured')
+        th
+    tbody
+      = render partial: 'company', collection: @companies

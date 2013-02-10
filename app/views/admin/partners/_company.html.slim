@@ -1,0 +1,8 @@
+tr
+  td= link_to company.name, edit_admin_partner_path(company)
+  td= company.users.count
+  td= 0
+  td= t('.published')
+  td= company.status
+  td= 0
+  td= link_to t('.login'), ''

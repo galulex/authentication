@@ -1,0 +1,13 @@
+- if @people.blank?
+  ' No people
+- else
+  table.table.table-hover.table-striped
+    thead
+      tr
+        th= t('.name')
+        th= t('.email')
+        th= t('.job')
+        th= t('.role')
+        th= t('.actions')
+    tbody
+      = render partial: 'person', collection: @people

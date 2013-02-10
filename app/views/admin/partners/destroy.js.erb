@@ -1,0 +1,5 @@
+<% if @success %>
+    window.location = "<%= admin_partners_path %>"
+<% else %>
+  $('#modal .modal-body').html("<%= j(render partial: 'decline') %>");
+<% end %>
