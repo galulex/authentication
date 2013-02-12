@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209181635) do
+ActiveRecord::Schema.define(:version => 20130212230040) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -22,7 +22,16 @@ ActiveRecord::Schema.define(:version => 20130209181635) do
     t.text     "synopsis"
     t.text     "description"
     t.integer  "employee_limit",    :default => 20
+    t.string   "website"
     t.string   "status"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "country"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "phone"
+    t.boolean  "featured"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
@@ -37,9 +46,73 @@ ActiveRecord::Schema.define(:version => 20130209181635) do
     t.text     "synopsis"
     t.text     "description"
     t.integer  "employee_limit",    :default => 20
+    t.string   "website"
     t.string   "status"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "country"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "phone"
+    t.boolean  "featured"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "product_drafts", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "software_file_name"
+    t.string   "software_content_type"
+    t.integer  "software_file_size"
+    t.datetime "software_updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
+    t.string   "name"
+    t.string   "version"
+    t.text     "summary"
+    t.text     "description"
+    t.text     "features"
+    t.text     "support"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "software_file_name"
+    t.string   "software_content_type"
+    t.integer  "software_file_size"
+    t.datetime "software_updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
+    t.string   "name"
+    t.string   "version"
+    t.text     "summary"
+    t.text     "description"
+    t.text     "features"
+    t.text     "support"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "users", :force => true do |t|

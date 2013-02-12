@@ -1,0 +1,13 @@
+en:
+  admin:
+    partners:
+      index:
+        name: Name
+        employees: Employees
+        products: Products
+        published: Published
+        status: Status
+        featured: Featured
+      company:
+        published: Published
+        login: Login

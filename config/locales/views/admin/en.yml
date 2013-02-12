@@ -1,0 +1,7 @@
+en:
+  admin:
+    show:
+      manage_products: Manage Products
+      manage_people: Manage People
+      manage_partners: Manage Partners
+      manage_company: Manage Company

@@ -11,3 +11,5 @@
  *= require_self
  *= require_tree .
 */
+
+.translation_missing { background: red; color: black; }

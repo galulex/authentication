@@ -7,8 +7,9 @@ $navbarHeight: 50px;
 .container { width: 1110px; }
 .navbar-inner { border-bottom: 40px solid #99CC00; }
 .navbar-inner > .container { width: 1110px; }
-.navbar .nav { float: right; margin-top: 20px; }
-.nav a { font-size: 12px; }
+.navbar .nav { float: right; margin-top: 45px; }
+.navbar .nav > li { font-size: 11px; }
+.navbar .nav > li > a { font-size: 11px; padding: 0 10px 5px 10px; }
 
 .modal {
   width: auto;

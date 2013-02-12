@@ -4,7 +4,8 @@ en:
       administration: Administration
       visit_marketplace: Visit Marketplace
       my_account: My Account
-      login: Login
-      logout: Logout
+      login: Log in to AppZone
+      logout: Log Out
       register: Register
-      welcome: Welcome Guest
+      welcome: 'Welcome '
+      guest: Guest

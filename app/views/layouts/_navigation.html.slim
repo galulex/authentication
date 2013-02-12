@@ -2,6 +2,9 @@
 ul.nav
   - if current_user
     li
+      = t('.welcome')
+      strong= current_user.name
+    li
       = link_to t('.administration'), admin_path
     li
       = link_to t('.visit_marketplace'), root_path
@@ -10,7 +13,9 @@ ul.nav
     li
       = link_to t('.logout'), session_path, method: :delete
   - else
-    li= t('.welcome')
+    li
+      = t('.welcome')
+      strong= t('.guest')
     li
       = link_to t('.register'), new_user_path, remote: true
     li

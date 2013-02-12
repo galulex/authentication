@@ -10,6 +10,7 @@ gem 'has_draft', git: 'git://github.com/galulex/has_draft.git'
 gem 'paperclip'
 gem 'state_machine'
 gem 'thin'
+gem 'carmen-rails', '~> 1.0.0.beta3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,10 +22,11 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'letter_opener'
   gem 'mysql2'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'faker'
   gem 'shoulda'
 end

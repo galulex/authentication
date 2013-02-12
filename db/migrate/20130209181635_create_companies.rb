@@ -8,7 +8,16 @@ class CreateCompanies < ActiveRecord::Migration
         t.text        :synopsis
         t.text        :description
         t.integer     :employee_limit, default: 20
+        t.string      :website
         t.string      :status
+        t.string      :street1
+        t.string      :street2
+        t.string      :country
+        t.string      :state
+        t.string      :postal_code
+        t.string      :city
+        t.string      :phone
+        t.boolean     :featured
 
         t.timestamps
       end

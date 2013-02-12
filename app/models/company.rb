@@ -6,9 +6,13 @@ class Company < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :logo, :styles => { one: '55x55', two: '78x78', three: '114x114', four: '144x144', original: '190x90' }
   has_draft do
-    has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+    validates :name, :synopsis, :description, :street1, :city, :website, :country, :state, presence: true, on: :update
+    validates_attachment :logo, attachment_presence: true, content_type: { content_type: /^image\/(png|gif|jpeg)/ }, on: :update
+
+    has_attached_file :logo, :styles => { one: '55x55', two: '78x78', three: '114x114', four: '144x144', original: '190x90' }
 
     state_machine :status, :initial => 'draft' do
       event :submit do

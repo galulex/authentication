@@ -1,0 +1,9 @@
+en:
+  admin:
+    people:
+      index:
+        name: Name
+        email: Email
+        job: Job
+        role: Role
+        actions: Actions

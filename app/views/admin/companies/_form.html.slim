@@ -1,4 +1,13 @@
 = f.input   :name, input_html: { class: 'input-xxlarge' }
-= f.input   :logo, input_html: { class: 'input-xxlarge' }
+= image_tag(@company.logo.url) if @company.logo.exists?
+= f.input   :logo, required: true, input_html: { class: 'input-xxlarge' }
 = f.input   :synopsis, input_html: { class: 'input-xxlarge' }
 = f.input   :description, input_html: { class: 'input-xxlarge' }
+= f.input   :street1, input_html: { class: 'input-xxlarge' }
+= f.input   :street2, label: false, input_html: { class: 'input-xxlarge' }
+= f.input   :city, input_html: { class: 'input-xxlarge' }
+= f.input   :country, as: :carmen_country, priority: %w(AU CA GB US), prompt: t('country_select')
+= f.input   :state
+= f.input   :postal_code
+= f.input   :phone
+= f.input   :website, input_html: { class: 'input-xxlarge' }

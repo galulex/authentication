@@ -15,6 +15,8 @@ class Admin::CompaniesController < ApplicationController
         @company.submit
         redirect_to :root, notice: 'Submited'
       end
+    else
+      render :edit
     end
   end
 

@@ -12,18 +12,31 @@ en:
       default_message: "Please review the errors below:"
     # Labels and hints examples
     labels:
-      defaults:
-        company_attributes_name: 'Company Name'
+      user:
+        company:
+          name: 'Company Name'
         name: 'Name'
         first_name: 'First Name'
         last_name: 'Last Name'
         email: 'Email'
         password: 'Password'
         password_confirmation: 'Password Confirmation'
-      user:
-        company:
-          name: 'Company Name'
-    # hints:
+      company:
+        name: Name
+        logo: Logo
+        synopsis: Synopsis
+        description: Full Description
+        street1: Headquarters Address
+        city: City
+        country: Country
+        state: State
+        postal_code: Postal / Zip Code
+        phone: Phone Number
+        website: Company's AppZone Relationship Webpage
+    hints:
+      company:
+        synopsis: Recommended maximum 120 characters. Primary focus of your business. Eg. ABC Company is a leading provider of XYZ
+        description: Broad company overview. Areas of emphasis or target markets. Value of your business products to your customers.
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
