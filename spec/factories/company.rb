@@ -3,14 +3,14 @@ FactoryGirl.define do
     c.name  Faker::Company.name
     c.synopsis Faker::Lorem.paragraph
     c.description Faker::Lorem.paragraphs
-    c.website Faker::Internet.url
+    c.website Faker::Internet.http_url
     c.status :approved
     c.street1 Faker::Address.street_address
-    c.country Faker::Address.country
-    c.state Faker::Address.state_abbr
+    c.country Faker::AddressUK.country
+    c.state Faker::AddressUS.state_abbr
     c.city Faker::Address.city
-    c.postal_code Faker::Address.zip_code
-    c.phone Faker::PhoneNumber.cell_phone
+    c.postal_code Faker::AddressUS.zip_code
+    c.phone Faker::PhoneNumber.phone_number
   end
 
 end

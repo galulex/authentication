@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130212230040) do
   end
 
   create_table "product_drafts", :force => true do |t|
+    t.integer  "company_id"
     t.integer  "product_id"
     t.string   "software_file_name"
     t.string   "software_content_type"
@@ -84,11 +85,13 @@ ActiveRecord::Schema.define(:version => 20130212230040) do
     t.text     "description"
     t.text     "features"
     t.text     "support"
+    t.boolean  "featured"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
   create_table "products", :force => true do |t|
+    t.integer  "company_id"
     t.string   "software_file_name"
     t.string   "software_content_type"
     t.integer  "software_file_size"
@@ -111,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20130212230040) do
     t.text     "description"
     t.text     "features"
     t.text     "support"
+    t.boolean  "featured"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
