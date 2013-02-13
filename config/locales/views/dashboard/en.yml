@@ -1,0 +1,11 @@
+en:
+  dashboard:
+    index:
+      quote: By 2014, 60% of corporate IT will deploy private app stores - Gartner
+      featured_apps: Featured Applications
+      recent_apps: Recent Applications
+      top_rated_apps: Top Rated Applications
+    product:
+      by: by %{name}
+    basic_product:
+      by: by %{name}

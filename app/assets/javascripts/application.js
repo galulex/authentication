@@ -25,4 +25,7 @@ $(function() {
     $.getScript(unescape(urlParams("url")))
   }
 
+  $('.carousel').carousel({ interval: false });
+  $('.basic-cart').popover({ html: true, trigger: 'hover', placement: 'left' });
+
 });

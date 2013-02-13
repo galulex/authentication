@@ -21,3 +21,16 @@ $navbarHeight: 50px;
 .modal-body { max-height: 700px; }
 
 body { background: #FBFBFB }
+
+.carousel-control {
+  background: transparent;
+  border: none;
+  color: gray;
+  height: 48px;
+  padding-top: 10px;
+  width: 58px;
+  &:hover {
+    background: white;
+    color: gray;
+  }
+}

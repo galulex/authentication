@@ -1,21 +1,35 @@
 .banner
   = image_tag('superhero_en.png')
-.container.search-bar.row
-    = t('.quote')
+.container.search-bar.row-fluid
+  .span8
+    p.quote= t('.quote')
+  .span4
+    = form_tag root_path do
+      .input-append
+        = search_field_tag :search, params[:search], placeholder: t('search_appzone_products'), class: 'input-xlarge'
+        = submit_tag t('search'), class: :btn
 
-h3 Featured Applications
-ul.thumbnails
-  - 6.times do
-    li.span4
-      .thumbnail
-        = image_tag('rails.png', size: '55x55')
-        h3 Thumbnail label
-        p Thumbnail caption...
-h3 Resent Applications
-ul.thumbnails
-  - 8.times do
-    li.span3
-      .thumbnail
-        = image_tag('rails.png', size: '25x25')
-        h4 Thumbnail label
-        p Thumbnail caption...
+h4.container= t('.featured_apps')
+#featured_apps.main-carousel.carousel.slide data-interval=""
+  .carousel-inner
+    - @products.each_slice(8).with_index do |products, i|
+      = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
+        = render partial: 'dashboard/product', collection: products
+  a.carousel-control.left href="#featured_apps" data-slide="prev" &lsaquo;
+  a.carousel-control.right href="#featured_apps" data-slide="next" &rsaquo;
+h4.container= t('.recent_apps')
+#recent_apps.main-carousel.carousel.slide data-interval=""
+  .carousel-inner
+    - @products.each_slice(8).with_index do |products, i|
+      = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
+        = render partial: 'dashboard/basic_product', collection: products, as: :product
+  a.carousel-control.left href="#recent_apps" data-slide="prev" &lsaquo;
+  a.carousel-control.right href="#recent_apps" data-slide="next" &rsaquo;
+h4.container= t('.top_rated_apps')
+#top_rated_apps.main-carousel.carousel.slide data-interval=""
+  .carousel-inner
+    - @products.each_slice(8).with_index do |products, i|
+      = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
+        = render partial: 'dashboard/basic_product', collection: products, as: :product
+  a.carousel-control.left href="#top_rated_apps" data-slide="prev" &lsaquo;
+  a.carousel-control.right href="#top_rated_apps" data-slide="next" &rsaquo;

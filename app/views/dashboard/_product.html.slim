@@ -1,0 +1,7 @@
+.product-cart.row-fluid
+  .span3= image_tag(product.icon.url, size: '55x55')
+  .span9
+    b= link_to product.name
+    br
+    b= link_to t('.by', name: product.company.name)
+  p.span12= truncate(product.description, length: 200)

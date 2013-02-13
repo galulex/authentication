@@ -1,11 +1,52 @@
 .banner { text-align: center; }
 .search-bar {
   background: #fbfbfb;
-  border: 2px solid #fefefe;
+  border: 2px solid #efefef;
   border-bottom: none;
-  padding: 10px;
+  padding: 10px 20px 0 20px;
   position: relative;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   margin-top: -20px;
+  p.quote {
+    font-size: 16px;
+    font-style: italic;
+    color: #ccc;
+    letter-spacing: 1px;
+  }
+  form { margin: 0; }
+}
+
+#featured_apps .carousel-inner {
+  height: 364px;
+  margin: 0 auto;
+  width: 1175px;
+}
+
+#recent_apps, #top_rated_apps {
+  .carousel-inner {
+    height: 194px;
+    margin: 0 auto;
+    width: 1175px;
+    overflow: visible;
+  }
+}
+
+.product-cart {
+  background: white;
+  border: 1px solid #99cc00;
+  float: left;
+  height: 150px;
+  list-style: none;
+  padding: 10px;
+  margin: 0 0 10px 10px;
+  width: 260px;
+  a {
+    font-size: 12px;
+    color: #4d4d4d;
+  }
+}
+
+.basic-cart {
+  height: 60px;
 }
