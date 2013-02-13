@@ -1,15 +1,6 @@
 doctype html
 html
-  head
-    meta charset="utf-8"
-    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
-    title= content_for?(:title) ? yield(:title) : "Myapp"
-    meta content="" name="description"
-    meta content="" name="author"
-    = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-    = yield(:head)
+  = render 'layouts/head'
   body
     = render 'layouts/messages'
     header.navbar
@@ -22,11 +13,5 @@ html
           .row
             .span12
               = yield
-    /#footer
-      .container
-        = link_to t('.contact_us'), ''
-        = link_to t('.legal'), ''
-        = link_to t('.privacy'), ''
-        = link_to t('.support'), ''
   #modal class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
     .modal-body

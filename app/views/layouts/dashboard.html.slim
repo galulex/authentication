@@ -1,0 +1,13 @@
+doctype html
+html
+  = render 'layouts/head'
+  body
+    = render 'layouts/messages'
+    header.navbar
+      nav.navbar-inner.small
+        .container
+          = render 'layouts/navigation'
+    #wrap
+      = yield
+    #modal class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+      .modal-body
