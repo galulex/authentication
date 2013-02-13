@@ -1,13 +1,19 @@
-h1 Log in
-
-= form_tag session_path, remote: true do
-  = error_tag(@error)
-  = label_tag :email
-  = email_field_tag :email, params[:email]
-  = label_tag :password
-  = password_field_tag :password
-  = label_tag :remember_me, class: :checkbox do
-    = check_box_tag :remember_me, 1, params[:remember_me]
-    'Remember Me
-  = submit_tag "Log in", class: :btn
-  = link_to 'Forgot Password?', new_password_reset_path, remote: true
+.modal-header
+  button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
+  h2= t('appzone_login')
+.modal-body.row-fluid
+  .span7
+    = form_tag session_path, remote: true do
+      = error_tag(@error)
+      = label_tag :email
+      = email_field_tag :email, params[:email], class: 'input-xlarge'
+      = label_tag :password
+      = password_field_tag :password, nil, class: 'input-xlarge'
+      = label_tag :remember_me, class: :checkbox do
+        = check_box_tag :remember_me, 1, params[:remember_me]
+        = t('remember_me')
+      div= link_to t('forgot_password'), new_password_reset_path, remote: true
+      = submit_tag t('log_in'), class: :btn
+  .span5
+    h4.gray= t('not_a_member')
+    = link_to t('register_now'), new_user_path, remote: true, class: :btn

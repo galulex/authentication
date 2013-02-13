@@ -1,8 +1,10 @@
-h1 Reset Password
-
-= form_tag password_resets_path, remote: true do
-  = error_tag(@error)
-  = label_tag :email
-  .input-append
-    = email_field_tag :email, params[:email]
-    = submit_tag "Reset Password", class: :btn
+.modal-header
+  button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
+  h2= t('forgot_password')
+.modal-body
+  = form_tag password_resets_path, remote: true do
+    = error_tag(@error)
+    = label_tag :email
+    .input-append
+      = email_field_tag :email, params[:email]
+      = submit_tag t('reset_password'), class: :btn

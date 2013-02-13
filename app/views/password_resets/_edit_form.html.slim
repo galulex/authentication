@@ -1,6 +1,5 @@
-h1 Reset Password
-
-= simple_form_for @user, url: password_reset_path(params[:id]), remote: true do |f|
-  = f.input :password
-  = f.input :password_confirmation
-  = f.button :submit
+.modal-body
+  = simple_form_for @user, url: password_reset_path(params[:id]), remote: true do |f|
+    = f.input :password
+    = f.input :password_confirmation
+    = f.button :submit

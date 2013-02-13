@@ -1,5 +1,19 @@
 en:
   decline: Decline
+  publish: Publish
+  submit_for_approval: Submit For Approval
   country_select: Please select a country
   search: Search
   search_appzone_products: Search AppZone Products
+  log_in: Log In
+  sign_up: Sign Up
+  sign_in: Sign In
+  forgot_password: Forgot Password?
+  reset_password: Reset Password
+  remember_me: Remember Me
+  appzone_login: AppZone Marketplace Log In
+  not_a_member: Not a member yet?
+  already_a_member: Alreary a member?
+  register_now: Register Now
+  partner_registration: Partner Registration
+  personal_account_settings: Personal Account Settings

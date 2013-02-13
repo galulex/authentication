@@ -16,11 +16,14 @@ $navbarHeight: 50px;
 .modal {
   width: auto;
   min-width: 560px;
-  max-width: 700px;
+  max-width: 900px;
 }
 .modal-body { max-height: 700px; }
+.modal-header h2 { color: #76a426; margin: 0; }
 
-body { background: #FBFBFB }
+body { background: #FBFBFB; font-size: 12px; }
+label { margin-bottom: 0; font-size: 14px; }
+input { margin-bottom: 0 !important; }
 
 .carousel-control {
   background: transparent;
@@ -33,4 +36,9 @@ body { background: #FBFBFB }
     background: white;
     color: gray;
   }
+}
+
+h4.gray {
+  color: gray;
+  font-weight: lighter;
 }

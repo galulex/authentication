@@ -1,4 +1,4 @@
 = simple_form_for @company, as: :company, url: admin_company_path, multipart: true do |f|
   = render partial: 'form', locals: { f: f }
-  = f.button  :submit, 'Save Draft', name: :save, disabled: @company.pending?
-  = f.button  :submit, 'Submit For Approval', disabled: @company.pending?
+  = f.button  :submit, t('save_draft'), name: :save, disabled: @company.pending?
+  = f.button  :submit, t('submit_for_approval'), disabled: @company.pending?

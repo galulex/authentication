@@ -1,5 +1,5 @@
 <% if @success %>
     window.location = "<%= admin_path %>"
 <% else %>
-  $('#modal .modal-body').html("<%= j(render partial: 'form') %>");
+  $('#modal').html("<%= j(render partial: 'form') %>");
 <% end %>
