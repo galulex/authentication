@@ -33,5 +33,7 @@ end
 
 group :production do
   # gems specifically for Heroku go here
+  gem 'factory_girl_rails'
+  gem 'ffaker'
   gem "pg"
 end
