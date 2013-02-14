@@ -1,3 +1,4 @@
+hr.nav-border
 .container.search-bar.row-fluid
   .span8
     p.quote= t('quote')
@@ -6,3 +7,8 @@
       .input-append
         = search_field_tag :search, params[:search], placeholder: t('search_appzone_products'), class: 'input-xlarge'
         = submit_tag t('search'), class: :btn
+.container
+  .span3
+    = image_tag(@product.icon.url)
+  .span6
+  .span3
