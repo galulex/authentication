@@ -27,3 +27,11 @@ en:
   privacy: Privacy
   support: Support
   save_draft: Save Draft
+  create: Create
+  :false: "No"
+  :true: "Yes"
+  time:
+    formats:
+      default: "%B %d, %Y"
+    am: am
+    pm: pm

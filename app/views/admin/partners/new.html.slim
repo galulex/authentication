@@ -1,0 +1,12 @@
+= simple_form_for @partner, url: admin_partners_path, multipart: true do |f|
+  fieldset
+    legend.green= t('.user_info')
+    = f.input :first_name, input_html: { class: 'input-xlarge' }
+    = f.input :last_name, input_html: { class: 'input-xlarge' }
+    = f.input :email, input_html: { class: 'input-xlarge' }
+    = f.input :job, input_html: { class: 'input-xlarge' }
+  fieldset
+    legend.green= t('.company_info')
+    = f.fields_for :company, @partner.company || @partner.build_company do |form|
+      = render partial: 'admin/companies/form', locals: { f: form }
+  = f.button :submit, t('create')

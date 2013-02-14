@@ -9,7 +9,7 @@ class CreateCompanies < ActiveRecord::Migration
         t.text        :description
         t.integer     :employee_limit, default: 20
         t.string      :website
-        t.string      :status
+        t.string      :status, default: 'draft'
         t.string      :street1
         t.string      :street2
         t.string      :country
@@ -17,7 +17,7 @@ class CreateCompanies < ActiveRecord::Migration
         t.string      :postal_code
         t.string      :city
         t.string      :phone
-        t.boolean     :featured
+        t.boolean     :featured, default: false
 
         t.timestamps
       end

@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20130212230040) do
     t.text     "description"
     t.integer  "employee_limit",    :default => 20
     t.string   "website"
-    t.string   "status"
+    t.string   "status",            :default => "draft"
     t.string   "street1"
     t.string   "street2"
     t.string   "country"
@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(:version => 20130212230040) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "phone"
-    t.boolean  "featured"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.boolean  "featured",          :default => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   create_table "company_drafts", :force => true do |t|
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20130212230040) do
     t.text     "description"
     t.integer  "employee_limit",    :default => 20
     t.string   "website"
-    t.string   "status"
+    t.string   "status",            :default => "draft"
     t.string   "street1"
     t.string   "street2"
     t.string   "country"
@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(:version => 20130212230040) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "phone"
-    t.boolean  "featured"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.boolean  "featured",          :default => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   create_table "product_drafts", :force => true do |t|

@@ -10,16 +10,17 @@ class User < ActiveRecord::Base
 
   belongs_to :company
 
-  has_secure_password
-
-  attr_accessible :company_attributes, :email, :first_name, :last_name, :password, :password_confirmation
+  attr_accessor :password, :password_confirmation
+  attr_accessible :company_attributes, :email, :job, :first_name, :last_name, :password, :password_confirmation
   accepts_nested_attributes_for :company
 
-  validates :first_name, :last_name, :password, presence: true
+  validates :first_name, :last_name, presence: true
   validates :email, presence: true,
                     length: { minimum: 3, maximum: 254, allow_blank: true },
                     uniqueness: true,
                     format: { with: /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, allow_blank: true }
+
+  validates :password, presence: true, if: :validate_password?
 
   before_create { generate_token(:auth_token); generate_token(:token) }
 
@@ -29,12 +30,6 @@ class User < ActiveRecord::Base
 
   def activated?
     token.nil?
-  end
-
-  def generate_token(column)
-    begin
-      self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
   end
 
   def reset_password
@@ -56,6 +51,29 @@ class User < ActiveRecord::Base
 
   def tenant?
     is_a?(User::Tenant)
+  end
+
+  def authenticate(unencrypted_password)
+    BCrypt::Password.new(password_digest) == unencrypted_password && self
+  end
+
+  def password=(unencrypted_password)
+    unless unencrypted_password.blank?
+      @password = unencrypted_password
+      self.password_digest = BCrypt::Password.create(unencrypted_password, cost: BCrypt::Engine::DEFAULT_COST)
+    end
+  end
+
+  private
+
+  def validate_password?
+    self.password || self.password_confirmation
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
   end
 
 end

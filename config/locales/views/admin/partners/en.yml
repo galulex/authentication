@@ -2,6 +2,7 @@ en:
   admin:
     partners:
       index:
+        create_new_partner: Create New Partner
         name: Name
         employees: Employees
         products: Products
@@ -11,3 +12,6 @@ en:
       company:
         published: Published
         login: Login
+      new:
+        user_info: Admin User Account
+        company_info: Basic Company Information

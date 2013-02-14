@@ -4,6 +4,19 @@ class Admin::PartnersController < ApplicationController
     @companies = Company.page(params[:page])
   end
 
+  def new
+    @partner = User::Partner.new
+  end
+
+  def create
+    @partner = User::Partner.new(params[:user])
+    if @partner.save
+      redirect_to admin_partners_path, notice: 'Done'
+    else
+      render :new
+    end
+  end
+
   def edit
     company = Company.find(params[:id])
     @company = company.draft || company

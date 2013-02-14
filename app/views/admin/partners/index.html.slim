@@ -1,16 +1,19 @@
-- if @companies.blank?
-  = t('.no_partners')
-- else
-  table.table.table-hover.table-striped
-    thead
-      tr
-        th= t('.name')
-        th= t('.employees')
-        th= t('.products')
-        th= t('.published')
-        th= t('.status')
-        th= t('.featured')
-        th
-    tbody
-      = render partial: 'company', collection: @companies
-  = paginate @companies
+.span12.text-right
+  = link_to t('.create_new_partner'), new_admin_partner_path, class: :btn
+.span12
+  - if @companies.blank?
+    = t('.no_partners')
+  - else
+    table.table.table-hover.table-striped
+      thead
+        tr
+          th= t('.name')
+          th= t('.employees')
+          th= t('.products')
+          th= t('.published')
+          th= t('.status')
+          th= t('.featured')
+          th
+      tbody
+        = render partial: 'company', collection: @companies
+    = paginate @companies
