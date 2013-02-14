@@ -5,7 +5,12 @@ $navbarHeight: 50px;
 
 @import "bootstrap";
 .container { width: 1110px; }
-.navbar-inner { border-bottom: 40px solid #99CC00; }
+.navbar-inner {
+  border: none;
+  border-bottom: 40px solid #99CC00;
+  border-radius: 0;
+  box-shadow: none;
+}
 .navbar-inner.small { border-bottom: none; }
 .navbar-inner > .container { width: 1110px; }
 .navbar { margin-bottom: 0; }

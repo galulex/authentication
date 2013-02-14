@@ -11,6 +11,7 @@ gem 'paperclip'
 gem 'state_machine'
 gem 'thin'
 gem 'carmen-rails', '~> 1.0.0.beta3'
+gem 'kaminari'
 
 # Gems used only for assets and not required
 # in production environments by default.

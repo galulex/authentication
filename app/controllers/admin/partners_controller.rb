@@ -1,7 +1,7 @@
 class Admin::PartnersController < ApplicationController
 
   def index
-    @companies = Company.scoped
+    @companies = Company.page(params[:page])
   end
 
   def edit
