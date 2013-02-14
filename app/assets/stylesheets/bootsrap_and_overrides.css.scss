@@ -50,27 +50,19 @@ h4.gray {
 
 #footer {
   background-color: #333333;
-  padding: 10px;
-  height: 35px;
+  padding: 15px 0;
 }
 
-#footer .container ul {
-  margin: 0;
-  padding: 0;
+ul#footer_title{
+  margin-left: 20px;
+  li{
+    margin: 0 10px;
+    padding: 0px ;
+    &.text {
+      color: #999999;
+    }
+  }
 }
-
-#footer_title li{
-  margin-right: 10px;
-  padding: 0px ;
-}
-#footer_title li.text {
-  color: #999999;
-}
-
-#developer-bar:hover {
-  height: 40px;
-}
-
 
 #developer-bar {
   background: white;
@@ -80,6 +72,11 @@ h4.gray {
   left: 0;
   position: fixed;
   right: 0;
+  &:hover { height: auto; }
   .container { padding: 20px; }
 }
 
+.carousel-control {
+  &.left { left: -70px;}
+  &.right { right: -70px;}
+}

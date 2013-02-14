@@ -8,28 +8,28 @@
       .input-append
         = search_field_tag :search, params[:search], placeholder: t('search_appzone_products'), class: 'input-xlarge'
         = submit_tag t('search'), class: :btn
-
-h4.container= t('.featured_apps')
-#featured_apps.main-carousel.carousel.slide data-interval=""
-  .carousel-inner
-    - @products.each_slice(8).with_index do |products, i|
-      = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
-        = render partial: 'dashboard/product', collection: products
-  a.carousel-control.left href="#featured_apps" data-slide="prev" &lsaquo;
-  a.carousel-control.right href="#featured_apps" data-slide="next" &rsaquo;
-h4.container= t('.recent_apps')
-#recent_apps.main-carousel.carousel.slide data-interval=""
-  .carousel-inner
-    - @products.each_slice(8).with_index do |products, i|
-      = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
-        = render partial: 'dashboard/basic_product', collection: products, as: :product
-  a.carousel-control.left href="#recent_apps" data-slide="prev" &lsaquo;
-  a.carousel-control.right href="#recent_apps" data-slide="next" &rsaquo;
-h4.container= t('.top_rated_apps')
-#top_rated_apps.main-carousel.carousel.slide data-interval=""
-  .carousel-inner
-    - @products.each_slice(8).with_index do |products, i|
-      = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
-        = render partial: 'dashboard/basic_product', collection: products, as: :product
-  a.carousel-control.left href="#top_rated_apps" data-slide="prev" &lsaquo;
-  a.carousel-control.right href="#top_rated_apps" data-slide="next" &rsaquo;
+.container
+  h4= t('.featured_apps')
+  #featured_apps.main-carousel.carousel.slide data-interval=""
+    .carousel-inner
+      - @products.each_slice(8).with_index do |products, i|
+        = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
+          = render partial: 'dashboard/product', collection: products
+    a.carousel-control.left href="#featured_apps" data-slide="prev" &lsaquo;
+    a.carousel-control.right href="#featured_apps" data-slide="next" &rsaquo;
+  h4= t('.recent_apps')
+  #recent_apps.main-carousel.carousel.slide data-interval=""
+    .carousel-inner
+      - @products.each_slice(8).with_index do |products, i|
+        = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
+          = render partial: 'dashboard/basic_product', collection: products, as: :product
+    a.carousel-control.left href="#recent_apps" data-slide="prev" &lsaquo;
+    a.carousel-control.right href="#recent_apps" data-slide="next" &rsaquo;
+  h4= t('.top_rated_apps')
+  #top_rated_apps.main-carousel.carousel.slide data-interval=""
+    .carousel-inner
+      - @products.each_slice(8).with_index do |products, i|
+        = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
+          = render partial: 'dashboard/basic_product', collection: products, as: :product
+    a.carousel-control.left href="#top_rated_apps" data-slide="prev" &lsaquo;
+    a.carousel-control.right href="#top_rated_apps" data-slide="next" &rsaquo;
