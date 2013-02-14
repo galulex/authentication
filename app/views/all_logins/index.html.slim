@@ -1,0 +1,30 @@
+#content.without_sidebar
+  #content_body
+    #main_content
+      #page_header.page_header
+        h2
+          = "All Logins"
+      .alphabets_index_action_links
+        - alphabets = ('a' .. 'z').to_a
+        - alphabets.each do |symbol|
+          = link_to symbol
+          '&nbsp
+      #all_logins.marketing_pages
+        br
+        .two_column_layout
+           - @companies.each do  |company|
+              .column
+                h3
+                  = link_to company.name, all_login_path(company.users.first)
+                ul
+                  li.first
+                    = "Admins:"
+                    = link_to company.users.first.name, all_login_path(company.users.first)
+                  li
+                    = "Employees:"
+                  li
+                    = "Marketers:"
+                  li
+                    = "Sales Managers:"
+                  li.last
+                    = "Sales Reps:"

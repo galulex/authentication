@@ -1,0 +1,10 @@
+doctype html
+html
+  = render 'layouts/head'
+  body
+    #container
+      #header
+        h1
+          #logo
+            = link_to image_tag('marketplace_logo.png'), root_path, class: :brand
+      = yield

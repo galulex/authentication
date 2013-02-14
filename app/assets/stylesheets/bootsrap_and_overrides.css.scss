@@ -47,3 +47,39 @@ h4.gray {
   color: gray;
   font-weight: lighter;
 }
+
+#footer {
+  background-color: #333333;
+  padding: 10px;
+  height: 35px;
+}
+
+#footer .container ul {
+  margin: 0;
+  padding: 0;
+}
+
+#footer_title li{
+  margin-right: 10px;
+  padding: 0px ;
+}
+#footer_title li.text {
+  color: #999999;
+}
+
+#developer-bar:hover {
+  height: 40px;
+}
+
+
+#developer-bar {
+  background: white;
+  border-top: 8px solid #76A426;
+  bottom: 0;
+  height: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  .container { padding: 20px; }
+}
+

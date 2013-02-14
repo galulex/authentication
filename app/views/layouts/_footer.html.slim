@@ -1,6 +1,21 @@
-    /#footer
-      .container
-        = link_to t('.contact_us'), ''
-        = link_to t('.legal'), ''
-        = link_to t('.privacy'), ''
-        = link_to t('.support'), ''
+#footer
+  .container
+    ul#footer_title.inline.unstyled
+      li.text
+        =t('copyright')
+      li.text
+        =t('all_rights_reserved')
+      li
+        = link_to t('contact_us')
+      li
+        = link_to t('legal')
+      li
+        = link_to t('privacy')
+      li
+        = link_to t('support')
+
+#developer-bar
+  .container
+    = link_to t('all_logins'), all_logins_path
+    = link_to t('login_as_appzone'), all_login_path(User::Tenant.first)
+
