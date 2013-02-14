@@ -1,4 +1,7 @@
-class Admin::PartnersController < ApplicationController
+class Admin::PartnersController < AdminsController
+
+  add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
+  add_breadcrumb I18n.t('breadcrumbs.partners'), :admin_partners_path, except: :index
 
   def index
     @companies = Company.page(params[:page])

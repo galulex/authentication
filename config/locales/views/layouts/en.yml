@@ -9,3 +9,8 @@ en:
       register: Register
       welcome: 'Welcome '
       guest: Guest
+  breadcrumbs:
+    administration: Administration
+  page_titles:
+    admins:
+      show: Administration

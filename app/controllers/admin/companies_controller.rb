@@ -1,4 +1,4 @@
-class Admin::CompaniesController < ApplicationController
+class Admin::CompaniesController < AdminsController
 
   def edit
     @company = current_user.company.draft || current_user.company.instantiate_draft!

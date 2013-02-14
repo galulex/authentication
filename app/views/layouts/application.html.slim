@@ -10,7 +10,10 @@ html
     #wrap
       .container
         .content
-          .row
+          .row-fluid
+            .span12
+              = render_breadcrumbs :builder => BootstrapBreadcrumbsBuilder
+              h2.page-title= render_title
             = yield
   .container= render 'layouts/footer'
   #modal class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
