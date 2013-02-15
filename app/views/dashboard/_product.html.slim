@@ -3,5 +3,5 @@
   .span9
     b= link_to product.name, product_path(product)
     br
-    b= link_to t('.by', name: product.company.name)
+    b= link_to t('.by', name: product.company.name), company_path(product.company)
   p.span12= truncate(product.description, length: 200)

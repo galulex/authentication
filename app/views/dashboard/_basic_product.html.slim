@@ -3,4 +3,4 @@
   .span9
     b= link_to product.name, product_path(product)
     br
-    = link_to t('.by', name: product.company.name)
+    = link_to t('.by', name: product.company.name), company_path(product.company)
