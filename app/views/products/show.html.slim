@@ -1,14 +1,37 @@
-hr.nav-border
-.container.search-bar.row-fluid
-  .span8
-    p.quote= t('quote')
-  .span4
-    = form_tag root_path do
-      .input-append
-        = search_field_tag :search, params[:search], placeholder: t('search_appzone_products'), class: 'input-xlarge'
-        = submit_tag t('search'), class: :btn
-.container
-  .span3
-    = image_tag(@product.icon.url)
-  .span6
-  .span3
+.product
+  hr.nav-border
+  = render partial: 'layouts/search'
+  .container.row-fluid
+    .span12
+      h1.page-title= @product.name
+    .span2
+      p
+        = image_tag(@product.icon.url)
+      b=' t('.company')
+      = link_to @product.company.name, company_path(@product.company)
+    .span8
+      .product-info
+        p.product-description= @product.description
+        .tabbable
+          ul.nav.nav-tabs
+            li.active
+              a href='#tab1' data-toggle='tab'= t('.summary')
+            li
+              a href='#tab2' data-toggle='tab'= t('.features')
+            li
+              a href='#tab3' data-toggle='tab'= t('.support')
+          .tab-content
+            #tab1.tab-pane.active
+              p= @product.summary
+            #tab2.tab-pane
+              p= @product.features
+            #tab3.tab-pane
+              p= @product.support
+        .reviews
+          h5.page-title
+            = t('.customer_reviews')
+            - unless @reviewed
+              = link_to t('.write_review'), new_product_review_path(@product), remote: true, class: 'pull-right'
+          ul.reviews-list
+            = render partial: 'product_reviews/product_review', collection: @product.reviews
+    .span2

@@ -12,6 +12,9 @@
  *= require_tree .
 */
 
+body, html { height: 100%; }
+#wrap { min-height: 96%; }
+
 .translation_missing { background: red; color: black; }
 
 .content { background: white; padding: 20px 50px; }

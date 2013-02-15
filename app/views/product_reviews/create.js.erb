@@ -1,0 +1,7 @@
+<% if @success %>
+  $('ul.reviews-list').append("<%= j(render partial: 'product_reviews/product_review', object: @review) %>");
+  $('.reviews .page-title a').remove();
+  $('#modal').modal('hide');
+<% else %>
+  $('#modal').html("<%= j(render partial: 'form') %>");
+<% end %>

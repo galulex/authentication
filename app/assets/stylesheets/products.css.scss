@@ -1,0 +1,7 @@
+.product { min-height: 96%; }
+.product-info .tab-content, .product-description, .reviews { min-height: 100px; }
+.product-info { margin: 20px; }
+
+.reviews-list, .product-info .tab-content { max-height: 300px; overflow: auto; }
+
+.review { padding: 0 10px; list-style: none; }

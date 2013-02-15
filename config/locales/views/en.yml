@@ -1,4 +1,6 @@
 en:
+  edit: Edit
+  delete: Delete
   decline: Decline
   publish: Publish
   submit_for_approval: Submit For Approval
@@ -10,6 +12,7 @@ en:
   sign_in: Sign In
   forgot_password: Forgot Password?
   reset_password: Reset Password
+  write_review: Write a Review for %{name}
   remember_me: Remember Me
   appzone_login: AppZone Marketplace Log In
   not_a_member: Not a member yet?

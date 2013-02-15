@@ -1,0 +1,9 @@
+en:
+  products:
+    show:
+      company: Company
+      summary: Summary
+      features: Features
+      support: Support
+      customer_reviews: Customer Reviews
+      write_review: Write a Review

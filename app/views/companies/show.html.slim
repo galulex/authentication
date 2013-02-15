@@ -1,0 +1,13 @@
+.product
+  hr.nav-border
+  = render partial: 'layouts/search'
+  .container.row-fluid
+    .span12
+      h1.page-title= @company.name
+    .span2
+      p
+        = image_tag(@company.logo.url)
+    .span8
+      .product-info
+        p.company-description= @company.description
+    .span2

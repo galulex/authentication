@@ -1,0 +1,7 @@
+$('<a/>', {
+  href: "<%= new_product_review_path %>",
+  class: 'pull-right',
+  text: "<%= t('products.show.write_review') %>",
+  'data-remote': true,
+  }).appendTo('.reviews .page-title');
+$("#product_review_<%= @review.id %>").remove();
