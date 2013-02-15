@@ -11,6 +11,19 @@ en:
       guest: Guest
   breadcrumbs:
     administration: Administration
+    partners: Partner Administration
+    partner_products: Product Administration
+
   page_titles:
     admins:
       show: Administration
+    admin_partners:
+      new: Create New Partner
+      index: Partner Administration
+      edit: Manage Partner
+    admin_people:
+      index: Manage People
+    admin_partner_products:
+      index: Product Administration
+      edit: Product Administration
+      show: Product Administration

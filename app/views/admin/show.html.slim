@@ -1,7 +1,7 @@
 .span12
   ul
     li
-      = link_to t('.manage_products'), ''
+      = link_to t('.manage_products'), admin_partner_products_path
     li
       = link_to t('.manage_people'), admin_people_path
     - if current_user.tenant?

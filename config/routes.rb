@@ -11,6 +11,7 @@ Authentication::Application.routes.draw do
     resource :company
     resources :people
     resources :partners
+    resources :partner_products
   end
 
   root :to => 'dashboard#index'

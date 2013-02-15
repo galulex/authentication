@@ -1,0 +1,2 @@
+= simple_form_for @product, as: :product, url: admin_partner_product_path(@product), multipart: true do |f|
+  = render partial: 'admin/partner_products/form', locals: { f: f }

@@ -1,0 +1,13 @@
+tr
+  td= product.name
+  td= product.company.name
+  td
+  td
+  td
+  td
+  td
+  td= l(product.updated_at)
+  td
+    = link_to 'show', admin_partner_product_path(product)
+    '
+    = link_to 'edit', edit_admin_partner_product_path(product)

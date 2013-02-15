@@ -1,0 +1,19 @@
+.span12
+  - if @products.blank?
+    = t('.no_partners')
+  - else
+    table.table.table-hover.table-striped
+      thead
+        tr
+          th= t('.product_name')
+          th= t('.company')
+          th= t('.type')
+          th= t('.platform')
+          th= t('.language')
+          th= t('.published?')
+          th= t('.update')
+          th= t('.updated_at')
+          th= t('.actions')
+        tbody
+        = render partial: 'product', collection: @products
+    = paginate @products

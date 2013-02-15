@@ -1,0 +1,13 @@
+en:
+  admin:
+    partner_products:
+      index:
+        product_name: Product Name
+        company: Company
+        type: Type
+        platform: Platform
+        language: Language
+        published?: Published?
+        update: Update
+        updated_at: Updated At
+        actions: Actions

@@ -1,0 +1,8 @@
+= f.input   :name, input_html: { class: 'input-xxlarge' }
+= f.input   :version, input_html: { class: 'input-xxlarge' }
+= image_tag(@product.icon.url) if @product && @product.icon.exists?
+= f.input   :icon, required: true, input_html: { class: 'input-xxlarge' }
+= f.input   :description, input_html: { class: 'input-xxlarge' }
+= f.input   :summary, input_html: { class: 'input-xxlarge' }
+= f.input   :features, input_html: { class: 'input-xxlarge' }
+= f.input   :support, input_html: { class: 'input-xxlarge' }
