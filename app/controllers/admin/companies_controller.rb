@@ -1,5 +1,7 @@
 class Admin::CompaniesController < AdminsController
 
+  add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
+
   def edit
     @company = current_user.company.draft || current_user.company.instantiate_draft!
   end

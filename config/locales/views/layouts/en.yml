@@ -27,3 +27,5 @@ en:
       index: Product Administration
       edit: Product Administration
       show: Product Administration
+    admin_companies:
+      edit: Manage Company

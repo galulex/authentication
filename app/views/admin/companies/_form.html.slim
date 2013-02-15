@@ -1,8 +1,8 @@
 = f.input   :name, input_html: { class: 'input-xxlarge' }
 = image_tag(@company.logo.url) if @company && @company.logo.exists?
 = f.input   :logo, required: true, input_html: { class: 'input-xxlarge' }
-= f.input   :synopsis, input_html: { class: 'input-xxlarge' }
-= f.input   :description, input_html: { class: 'input-xxlarge' }
+= f.input   :synopsis, input_html: { class: 'input-xxlarge', rows: 7}
+= f.input   :description, input_html: { class: 'input-xxlarge', rows: 7}
 = f.input   :street1, input_html: { class: 'input-xxlarge' }
 = f.input   :street2, label: false, input_html: { class: 'input-xxlarge' }
 = f.input   :city, input_html: { class: 'input-xxlarge' }
