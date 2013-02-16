@@ -9,6 +9,7 @@ module ApplicationHelper
   end
 
   def render_title
+    return @page_title if @page_title
     title = "#{params[:controller].parameterize('_')}.#{params[:action].parameterize('_')}"
     I18n.t("page_titles.#{title}")
   end

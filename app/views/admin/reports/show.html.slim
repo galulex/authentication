@@ -1,0 +1,18 @@
+= form_tag admin_report_path(params[:id]), method: :get do
+  .row-fluid.report-filters
+    .span4
+      p
+        = radio_button_tag :filter, :range, true
+        = label_tag :filter_range, t('.filter_by_range')
+      p
+        = radio_button_tag :filter, :month
+        = label_tag :filter_month, t('.filter_by_range')
+    .span8
+      = text_field_tag :start, params[:start], data: { behaviour: 'datepicker' }
+      = text_field_tag :end, params[:end], data: { behaviour: 'datepicker' }
+      = submit_tag t('generate'), class: :btn
+    .span8.hide
+      = select_month Date.today
+      = select_year Date.today, start_year: 2010, end_year: Time.now.year
+      = submit_tag t('generate'), class: :btn
+= render partial: params[:id] if params[:commit]

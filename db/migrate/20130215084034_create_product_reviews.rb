@@ -8,5 +8,7 @@ class CreateProductReviews < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :product_reviews, :user_id
+    add_index :product_reviews, :product_id
   end
 end

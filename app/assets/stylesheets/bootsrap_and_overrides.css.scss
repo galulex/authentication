@@ -3,7 +3,10 @@ $linkColor: #99CC00;
 $navbarBackground: white;
 $navbarHeight: 50px;
 
-@import "bootstrap";
+@import 'bootstrap';
+@import 'font-awesome';
+@import 'bootstrap-datepicker';
+
 .container { width: 1110px; }
 .navbar-inner {
   border: none;
@@ -27,7 +30,7 @@ hr.nav-border { margin: 0; border: none; border-top: 40px solid #99CC00; }
 
 body { background: #FBFBFB; font-size: 12px; }
 label { margin-bottom: 0; font-size: 14px; }
-input { margin-bottom: 0 !important; }
+input, select { margin-bottom: 0 !important; }
 legend { margin: 0; }
 
 legend.green { border: none; color: #76a426; }

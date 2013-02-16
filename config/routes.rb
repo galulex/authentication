@@ -7,14 +7,17 @@ Authentication::Application.routes.draw do
     resources :product_reviews, except: :index, controller: :product_reviews, as: :reviews
   end
   resources :companies, only: :show
+  resources :notifications, only: :index
   resources :all_logins, only: [:index, :show]
 
   resource :admin, only: :show
   namespace :admin do
     resource :company
     resources :people
+    resources :products
     resources :partners
     resources :partner_products
+    resources :reports, only: [:index, :show]
   end
 
   root :to => 'dashboard#index'

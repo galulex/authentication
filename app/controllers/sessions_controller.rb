@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
       @error = 'Your account not activated'
     elsif @success = (user && user.authenticate(params[:password]))
       params[:remember_me] ? cookies.permanent[:auth_token] = user.auth_token : cookies[:auth_token] = user.auth_token
+      user.logins.create
     else
       @error = "Invalid email or password"
     end

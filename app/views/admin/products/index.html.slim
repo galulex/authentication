@@ -15,5 +15,5 @@
           th= t('.updated_at')
           th= t('.actions')
         tbody
-        = render partial: 'product', collection: @products
+        = render @products
     = paginate @products

@@ -13,6 +13,10 @@ gem 'thin'
 gem 'carmen-rails', '~> 1.0.0.beta3'
 gem 'kaminari'
 gem 'breadcrumbs_on_rails'
+gem 'sidekiq'
+gem 'sidekiq-mailer'
+gem 'thinking-sphinx'
+gem 'acts_as_rateable'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,6 +24,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass'
+  gem 'font-awesome-sass-rails'
+  gem 'bootstrap-datepicker-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -31,6 +37,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'shoulda'
+  gem 'quiet_assets'
 end
 
 group :production do

@@ -1,5 +1,5 @@
 = simple_form_for @company, as: :company, url: admin_partner_path(@company), multipart: true do |f|
   = render partial: 'admin/companies/form', locals: { f: f }
   = link_to t('decline'), admin_partner_path(@company), remote: true, class: :btn, disabled: !@company.pending?
-  = f.button  :submit, t('save_draft'), name: :save, disabled: !@company.pending?
-  = f.button  :submit, t('publish'), disabled: !@company.pending?
+  = f.button :submit, t('save_draft'), name: :save, disabled: !@company.pending?
+  = f.button :submit, t('publish'), disabled: !@company.pending?

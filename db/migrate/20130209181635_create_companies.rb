@@ -22,5 +22,6 @@ class CreateCompanies < ActiveRecord::Migration
         t.timestamps
       end
     end
+    add_index :company_drafts, :company_id
   end
 end

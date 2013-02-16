@@ -1,0 +1,22 @@
+.span12
+  table.table.table-hover.table-striped
+    thead
+      tr
+        th= t('.metric')
+        th= t('.ammount')
+    tbody
+      tr
+        td= t('.unique_logins', start: params[:start], end: params[:end])
+        td= @logis
+      tr
+        td= t('.total_users', end: params[:end])
+        td= @users
+      tr
+        td= t('.new_users', start: params[:start], end: params[:end])
+        td= @new_users
+      tr
+        td= t('.total_companies', end: params[:end])
+        td= @companies
+      tr
+        td= t('.new_companies', start: params[:start], end: params[:end])
+        td= @new_companies

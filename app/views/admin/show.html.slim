@@ -1,12 +1,16 @@
 .span12
   ul
     li
-      = link_to t('.manage_products'), admin_partner_products_path
+      = link_to t('.manage_products'), admin_products_path
     li
       = link_to t('.manage_people'), admin_people_path
+    li
+      = link_to t('.reports'), admin_reports_path
     - if current_user.tenant?
       li
         = link_to t('.manage_partners'), admin_partners_path
+      li
+        = link_to t('.manage_products'), admin_partner_products_path
     - else
       li
         = link_to t('.manage_company'), edit_admin_company_path

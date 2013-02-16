@@ -12,6 +12,7 @@ class AllLoginsController < ApplicationController
   def show
     user = User.find(params[:id])
     cookies[:auth_token] = user.auth_token
+    user.logins.create
     redirect_to :root
   end
 

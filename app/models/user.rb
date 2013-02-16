@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   ROLES = { 1 => ADMIN, 2 => SALES_REP, 3 => SALES_MANAGER, 4 => MARKETER,  5 => EMPLOYEE }
 
+  has_many :logins
   has_many :product_reviews
   belongs_to :company
 

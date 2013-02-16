@@ -14,10 +14,13 @@ class CreateProducts < ActiveRecord::Migration
         t.text        :description
         t.text        :features
         t.text        :support
+        t.string      :status, default: 'draft'
         t.boolean     :featured
 
         t.timestamps
       end
     end
+    add_index :products, :company_id
+    add_index :product_drafts, :product_id
   end
 end

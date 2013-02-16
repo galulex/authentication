@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130215084034) do
+ActiveRecord::Schema.define(:version => 20130216151353) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(:version => 20130215084034) do
     t.datetime "updated_at",                             :null => false
   end
 
+  add_index "company_drafts", ["company_id"], :name => "index_company_drafts_on_company_id"
+
+  create_table "logins", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "logins", ["user_id"], :name => "index_logins_on_user_id"
+
   create_table "product_drafts", :force => true do |t|
     t.integer  "company_id"
     t.integer  "product_id"
@@ -85,10 +95,13 @@ ActiveRecord::Schema.define(:version => 20130215084034) do
     t.text     "description"
     t.text     "features"
     t.text     "support"
+    t.string   "status"
     t.boolean  "featured"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
+
+  add_index "product_drafts", ["product_id"], :name => "index_product_drafts_on_product_id"
 
   create_table "product_reviews", :force => true do |t|
     t.integer  "user_id"
@@ -98,6 +111,9 @@ ActiveRecord::Schema.define(:version => 20130215084034) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "product_reviews", ["product_id"], :name => "index_product_reviews_on_product_id"
+  add_index "product_reviews", ["user_id"], :name => "index_product_reviews_on_user_id"
 
   create_table "products", :force => true do |t|
     t.integer  "company_id"
@@ -123,10 +139,13 @@ ActiveRecord::Schema.define(:version => 20130215084034) do
     t.text     "description"
     t.text     "features"
     t.text     "support"
+    t.string   "status"
     t.boolean  "featured"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
+
+  add_index "products", ["company_id"], :name => "index_products_on_company_id"
 
   create_table "users", :force => true do |t|
     t.integer  "company_id"
@@ -147,5 +166,8 @@ ActiveRecord::Schema.define(:version => 20130215084034) do
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
   end
+
+  add_index "users", ["company_id"], :name => "index_users_on_company_id"
+  add_index "users", ["role_id"], :name => "index_users_on_role_id"
 
 end

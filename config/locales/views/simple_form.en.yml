@@ -6,6 +6,11 @@ en:
       product_review:
         create: Add
         update: Update
+      product:
+        create: Submit For Approval
+      company:
+        create: Submit For Approval
+        update: Submit For Approval
   simple_form:
     "yes": 'Yes'
     "no": 'No'

@@ -5,6 +5,8 @@ ul.nav
       = t('.welcome')
       strong= current_user.name
     li
+      a.icon-globe href=notifications_path
+    li
       = link_to t('.administration'), admin_path
     li
       = link_to t('.visit_marketplace'), root_path
