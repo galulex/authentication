@@ -36,7 +36,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ffaker'
-  gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'quiet_assets'
 end
 
