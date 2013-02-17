@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user, class: User::Partner do |u|
     u.association :company
-    u.role_id User::ROLES.invert[ADMIN]
+    u.role_id User::ROLES.invert[User::ADMIN]
     u.first_name Faker::Name.first_name
     u.last_name Faker::Name.last_name
     u.email Faker::Internet.email
