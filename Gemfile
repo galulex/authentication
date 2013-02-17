@@ -15,7 +15,7 @@ gem 'kaminari'
 gem 'breadcrumbs_on_rails'
 gem 'sidekiq'
 gem 'sidekiq-mailer'
-gem 'thinking-sphinx'
+#gem 'thinking-sphinx'
 gem 'acts_as_rateable'
 
 # Gems used only for assets and not required
