@@ -3,12 +3,17 @@ class Admin::PartnersController < AdminsController
   add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
   add_breadcrumb I18n.t('breadcrumbs.partners'), :admin_partners_path, except: :index
 
+  before_filter :find_company, except: [:new, :create, :index]
+
   def index
     @companies = Company.page(params[:page])
   end
 
   def new
     @partner = User::Partner.new
+  end
+
+  def show
   end
 
   def create
@@ -20,17 +25,7 @@ class Admin::PartnersController < AdminsController
     end
   end
 
-  def edit
-    company = Company.find(params[:id])
-    @company = company.draft || company
-  end
-
-  def show
-    @company = Company::Draft.find(params[:id])
-  end
-
   def update
-    @company = Company::Draft.find(params[:id])
     if @company.update_attributes(params[:company])
       if params[:save]
         flash[:notice] = 'Saved'
@@ -47,8 +42,14 @@ class Admin::PartnersController < AdminsController
   end
 
   def destroy
-    @company = Company::Draft.find(params[:id])
     @success = @company.decline!
+  end
+
+  private
+
+  def find_company
+    company = Company.find(params[:id])
+    @company = company.draft || company
   end
 
 end

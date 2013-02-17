@@ -13,7 +13,9 @@ ul.nav
     li
       = link_to t('.my_account'), edit_user_path(current_user), remote: true
     li
-      = link_to t('.logout'), session_path, method: :delete
+      = link_to session_path, method: :delete do
+        i class='icon-off'
+        = t('.logout')
   - else
     li
       = t('.welcome')

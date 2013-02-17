@@ -1,16 +1,34 @@
 .span12
   ul
-    li
-      = link_to t('.manage_products'), admin_products_path
-    li
-      = link_to t('.manage_people'), admin_people_path
-    li
-      = link_to t('.reports'), admin_reports_path
+    li.row-fluid
+      .span2
+        i.icon-random.icon-4x
+      .span10
+        h4= link_to t('.manage_products'), admin_products_path
+    li.row-fluid
+      .span2
+        i.icon-group.icon-4x
+      .span10
+        h4= link_to t('.manage_people'), admin_people_path
+    li.row-fluid
+      .span2
+        i.icon-bar-chart.icon-4x
+      .span10
+        h4= link_to t('.reports'), admin_reports_path
     - if current_user.tenant?
-      li
-        = link_to t('.manage_partners'), admin_partners_path
-      li
-        = link_to t('.manage_products'), admin_partner_products_path
+      li.row-fluid
+        .span2
+          i.icon-user-md.icon-4x
+        .span10
+          h4= link_to t('.manage_partners'), admin_partners_path
+      li.row-fluid
+        .span2
+          i.icon-folder-close.icon-4x
+        .span10
+          h4= link_to t('.manage_partner_products'), admin_partner_products_path
     - else
-      li
-        = link_to t('.manage_company'), edit_admin_company_path
+      li.row-fluid
+        .span2
+          i.icon-picture.icon-4x
+        .span10
+          h4= link_to t('.manage_company'), edit_admin_company_path

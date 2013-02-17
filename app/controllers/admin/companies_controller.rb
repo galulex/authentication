@@ -11,10 +11,10 @@ class Admin::CompaniesController < AdminsController
     @company = company.draft || company.instantiate_draft!
     if @company.update_attributes(params[:company])
       if params[:save]
-        flash.now[:notice] = 'Done'
+        flash.now[:notice] = 'Saved'
         render :edit
       else
-        @company.submit
+        @company.submit!
         redirect_to :root, notice: 'Submited'
       end
     else

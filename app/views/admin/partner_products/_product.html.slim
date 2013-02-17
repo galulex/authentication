@@ -1,5 +1,5 @@
 tr
-  td= product.name
+  td= link_to product.name, admin_partner_product_path(product)
   td= product.company.name
   td
   td
@@ -7,7 +7,4 @@ tr
   td
   td
   td= l(product.updated_at)
-  td
-    = link_to 'show', admin_partner_product_path(product)
-    '
-    = link_to 'edit', edit_admin_partner_product_path(product)
+  td = link_to '', edit_admin_partner_product_path(product), class: 'icon-edit'

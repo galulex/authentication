@@ -1,8 +1,8 @@
 .modal-header
   button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
-  h2= t('decline_reason')
+  h2= t("#{@action}_reason")
 .modal-body
-   = form_tag admin_partner_path(@company), method: :delete, remote: true do
+   = form_tag admin_partner_product_path(@product), method: :delete, remote: true do
     = text_area_tag :reason, nil, class: 'input-xxlarge', rows: 7
     .form-buttons
-      = submit_tag t('decline'), class: :btn
+      = submit_tag t(@action), class: :btn

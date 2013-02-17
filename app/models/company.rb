@@ -30,6 +30,10 @@ class Company < ActiveRecord::Base
       end
     end
 
+    def to_param
+      company_id
+    end
+
   end
 
   def company_id

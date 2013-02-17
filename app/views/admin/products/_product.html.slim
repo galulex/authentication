@@ -1,5 +1,5 @@
 tr
-  td= product.name
+  td= link_to product.name, admin_product_path(product)
   td= product.company.name
   td
   td
@@ -8,6 +8,7 @@ tr
   td
   td= l(product.updated_at)
   td
-    = link_to 'show', admin_product_path(product)
-    '
-    = link_to 'edit', edit_admin_product_path(product)
+    - if product.published?
+      =' link_to t('retract'), admin_product_path(product), method: :delete
+      ' |
+    = link_to t('edit'), edit_admin_product_path(product) unless product.pending?

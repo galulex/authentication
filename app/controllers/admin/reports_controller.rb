@@ -1,7 +1,7 @@
 class Admin::ReportsController < ApplicationController
 
   #set_title I18n.t("page_titles.reports.#{params[:id]}"), only: :show
-  before_filter lambda { @page_title = I18n.t("page_titles.reports.#{params[:id]}") }
+  before_filter lambda { @page_title = I18n.t("page_titles.reports.#{params[:id]}") }, only: :show
 
   def index
   end

@@ -2,6 +2,8 @@ en:
   admin:
     show:
       manage_products: Manage Products
+      manage_partner_products: Product Administration
       manage_people: Manage People
-      manage_partners: Manage Partners
+      manage_partners: Partner Administration
       manage_company: Manage Company
+      reports: Reports

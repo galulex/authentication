@@ -8,6 +8,7 @@ en:
         update: Update
       product:
         create: Submit For Approval
+        update: Submit For Approval
       company:
         create: Submit For Approval
         update: Submit For Approval
