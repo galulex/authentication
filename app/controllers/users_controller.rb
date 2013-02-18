@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       @partner = User::Partner.find_by_token(params[:id])
       unless @partner.nil?
         @partner.activate
-        flash[:notice] = 'Registration confirmed'
+        flash[:notice] = I18n.t('flash.user.registration_confirmed')
         redirect_to root_path
       end
     end
