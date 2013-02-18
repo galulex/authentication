@@ -31,7 +31,7 @@
           h5.page-title
             = t('.customer_reviews')
             - if current_user && !@reviewed
-              = link_to t('.write_review'), new_product_review_path(@product), remote: true, class: 'pull-right'
+              = link_to t('.write_review'), new_product_product_review_path(@product), remote: true, class: 'pull-right'
           ul.reviews-list
             = render partial: 'product_reviews/product_review', collection: @product.reviews
     .span2

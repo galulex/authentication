@@ -4,5 +4,5 @@ li.review id="product_review_#{product_review.id}"
   p= product_review.review
   - if product_review.user == current_user
     p
-      =' link_to t('edit'), edit_product_review_path(@product, product_review), remote: true
-      = link_to t('delete'), product_review_path(@product, product_review), method: :delete, remote: true
+      =' link_to t('edit'), edit_product_product_review_path(@product, product_review), remote: true
+      = link_to t('delete'), product_product_review_path(@product, product_review), method: :delete, remote: true

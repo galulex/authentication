@@ -4,7 +4,7 @@ Authentication::Application.routes.draw do
   resource  :session, only:  [:new, :create, :destroy]
   resources :password_resets, except: [:index, :show, :destroy]
   resources :products, only: :show do
-    resources :product_reviews, except: :index, controller: :product_reviews, as: :reviews
+    resources :product_reviews, except: :index
   end
   resources :companies, only: :show
   resources :notifications, only: :index
