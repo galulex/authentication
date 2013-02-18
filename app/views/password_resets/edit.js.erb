@@ -1,2 +1,6 @@
-$('#modal').html("<%= j(render partial: 'edit_form') %>");
-$('#modal').modal();
+<% if flash[:error] %>
+  window.location = "<%= root_path %>"
+<% else %>
+  $('#modal').html("<%= j(render partial: 'edit_form') %>");
+  $('#modal').modal();
+<% end %>

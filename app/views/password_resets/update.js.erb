@@ -1,5 +1,5 @@
 <% if @success %>
-    window.location = '/'
+    window.location = "<%= root_path %>"
 <% else %>
   $('#modal').html("<%= j(render partial: 'edit_form') %>");
 <% end %>

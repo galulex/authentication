@@ -3,7 +3,7 @@
   h2= t('forgot_password')
 .modal-body
   = form_tag password_resets_path, remote: true do
-    = error_tag(@error)
+    = error_tag(flash[:error])
     = label_tag :email
     .input-append
       = email_field_tag :email, params[:email]
