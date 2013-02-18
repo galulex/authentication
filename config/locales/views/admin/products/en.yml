@@ -1,1 +1,5 @@
 en:
+  admin:
+    products:
+      index:
+        no_products: No Products

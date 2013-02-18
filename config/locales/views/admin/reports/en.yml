@@ -1,0 +1,16 @@
+en:
+  admin:
+    reports:
+      index:
+        dashboard_report: Dashboard Report
+        registration_report: Registration Report
+      show:
+        filter_by_range: Filter By Range
+      dashboard:
+        metric: Metric
+        unique_logins: Unique Logins
+        total_users: Total Users
+        new_users: New Users
+        total_companies: Total Companies
+        new_companies: New Companies
+        ammount: Ammount

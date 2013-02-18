@@ -1,5 +1,7 @@
 class Admin::ReportsController < ApplicationController
 
+  add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
+  add_breadcrumb I18n.t('breadcrumbs.reports'), :admin_reports_path, except: :index
   #set_title I18n.t("page_titles.reports.#{params[:id]}"), only: :show
   before_filter lambda { @page_title = I18n.t("page_titles.reports.#{params[:id]}") }, only: :show
 

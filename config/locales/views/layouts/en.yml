@@ -13,6 +13,8 @@ en:
     administration: Administration
     partners: Partner Administration
     partner_products: Product Administration
+    reports: Reports
+    marketplace: Marketplace
 
   page_titles:
     admins:
@@ -32,3 +34,9 @@ en:
     reports:
       dashboard: Dashboard Report
       registration: Registration Report
+    admin_reports:
+      index: Reports
+    admin_products:
+      index: Manage Products
+    notifications:
+      index: Notifications

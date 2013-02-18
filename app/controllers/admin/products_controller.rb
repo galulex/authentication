@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
+  add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
+
   def index
     @products = current_user.company.products.page(params[:page])
   end
