@@ -75,6 +75,7 @@ GEM
     font-awesome-sass-rails (3.0.2.1)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    friendly_id (4.0.9)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -203,6 +204,7 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   font-awesome-sass-rails
+  friendly_id
   has_draft!
   jquery-rails
   kaminari

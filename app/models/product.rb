@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :reviews, class_name: 'ProductReview'
   belongs_to :company
 

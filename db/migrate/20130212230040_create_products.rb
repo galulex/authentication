@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration
         t.attachment  :icon
         t.attachment  :image
         t.attachment  :banner
+        t.string      :slug
         t.string      :name
         t.string      :version
         t.text        :summary
@@ -20,6 +21,8 @@ class CreateProducts < ActiveRecord::Migration
         t.timestamps
       end
     end
+    add_index :products, :slug, unique: true
+    add_index :product_drafts, :slug, unique: true
     add_index :products, :company_id
     add_index :product_drafts, :product_id
   end

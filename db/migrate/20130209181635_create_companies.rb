@@ -3,6 +3,7 @@ class CreateCompanies < ActiveRecord::Migration
     [:companies, :company_drafts].each do |table|
       create_table table do |t|
         t.references  :company if table == :company_drafts
+        t.string      :slug
         t.string      :name
         t.attachment  :logo
         t.text        :synopsis
@@ -22,6 +23,8 @@ class CreateCompanies < ActiveRecord::Migration
         t.timestamps
       end
     end
+    add_index :companies, :slug, unique: true
+    add_index :company_drafts, :slug, unique: true
     add_index :company_drafts, :company_id
   end
 end

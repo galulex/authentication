@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130216151353) do
 
   create_table "companies", :force => true do |t|
+    t.string   "slug"
     t.string   "name"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -36,8 +37,11 @@ ActiveRecord::Schema.define(:version => 20130216151353) do
     t.datetime "updated_at",                             :null => false
   end
 
+  add_index "companies", ["slug"], :name => "index_companies_on_slug", :unique => true
+
   create_table "company_drafts", :force => true do |t|
     t.integer  "company_id"
+    t.string   "slug"
     t.string   "name"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -61,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130216151353) do
   end
 
   add_index "company_drafts", ["company_id"], :name => "index_company_drafts_on_company_id"
+  add_index "company_drafts", ["slug"], :name => "index_company_drafts_on_slug", :unique => true
 
   create_table "logins", :force => true do |t|
     t.integer  "user_id"
@@ -89,19 +94,21 @@ ActiveRecord::Schema.define(:version => 20130216151353) do
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
+    t.string   "slug"
     t.string   "name"
     t.string   "version"
     t.text     "summary"
     t.text     "description"
     t.text     "features"
     t.text     "support"
-    t.string   "status"
+    t.string   "status",                :default => "draft"
     t.boolean  "featured"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   add_index "product_drafts", ["product_id"], :name => "index_product_drafts_on_product_id"
+  add_index "product_drafts", ["slug"], :name => "index_product_drafts_on_slug", :unique => true
 
   create_table "product_reviews", :force => true do |t|
     t.integer  "user_id"
@@ -133,19 +140,21 @@ ActiveRecord::Schema.define(:version => 20130216151353) do
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
+    t.string   "slug"
     t.string   "name"
     t.string   "version"
     t.text     "summary"
     t.text     "description"
     t.text     "features"
     t.text     "support"
-    t.string   "status"
+    t.string   "status",                :default => "draft"
     t.boolean  "featured"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   add_index "products", ["company_id"], :name => "index_products_on_company_id"
+  add_index "products", ["slug"], :name => "index_products_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.integer  "company_id"
