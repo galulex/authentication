@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user, class: User::Partner do |u|
+  factory :not_activated_user, class: User::Partner do |u|
     u.association :company
     u.role_id User::ROLES.invert[User::ADMIN]
     u.first_name Faker::Name.first_name
@@ -8,12 +8,10 @@ FactoryGirl.define do
     u.auth_token SecureRandom.urlsafe_base64
     u.password 'P@ssword'
     u.password_confirmation 'P@ssword'
-
-    after(:create) { |u| u.update_attribute(:token, nil) }
   end
 
-  factory :not_activated_user, parent: :user do |u|
-    u.token SecureRandom.urlsafe_base64
+  factory :user, parent: :not_activated_user do |u|
+    after(:create) { |u| u.update_attribute(:token, nil) }
   end
 
   factory :admin, class: User::Tenant, parent: :user do |u|

@@ -19,7 +19,7 @@ class Admin::PartnersController < AdminsController
   def create
     @partner = User::Partner.new(params[:user])
     if @partner.save
-      redirect_to admin_partners_path, notice: 'Done'
+      redirect_to admin_partners_path, notice: I18n.t('flash.partner.created')
     else
       render :new
     end
@@ -28,13 +28,13 @@ class Admin::PartnersController < AdminsController
   def update
     if @company.update_attributes(params[:company])
       if params[:save]
-        flash[:notice] = 'Saved'
+        flash[:notice] = I18n.t('flash.company.saved')
         render :edit
       else
         @company.approve!
         @company.company.replace_with_draft!
         @company.company.destroy_draft!
-        redirect_to admin_partners_path, notice: 'Published'
+        redirect_to admin_partners_path, notice: I18n.t('flash.company.submitted')
       end
     else
       render :edit
@@ -49,7 +49,7 @@ class Admin::PartnersController < AdminsController
 
   def find_company
     company = Company.find(params[:id])
-    @company = company.draft || company
+    @company = company.draft || company.instantiate_draft!
   end
 
 end
