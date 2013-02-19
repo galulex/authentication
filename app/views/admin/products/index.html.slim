@@ -1,3 +1,5 @@
+.span12.text-right
+  = link_to t('.create_new_product'), new_admin_product_path, class: :btn
 .span12
   - if @products.blank?
     = t('.no_products')

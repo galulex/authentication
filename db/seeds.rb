@@ -8,11 +8,10 @@ admin = FactoryGirl.create(:admin, first_name: 'AppZone', last_name: 'Admin', em
   FactoryGirl.reload
   logo = File.new(Dir.glob(Rails.root + 'spec/support/company_logos/*').sample)
   user = FactoryGirl.create(:user, company: FactoryGirl.build(:company, logo: logo))
-  puts user.name
   rand(3).times do
     icon = File.new(Rails.root + Dir.glob('spec/support/company_logos/*').sample)
     image = File.new(Rails.root + Dir.glob('spec/support/product_images/*').sample)
-    product = FactoryGirl.create(:product, company: user.company, icon: icon, image: image)
+    product = FactoryGirl.create(:product, company: user.company, icon: icon, image: image, status: 'published')
     puts product.name
     FactoryGirl.reload
   end

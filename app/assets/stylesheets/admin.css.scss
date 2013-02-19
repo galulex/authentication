@@ -1,3 +1,9 @@
-// Place all the styles related to the admin controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.menu-item {
+  height: 90px;
+  list-style: none;
+  margin-right: 10px;
+  width: 315px;
+  float: left;
+  h4 { margin: 0; }
+  p { color: #757575; }
+}

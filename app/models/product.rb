@@ -25,7 +25,7 @@ class Product < ActiveRecord::Base
     end
 
     def to_param
-      product_id
+      product.slug
     end
 
     validates :name, :description, presence: true
@@ -47,7 +47,7 @@ class Product < ActiveRecord::Base
       end
 
       event :retract do
-        transition to: 'retracted', from: 'pending published declined'
+        transition to: 'retracted', from: 'published'
       end
 
       event :unpublish do
@@ -71,7 +71,7 @@ class Product < ActiveRecord::Base
     end
 
     event :retract do
-      transition to: 'retracted', from: 'pending published declined'
+      transition to: 'retracted', from: 'published'
     end
 
     event :unpublish do

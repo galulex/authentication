@@ -1,12 +1,14 @@
 .span12
   ul
-    li.row-fluid
+    li.menu-item
       .span2
-        i.icon-dashboard.icon-4x
+        i.icon-dashboard.icon-3x
       .span10
         h4= link_to t('.dashboard_report'), admin_report_path(:dashboard)
-    li.row-fluid
+        p= t('.dashboard_report_desc')
+    li.menu-item
       .span2
-        i.icon-group.icon-4x
+        i.icon-group.icon-3x
       .span10
         h4= link_to t('.registration_report'), admin_report_path(:registration)
+        p= t('.registration_report_desc')

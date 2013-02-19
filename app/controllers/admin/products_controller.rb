@@ -49,7 +49,8 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    product.retract! if product.published?
+    @product = current_user.company.products.find(params[:id])
+    @product.retract! if @product.published?
     redirect_to admin_products_path
   end
 
