@@ -7,16 +7,16 @@
     tbody
       tr
         td= t('.unique_logins', start: params[:start], end: params[:end])
-        td= @logis
+        td= @report.logins_count
       tr
         td= t('.total_users', end: params[:end])
-        td= @users
+        td= @report.users_count
       tr
         td= t('.new_users', start: params[:start], end: params[:end])
-        td= @new_users
+        td= @report.new_users_count
       tr
         td= t('.total_companies', end: params[:end])
-        td= @companies
+        td= @report.companies_count
       tr
         td= t('.new_companies', start: params[:start], end: params[:end])
-        td= @new_companies
+        td= @report.new_companies_count

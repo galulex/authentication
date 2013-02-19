@@ -1,3 +1,3 @@
 $ ->
   $('#filter_month, #filter_range').change ->
-    $('.report-filters .span8').toggle()
+    $('.report-filters .range, .report-filters .month').toggle()
