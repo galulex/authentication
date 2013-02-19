@@ -3,14 +3,16 @@ en:
     reports:
       index:
         dashboard_report: Dashboard Report
+        dashboard_report_desc: Get an overview of your tenancy's activity.
         registration_report: Registration Report
+        registration_report_desc: Get reporting on registration status and totals.
       show:
         filter_by_range: Filter By Range
       dashboard:
         metric: Metric
-        unique_logins: Unique Logins
-        total_users: Total Users
-        new_users: New Users
-        total_companies: Total Companies
-        new_companies: New Companies
-        ammount: Ammount
+        ammount: Amount
+        unique_logins: Total Unique Logins (between %{start} and %{end})
+        total_users: Total Registered Users (up to %{end})
+        new_users: New Users (between %{start} and %{end})
+        total_companies: Total Companies (up to %{end})
+        new_companies: New Companies (between %{start} and %{end})

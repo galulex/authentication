@@ -2,4 +2,14 @@ en:
   admin:
     products:
       index:
+        create_new_product: Create New Product
+        product_name: Product Name
+        company: Company
+        type: Type
+        platform: Platform
+        language: Language
+        published?: Published?
+        update: Update
+        updated_at: Updated At
+        actions: Actions
         no_products: No Products

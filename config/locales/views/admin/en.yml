@@ -2,8 +2,14 @@ en:
   admin:
     show:
       manage_products: Manage Products
+      manage_products_desc: Add and edit your company's products.
       manage_partner_products: Product Administration
       manage_people: Manage People
+      manage_people_desc: Update existing employees roles or remove them from your company.
       manage_partners: Partner Administration
       manage_company: Manage Company
+      manage_company_desc: Update information and settings of my company.
       reports: Reports
+      reports_desc: Get reporting on various aspects of your tenancy.
+      manage_partners_desc: Manage settings for partner companies in the system.
+      manage_partner_products_desc: Manage the publication of your partner's products.
