@@ -14,11 +14,11 @@ class Admin::ProductsController < ApplicationController
     @product = current_user.company.products.build(params[:product])
     if @product.save
       if params[:save]
-        flash.now[:notice] = 'Saved'
+        flash.now[:notice] = I18n.t('flash.product.saved')
         render :edit
       else
         @product.submit!
-        redirect_to admin_products_path,  notice: 'Submited'
+        redirect_to admin_products_path,  notice: I18n.t('flash.product.submitted')
       end
     else
       render :new
@@ -31,17 +31,17 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    redirect_to :back, alert: 'Product is pending' if product.pending?
+    redirect_to :back, alert: I18n.t('flash.product.pending') if product.pending?
   end
 
   def update
     if product.update_attributes(params[:product])
       if params[:save]
-        flash.now[:notice] = 'Saved'
+        flash.now[:notice] = I18n.t('flash.product.saved')
         render :edit
       else
         product.submit!
-        redirect_to admin_products_path,  notice: 'Submited'
+        redirect_to admin_products_path,  notice: I18n.t('flash.product.submitted')
       end
     else
       render :edit

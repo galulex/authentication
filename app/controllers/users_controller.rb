@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @partner.role_id = User::ROLES.invert[User::ADMIN]
       @partner.save
       UserMailer.confirmation(@partner).deliver
-      flash[:notice] = 'Registration mail sent'
+      flash[:notice] = I18n.t('flash.user.registration_mail_sent')
     end
   end
 

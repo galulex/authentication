@@ -1,0 +1,25 @@
+en:
+  flash:
+    user:
+      not_authorized: Not Authorized
+      your_account_not_activated: Your Account Not Activated
+      invalid_email_or_password: Invalid Email Or Password
+      logged_out: Logged Out
+      registration_mail_sent: Registration Mail Sent
+      registration_confirmed: Registration Confirmed
+    reset_password:
+      mail_sent: Mail Sent
+      email_blank: Email Blank
+      done: Done
+      expired: Expired
+    company:
+      saved: Saved
+      submitted: Submitted
+      published: Published
+    product:
+      published: Published
+      saved: Saved
+      submitted: Submitted
+      pending: Product Is Pending
+    partner:
+      created: Created

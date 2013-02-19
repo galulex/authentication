@@ -34,7 +34,7 @@ class Admin::PartnersController < AdminsController
         @company.approve!
         @company.company.replace_with_draft!
         @company.company.destroy_draft!
-        redirect_to admin_partners_path, notice: I18n.t('flash.company.submitted')
+        redirect_to admin_partners_path, notice: I18n.t('flash.company.published')
       end
     else
       render :edit

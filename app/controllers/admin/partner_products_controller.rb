@@ -45,11 +45,11 @@ class Admin::PartnerProductsController < AdminsController
       @product.product.replace_with_draft!
       @product.product.destroy_draft!
     end
-    redirect_to admin_partner_products_path, notice: 'Published'
+    redirect_to admin_partner_products_path, notice: I18n.t('flash.product.published')
   end
 
   def save
-    flash.now[:notice] = 'Saved'
+    flash.now[:notice] = I18n.t('flash.product.saved')
     render :edit
   end
 
