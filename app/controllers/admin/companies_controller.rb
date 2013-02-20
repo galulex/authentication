@@ -15,7 +15,7 @@ class Admin::CompaniesController < AdminsController
         render :edit
       else
         @company.submit!
-        redirect_to :root, notice: I18n.t('flash.company.submitted')
+        redirect_to admin_path, notice: I18n.t('flash.company.submitted')
       end
     else
       render :edit
