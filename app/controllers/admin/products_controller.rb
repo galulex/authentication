@@ -31,7 +31,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    redirect_to :back, alert: I18n.t('flash.product.pending') if product.pending?
+    redirect_to admin_products_path, alert: I18n.t('flash.product.pending') if product.pending?
   end
 
   def update

@@ -21,5 +21,7 @@ en:
       saved: Saved
       submitted: Submitted
       pending: Product Is Pending
+      declined: Declined
+      unpublished: Unpublished
     partner:
       created: Created

@@ -29,7 +29,7 @@ class Admin::PartnerProductsController < AdminsController
   def destroy
     @success = product.decline! if product.pending?
     @success = product.unpublish! if product.published?
-    flash[:notice] = product.declined? ? 'Declined' : 'Unpublished'
+    flash[:notice] = product.declined? ? I18n.t('flash.product.declined') : I18n.t('flash.product.unpublished')
   end
 
   private

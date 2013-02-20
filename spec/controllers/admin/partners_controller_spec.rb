@@ -61,7 +61,7 @@ describe Admin::PartnersController do
 
     context 'submit with valid params' do
       before { put :update, id: company, company: company_params }
-      it { should set_the_flash[:notice].to(I18n.t('flash.company.submitted')) }
+      it { should set_the_flash[:notice].to(I18n.t('flash.company.published')) }
       it { should redirect_to(admin_partners_path)  }
       it { should assign_to(:company) }
     end
