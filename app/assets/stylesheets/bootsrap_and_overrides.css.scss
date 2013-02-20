@@ -27,6 +27,7 @@ hr.nav-border { margin: 0; border: none; border-top: 40px solid #99CC00; }
 }
 .modal-body { max-height: 700px; }
 .modal-header h2 { color: #76a426; margin: 0; font-weight: lighter; }
+.modal-body.confirmation { width: 530px; }
 
 body { background: #FBFBFB; font-size: 12px; }
 label { margin-bottom: 0; font-size: 14px; }
@@ -89,3 +90,5 @@ ul#footer_title{
 div.alert {
   border-radius: 0;
 }
+
+ul.breadcrumb { margin: 0; background: transparent; padding: 0; }

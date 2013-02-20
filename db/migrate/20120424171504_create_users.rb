@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.references  :company
       t.references  :role
       t.string      :type
+      t.boolean     :invited
       t.string      :first_name
       t.string      :last_name
       t.string      :job
@@ -15,7 +16,7 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime    :password_reset_sent_at
       t.string      :new_email
       t.string      :new_email_token
-      t.string      :deleted_at
+      t.datetime    :deleted_at
 
       t.timestamps
     end

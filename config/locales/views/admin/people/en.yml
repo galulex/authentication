@@ -7,3 +7,27 @@ en:
         job: Job
         role: Role
         actions: Actions
+        sent_invitations: Sent Invitations
+        invite_employees: Invite Employee
+        description: You can assign roles to your employees according to the position they have within your company by selecting the appropriate role in the box under the 'Role' column.
+      invites:
+        name: Name
+        email: Email
+        job: Job
+        role: Role
+        status: Status
+        manage_people: Manage People
+        invite_employees: Invite Employee
+        no_invites: There currently are not any invitations to display!
+      invite:
+        invited_true: Onboarded
+        invited_false: Pending
+        delete_message: Are you sure you want to cancel this onboard request?
+      new:
+        invite_employees: Invite employees to the community so they too can benefit from the partner management, content and collaboration tools that are available to you.
+        used: You've used
+        seats: available seats.
+        add_user: Add another user
+        invite_users: Invite Users
+      person:
+        delete_message: Confirming this action will remove user from the AppZone Marketplace. This user will be removed from your company. This action cannot be undone.

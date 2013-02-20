@@ -2,5 +2,8 @@ tr
   td= person.name
   td= person.email
   td= person.job
-  td= person.role
-  td= link_to t('.delete'), '' unless current_user == person
+  - if current_user == person
+    td= I18n.t("roles.#{person.role}")
+  - else
+    td= select :user, :role, User::ROLES.map { |k, v| [I18n.t("roles.#{v}"), k]}, { selected: person.role_id }, class: 'role-select', 'data-url' => admin_person_path(person)
+  td= link_to t('delete'), admin_person_path(person), method: :delete, confirm: t('.delete_message'), 'data-title' => t('confirm_delete') unless current_user == person

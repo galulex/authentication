@@ -1,0 +1,2 @@
+$('body .alert').slideUp(function(){ $(this).remove() })
+$("<%= j(render partial: 'layouts/messages') %>").prependTo('body').hide().slideDown();

@@ -7,6 +7,9 @@ en:
       logged_out: Logged Out
       registration_mail_sent: Registration Mail Sent
       registration_confirmed: Registration Confirmed
+      role_updated: Role has been updated
+      invite_canceled: Your employment request has been cancelled.
+      deleted: "%{name} is no longer associated to your company."
     reset_password:
       mail_sent: Mail Sent
       email_blank: Email Blank

@@ -13,7 +13,9 @@ Authentication::Application.routes.draw do
   resource :admin, only: :show
   namespace :admin do
     resource :company
-    resources :people
+    resources :people, except: :show do
+      get :invites, on: :collection
+    end
     resources :products
     resources :partners
     resources :partner_products

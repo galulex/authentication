@@ -23,4 +23,8 @@ body, html { height: 100%; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 
-.page-title { color: #76a426; font-weight: lighter; border-bottom: 1px solid #eaeaea; }
+.page-title {
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 20px;
+  h2 { color: #76a426; font-weight: lighter; margin: 0; }
+}

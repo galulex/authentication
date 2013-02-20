@@ -1,4 +1,7 @@
 en:
+  confirm_delete: Confirm Delete
+  remove: Remove
+  cancel: Cancel
   retract: Retract
   unpublish: Unpublish
   preview: Preview
@@ -36,6 +39,12 @@ en:
   support: Support
   save_draft: Save Draft
   create: Create
+  roles:
+    admin: Admin
+    marketer: Marketing
+    sales_manager: Sales Manager
+    sales_rep: Sales Rep
+    employee: Employee
   :false: "No"
   :true: "Yes"
   time:

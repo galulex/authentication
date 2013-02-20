@@ -1,19 +1,19 @@
 = content_for :title_links do
   ul.unstyled.inline.text-right
-    li= link_to t('.sent_invitations'), invites_admin_people_path
+    li= link_to t('.manage_people'), admin_people_path
     li= link_to t('.invite_employees'), new_admin_person_path
 
-- if @people.blank?
-  = t('.no_people')
+- if @users.blank?
+  = t('.no_invites')
 - else
-  p =  t('.description')
   table.table.table-hover.table-striped
     thead
       tr
         th= t('.name')
-        th= t('.email')
         th= t('.job')
+        th= t('.email')
         th= t('.role')
-        th= t('.actions')
+        th= t('.status')
+        th
     tbody
-      = render partial: 'person', collection: @people
+      = render partial: 'invite', collection: @users

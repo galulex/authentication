@@ -15,6 +15,7 @@ en:
     partner_products: Product Administration
     reports: Reports
     marketplace: Marketplace
+    manage_people: Manage People
 
   page_titles:
     admins:
@@ -25,6 +26,9 @@ en:
       edit: Manage Partner
     admin_people:
       index: Manage People
+      invites: Sent Invitations
+      new: Invite Employees
+      create: Invite Employees
     admin_partner_products:
       index: Product Administration
       edit: Product Administration

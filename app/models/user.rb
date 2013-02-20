@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   belongs_to :company
 
   attr_accessor :password, :password_confirmation
-  attr_accessible :company_attributes, :email, :job, :first_name, :last_name, :password, :password_confirmation
+  attr_accessible :role_id, :invited, :company_attributes, :email, :job, :first_name, :last_name, :password, :password_confirmation
   accepts_nested_attributes_for :company
 
   validates :first_name, :last_name, presence: true
@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
 
   before_create { generate_token(:auth_token); generate_token(:token) }
 
+  scope :invited, where(invited: true)
+  scope :activated, where(token: nil)
   scope :all_by_activation_status, ->(status) { where("token IS #{'NOT' if status != 'activated'} NULL") unless status.blank? }
 
   def activate

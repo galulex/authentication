@@ -12,8 +12,12 @@ html
         .content
           .row-fluid
             .span12
-              = render_breadcrumbs :builder => BootstrapBreadcrumbsBuilder
-              h2.page-title= render_title
+              = render_breadcrumbs builder: BootstrapBreadcrumbsBuilder
+            .page-title.row-fluid
+              .span7
+                h2= render_title
+              .span5
+                = yield :title_links
             = yield
   .container= render 'layouts/footer'
   #modal class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"

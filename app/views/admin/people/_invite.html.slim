@@ -1,0 +1,7 @@
+tr
+  td= invite.name
+  td= invite.job
+  td= invite.email
+  td= invite.role
+  td= t(".invited_#{invite.activated?}")
+  td= link_to t('cancel'), admin_person_path(invite), method: :delete, confirm: t('.delete_message'), 'data-title' => t('confirm_delete')
