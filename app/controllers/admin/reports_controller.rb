@@ -9,14 +9,13 @@ class Admin::ReportsController < ApplicationController
   end
 
   def show
-    eval(params[:id]) if params[:commit]
+    @report = "Reports::#{params[:id].classify}".constantize.new(params)
+    if params[:export]
+      send_data @report.csv, type: "application/csv", disposition: "attachment", filename: "#{report_class.name}.csv"
+    end
   end
 
   private
-
-  def dashboard
-    @report = DashboardReport.new(params)
-  end
 
   def prepare_params
     if active_filter?('month')

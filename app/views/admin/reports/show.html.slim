@@ -10,12 +10,14 @@
     .span8
       - if params[:id] == 'registration'
         .control-group
-          =' text_field_tag :start
+          =' select nil, :user_status, { activated: t('.activated'), pending: t('.not_activated') }.invert,
+                                       { prompt: t('.all_users'), selected: params[:user_status] }, { class: 'input-xlarge' }
       .control-group.range class="#{'hide' unless active_filter?('range')}"
         =' text_field_tag :start, params[:start], class: 'input-small', data: { behaviour: 'datepicker' }
         = text_field_tag :end, params[:end], class: 'input-small', data: { behaviour: 'datepicker' }
       .control-group.month class="#{'hide' unless active_filter?('month')}"
         = select_month @date, {}, class: 'input-medium'
         = select_year @date, { start_year: 2010, end_year: Time.now.year }, class: 'input-small'
-      = submit_tag t('generate'), class: :btn
+      =' submit_tag t('generate'), class: :btn
+      = submit_tag t('.export_to_csv'), name: :export, class: :btn if show_csv_button?
 = render partial: params[:id] if params[:commit]

@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
 
   before_create { generate_token(:auth_token); generate_token(:token) }
 
+  scope :all_by_activation_status, ->(status) { where("token IS #{'NOT' if status != 'activated'} NULL") unless status.blank? }
+
   def activate
     self.update_attribute(:token, nil)
   end

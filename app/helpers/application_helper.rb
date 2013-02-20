@@ -14,4 +14,9 @@ module ApplicationHelper
     I18n.t("page_titles.#{title}")
   end
 
+  #TODO Move to registration helper
+  def show_csv_button?
+    params[:id] == 'registration' && params[:commit]
+  end
+
 end

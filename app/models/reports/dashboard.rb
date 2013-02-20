@@ -1,4 +1,4 @@
-class DashboardReport
+class Reports::Dashboard
 
   attr_accessor :logins_count, :users_count, :new_users_count, :companies_count, :new_companies_count
 

@@ -1,0 +1,34 @@
+.span12
+  table.table.table-hover.table-striped
+    thead
+      tr
+        th= t('.marketplace_metrics')
+        th= t('.count')
+    tbody
+      tr
+        td= t('.not_activated_users')
+        td= @report.not_activated_users_count
+      tr
+        td= t('.activated_users')
+        td= @report.activated_users_count
+
+- unless @report.users.blank?
+  .span12
+    table.table.table-hover.table-striped
+      thead
+        tr
+          th= t('.name')
+          th= t('.email')
+          th= t('.user_type')
+          th= t('.company_name')
+          th= t('.created_on')
+          th= t('.activated')
+      tbody
+        - @report.users.each do |u|
+          tr
+            td= u.name
+            td= u.email
+            td= u.type
+            td= u.company.name
+            td= l(u.created_at)
+            td= t("#{u.activated?}")

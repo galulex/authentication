@@ -8,6 +8,10 @@ en:
         registration_report_desc: Get reporting on registration status and totals.
       show:
         filter_by_range: Filter By Range
+        all_users: All users (Activated and Non-activated)
+        activated: Users who have registered and been activated
+        not_activated: Users who have been registered but not activated
+        export_to_csv: Export Data to CSV
       dashboard:
         metric: Metric
         ammount: Amount
@@ -16,3 +20,14 @@ en:
         new_users: New Users (between %{start} and %{end})
         total_companies: Total Companies (up to %{end})
         new_companies: New Companies (between %{start} and %{end})
+      registration:
+        marketplace_metrics: Marketplace Metrics
+        count: Count
+        not_activated_users: Total Non-activated Users
+        activated_users: Total Activated Users
+        name: Name
+        email: E-Mail
+        user_type: User Type
+        company_name: Company Name
+        created_on: Created On
+        activated: Activated
