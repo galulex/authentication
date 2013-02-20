@@ -9,7 +9,9 @@ en:
       registration_confirmed: Registration Confirmed
       role_updated: Role has been updated
       invite_canceled: Your employment request has been cancelled.
+      invite_sent: Your invitations were sent successfully.
       deleted: "%{name} is no longer associated to your company."
+      registered: Registration completed
     reset_password:
       mail_sent: Mail Sent
       email_blank: Email Blank

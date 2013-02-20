@@ -1,8 +1,8 @@
 .modal-header
   button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
   h2= t('partner_registration')
-.modal-body.row-fluid
-  .span7
+.modal-body.row
+  .span4
     = simple_form_for @partner, remote: true do |f|
       = f.fields_for :company, @partner.company || @partner.build_company do |form|
         = form.input :name, input_html: { class: 'input-xlarge' }
@@ -12,6 +12,6 @@
       = f.input :password, input_html: { class: 'input-xlarge' }
       = f.input :password_confirmation, input_html: { class: 'input-xlarge' }
       = f.button :submit, t('sign_up')
-  .span5
+  .span3.offset1
     h4.gray= t('already_a_member')
     = link_to t('sign_in'), new_session_path, remote: true, class: :btn

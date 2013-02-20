@@ -1,0 +1,17 @@
+.row-fluid
+  .span5
+    h4= t('.title')
+    p= t('.desc')
+    p= t('.note')
+    p= t('.instructions')
+    p= t('.help')
+    p= t('.best_regards')
+  .span4.offset1
+    = simple_form_for @partner do |f|
+      = f.input :first_name, input_html: { class: 'input-xlarge' }
+      = f.input :last_name, input_html: { class: 'input-xlarge' }
+      = f.input :email, input_html: { class: 'input-xlarge' }
+      = f.input :password, input_html: { class: 'input-xlarge' }
+      = f.input :password_confirmation, input_html: { class: 'input-xlarge' }
+      = f.button :submit, t('sign_up')
+

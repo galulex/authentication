@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       @partner = current_user
     else
       @partner = User::Partner.find_by_token(params[:id])
-      unless @partner.nil?
+      if @partner && !@partner.invited?
         @partner.activate
         flash[:notice] = I18n.t('flash.user.registration_confirmed')
         redirect_to root_path
@@ -30,6 +30,18 @@ class UsersController < ApplicationController
   def update
     @partner = User.find(params[:id])
     @success = @partner.update_attributes(params[:user])
+    respond_to do |format|
+      format.js
+      format.html do
+        if @success
+          @partner.activate unless @partner.activated?
+          cookies[:auth_token] = @partner.auth_token
+          redirect_to root_path, notice: t('flash.user.registered')
+        else
+          render :edit
+        end
+      end
+    end
   end
 
 end

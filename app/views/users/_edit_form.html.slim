@@ -1,10 +1,11 @@
 .modal-header
   button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
   h2= t('personal_account_settings')
-.modal-body
-  = simple_form_for @partner, remote: true do |f|
-    = f.input :first_name
-    = f.input :last_name
-    = f.input :password
-    = f.input :password_confirmation
-    = f.button :submit
+.modal-body.row
+  .span6
+    = simple_form_for @partner, remote: true do |f|
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :password
+      = f.input :password_confirmation
+      = f.button :submit

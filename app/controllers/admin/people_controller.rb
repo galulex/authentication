@@ -18,7 +18,7 @@ class Admin::PeopleController < AdminsController
     end
     company.users << @users
     if company.valid?
-      redirect_to invites_admin_people_path
+      redirect_to invites_admin_people_path, notice: t('flash.user.invite_sent')
     else
       render :new
     end

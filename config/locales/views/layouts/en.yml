@@ -44,3 +44,6 @@ en:
       index: Manage Products
     notifications:
       index: Notifications
+    users:
+      edit: Account Registration
+      update: Account Registration
