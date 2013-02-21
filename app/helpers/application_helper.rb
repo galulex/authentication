@@ -21,8 +21,7 @@ module ApplicationHelper
 
   def user_product_rating(product, user)
     rate = product.ratings.find_by_user_id(user.id)
-    score = rate.score
-    render_rating(rate.score)
+    render_rating(rate.score) if rate
   end
 
   def render_rating(score)
