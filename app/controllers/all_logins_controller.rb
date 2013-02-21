@@ -16,12 +16,4 @@ class AllLoginsController < ApplicationController
     redirect_to :root
   end
 
-  def search(search)
-    if search
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-    else
-      find(:all)
-    end
-  end
-
 end

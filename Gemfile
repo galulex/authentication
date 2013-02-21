@@ -39,6 +39,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'quiet_assets'
+  gem 'simplecov', :require => false
 end
 
 group :production do

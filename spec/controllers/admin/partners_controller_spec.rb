@@ -79,6 +79,7 @@ describe Admin::PartnersController do
     it { should respond_with(:success) }
     it { should render_template(:destroy) }
     it { should assign_to(:company) }
+    it { should assign_to(:success) }
   end
 
 

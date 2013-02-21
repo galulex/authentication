@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         if @success
           @partner.activate unless @partner.activated?
           cookies[:auth_token] = @partner.auth_token
-          redirect_to root_path, notice: t('flash.user.registered')
+          redirect_to root_path, notice: I18n.t('flash.user.registered')
         else
           render :edit
         end
