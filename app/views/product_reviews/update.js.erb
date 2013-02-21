@@ -1,5 +1,5 @@
 <% if @success %>
-  $("#product_review_<%= @review.id %>").parent().html("<%= j(render partial: 'product_reviews/product_review', object: @review) %>")
+  $("#product_review_<%= @review.id %>").replaceWith("<%= j(render partial: 'product_reviews/product_review', object: @review) %>")
   $('#modal').modal('hide');
 <% else %>
   $('#modal').html("<%= j(render partial: 'form') %>");
