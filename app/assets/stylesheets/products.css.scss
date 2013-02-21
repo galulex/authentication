@@ -5,3 +5,17 @@
 .reviews-list, .product-info .tab-content { max-height: 300px; overflow: auto; }
 
 .review { padding: 0 10px; list-style: none; }
+
+.product-rating {
+  text-align: left;
+  direction: rtl;
+  span.user:hover {
+    a:before { content: "\f006"; }
+    & > a:hover:before, & > a:hover ~ a:before { content: "\f005"; }
+  }
+  a:hover {
+    text-decoration: none;
+    color: #99cc00;
+  }
+  .total div { min-height: auto; }
+}

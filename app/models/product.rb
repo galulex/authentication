@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   has_many :reviews, class_name: 'ProductReview'
+  has_many :ratings, class_name: 'ProductRating'
   belongs_to :company
 
   attr_accessible :description, :features, :name, :summary, :support, :version, :icon
@@ -79,9 +80,25 @@ class Product < ActiveRecord::Base
     end
   end
 
-
   def before_instantiate_draft
     self.status = 'draft'
+  end
+
+  def rate_it!(user, score)
+    r = ratings.find_or_initialize_by_user_id(user.id)
+    r.update_attributes(score: score)
+    reload
+  end
+
+  def user_rating(user)
+    rate = ratings.find_by_user_id(user.id)
+    return rate.score if user && rate
+    0
+  end
+
+  def user_review_id(user)
+    review = reviews.find_by_user_id(user.id)
+    review.id if review
   end
 
 end

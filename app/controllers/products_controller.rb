@@ -9,4 +9,9 @@ class ProductsController < ApplicationController
     end
   end
 
+  def update
+    @product = Product.find(params[:id])
+    @product.rate_it!(current_user, params[:score])
+  end
+
 end

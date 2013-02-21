@@ -17,6 +17,7 @@ class CreateProducts < ActiveRecord::Migration
         t.text        :support
         t.string      :status, default: 'draft'
         t.boolean     :featured
+        t.decimal     :rating_average, precision: 3, scale: 2, default: 0.00
 
         t.timestamps
       end

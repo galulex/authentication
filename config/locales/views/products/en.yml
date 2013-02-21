@@ -7,3 +7,7 @@ en:
       support: Support
       customer_reviews: Customer Reviews
       write_review: Write a Review
+    rating:
+      customer_ratings: Customer Ratings
+      your_rating: Your Rating
+      average_rating: Average Rating

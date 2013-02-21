@@ -19,4 +19,14 @@ module ApplicationHelper
     params[:id] == 'registration' && params[:commit]
   end
 
+  def user_rating(product, user_id)
+    html = ''
+    rate = product.ratings.find_by_user_id(user_id)
+    score = rate.score
+    5.times do |i|
+      html << content_tag('i', '', class: (i < rate.score ? 'icon-star' : 'icon-star-empty'))
+    end
+    html.html_safe
+  end
+
 end

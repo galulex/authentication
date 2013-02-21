@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220083225) do
+ActiveRecord::Schema.define(:version => 20130220231830) do
 
   create_table "companies", :force => true do |t|
     t.string   "slug"
@@ -67,20 +67,6 @@ ActiveRecord::Schema.define(:version => 20130220083225) do
   add_index "company_drafts", ["company_id"], :name => "index_company_drafts_on_company_id"
   add_index "company_drafts", ["slug"], :name => "index_company_drafts_on_slug", :unique => true
 
-  create_table "invitations", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "job"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "invitations", ["role_id"], :name => "index_invitations_on_role_id"
-  add_index "invitations", ["user_id"], :name => "index_invitations_on_user_id"
-
   create_table "logins", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at", :null => false
@@ -115,14 +101,25 @@ ActiveRecord::Schema.define(:version => 20130220083225) do
     t.text     "description"
     t.text     "features"
     t.text     "support"
-    t.string   "status",                :default => "draft"
+    t.string   "status",                                              :default => "draft"
     t.boolean  "featured"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.decimal  "rating_average",        :precision => 3, :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                               :null => false
+    t.datetime "updated_at",                                                               :null => false
   end
 
   add_index "product_drafts", ["product_id"], :name => "index_product_drafts_on_product_id"
   add_index "product_drafts", ["slug"], :name => "index_product_drafts_on_slug", :unique => true
+
+  create_table "product_ratings", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.integer  "score"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "product_ratings", ["product_id", "user_id"], :name => "index_product_ratings_on_product_id_and_user_id", :unique => true
 
   create_table "product_reviews", :force => true do |t|
     t.integer  "user_id"
@@ -161,10 +158,11 @@ ActiveRecord::Schema.define(:version => 20130220083225) do
     t.text     "description"
     t.text     "features"
     t.text     "support"
-    t.string   "status",                :default => "draft"
+    t.string   "status",                                              :default => "draft"
     t.boolean  "featured"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.decimal  "rating_average",        :precision => 3, :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                               :null => false
+    t.datetime "updated_at",                                                               :null => false
   end
 
   add_index "products", ["company_id"], :name => "index_products_on_company_id"
@@ -186,7 +184,7 @@ ActiveRecord::Schema.define(:version => 20130220083225) do
     t.datetime "password_reset_sent_at"
     t.string   "new_email"
     t.string   "new_email_token"
-    t.string   "deleted_at"
+    t.datetime "deleted_at"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
   end

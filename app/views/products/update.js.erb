@@ -1,0 +1,2 @@
+$('.product-rating').replaceWith("<%= j(render partial: 'rating') %>")
+$('#product_review_' + "<%= @product.user_review_id(current_user) %>" + ' .user-rating').html("<%= j(user_rating(@product, current_user.id)) %>")

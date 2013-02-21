@@ -7,8 +7,10 @@
     .span2
       p
         = image_tag(@product.icon.url)
-      b=' t('.company')
-      = link_to @product.company.name, company_path(@product.company)
+      p
+        b=' t('.company')
+        = link_to @product.company.name, company_path(@product.company)
+      = render partial: 'rating'
     .span8
       .product-info
         p.product-description= @product.description
