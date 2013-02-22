@@ -33,7 +33,8 @@ en:
       create: Invite Employees
     admin_partner_products:
       index: Product Administration
-      edit: Product Administration
+      edit: Edit Product
+      update: Edit Product
       show: Product Administration
     admin_companies:
       edit: Manage Company

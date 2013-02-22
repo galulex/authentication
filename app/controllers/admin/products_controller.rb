@@ -18,7 +18,9 @@ class Admin::ProductsController < ApplicationController
         render :edit
       else
         @product.submit!
-        redirect_to admin_products_path,  notice: I18n.t('flash.product.submitted')
+        product_id = @product.is_a?(Product) ? @product.id : @product.product_id
+        ProductNotifier.perform_async(:submitted, user_id: current_user.id, product_id: product_id)
+        redirect_to admin_products_path, notice: I18n.t('flash.product.submitted')
       end
     else
       render :new
@@ -41,6 +43,8 @@ class Admin::ProductsController < ApplicationController
         render :edit
       else
         product.submit!
+        product_id = @product.is_a?(Product) ? @product.id : @product.product_id
+        ProductNotifier.perform_async(:submitted, user_id: current_user.id, product_id: product_id)
         redirect_to admin_products_path,  notice: I18n.t('flash.product.submitted')
       end
     else
@@ -50,7 +54,10 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = current_user.company.products.find(params[:id])
-    @product.retract! if @product.published?
+    if @product.published?
+      @product.retract!
+      ProductNotifier.perform_async(:retracted, user_id: current_user.id, product_id: @product.id)
+    end
     redirect_to admin_products_path
   end
 

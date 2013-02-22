@@ -1,0 +1,8 @@
+p= "Hello #{@user.name},"
+p= "An AppZone Marketplace Administrator has declined to publish your product, #{@product.name}, in the AppZone Marketplace for the following reason:"
+p= @reason
+p
+  'View
+  = link_to 'more details.', admin_products_url
+p Thank you,
+p AppZone Marketplace

@@ -4,3 +4,9 @@ en:
       submitted: "%{user}, of %{company}, submitted a request to publish a Company Profile for Facebook on %{date}. <a href='%{link}'>Click here</a> to respond to this request."
       declined: "An AppZone Marketplace Administrator has declined to publish the %{company} Company Profile in the AppZone Marketplace for the following reason: %{reason} View <a href='%{link}'>more details</a>."
       approved: "The Company Profile for %{company} has been approved by an AppZone Marketplace administrator. The Company Profile will be visible in the Marketplace provided there is also an approved Product."
+    product:
+      submitted: "%{user} of %{company} submitted a request to publish the product, %{product}, on %{date}. <a href='%{link}>View more details.</a>"
+      retracted: "%{company} partner administrator, %{user}, has retracted the product %{product} from the AppZone Marketplace."
+      published: "The %{company} product, %{product}, has been approved by an AppZone Marketplace administrator. The solution will be visible in the Marketplace provided there is also a published Company Profile."
+      declined: "An AppZone Marketplace Administrator has declined to publish your product, %{product}, in the AppZone Marketplace for the following reason: %{reason} <a href='%{link}>View more details.</a>"
+      unpublished: "An AppZone Marketplace Administrator has unpublished your product, %{product}, in the AppZone Marketplace for the following reason: %{reason} <a href='%{link}>View more details.</a>"

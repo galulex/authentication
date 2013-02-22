@@ -29,7 +29,14 @@ class Admin::PartnerProductsController < AdminsController
   def destroy
     @success = product.decline! if product.pending?
     @success = product.unpublish! if product.published?
-    flash[:notice] = product.declined? ? I18n.t('flash.product.declined') : I18n.t('flash.product.unpublished')
+    product_id = product.is_a?(Product::Draft) ? product.product_id : product.id
+    if product.declined?
+      flash[:notice] = I18n.t('flash.product.declined')
+      ProductNotifier.perform_async(:declined, product_id: product_id, reason: params[:reason])
+    else
+      flash[:notice] = I18n.t('flash.product.unpublished')
+      ProductNotifier.perform_async(:unpublished, product_id: product_id, reason: params[:reason])
+    end
   end
 
   private
@@ -40,10 +47,13 @@ class Admin::PartnerProductsController < AdminsController
   end
 
   def publish
-    @product.publish! unless @product.published?
+     @product.publish! unless @product.published?
     if @product.is_a?(Product::Draft)
       @product.product.replace_with_draft!
       @product.product.destroy_draft!
+      ProductNotifier.perform_async(:published, product_id: @product.product_id)
+    else
+      ProductNotifier.perform_async(:published, product_id: @product.id)
     end
     redirect_to admin_partner_products_path, notice: I18n.t('flash.product.published')
   end
