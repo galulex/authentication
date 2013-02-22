@@ -3,12 +3,12 @@ class UserMailer < ActionMailer::Base
 
   def confirmation(user)
     @user = user
-    mail :to => user.email, :subject => "Confirm registration"
+    mail to: user.email, subject: "AppZone Marketplace Notification"
   end
 
   def password_reset(user)
     @user = user
-    mail :to => user.email, :subject => "Password Reset"
+    mail to: user.email, subject: "AppZone Marketplace Notification"
   end
 
 end

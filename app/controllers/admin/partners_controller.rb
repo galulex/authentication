@@ -34,6 +34,7 @@ class Admin::PartnersController < AdminsController
         @company.approve!
         @company.company.replace_with_draft!
         @company.company.destroy_draft!
+        CompanyNotifier.perform_async(:approved, company_id: @company.company_id)
         redirect_to admin_partners_path, notice: I18n.t('flash.company.published')
       end
     else
@@ -42,7 +43,10 @@ class Admin::PartnersController < AdminsController
   end
 
   def destroy
-    @success = @company.decline!
+    unless params[:reason].blank?
+      @success = @company.decline!
+      CompanyNotifier.perform_async(:declined, company_id: @company.company_id, reason: params[:reason])
+    end
   end
 
   private

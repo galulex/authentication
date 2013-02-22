@@ -1,0 +1,8 @@
+p= "Hello #{@user.name},"
+p= "An AppZone Marketplace Administrator has declined to publish the #{@company.name} Company Profile in the AppZone Marketplace for the following reason:"
+p= @reason
+p
+  'View
+  = link_to 'more details.', edit_admin_partner_url(@company)
+p Thank you,
+p AppZone Marketplace

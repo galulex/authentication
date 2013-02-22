@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :logins
   has_many :product_reviews
+  has_many :notifications
   belongs_to :company
 
   attr_accessor :password, :password_confirmation
@@ -29,6 +30,7 @@ class User < ActiveRecord::Base
   scope :invited, where(invited: true)
   scope :activated, where(token: nil)
   scope :all_by_activation_status, ->(status) { where("token IS #{'NOT' if status != 'activated'} NULL") unless status.blank? }
+  scope :admins, where(role_id: ROLES.invert[ADMIN])
 
   def activate
     self.update_attribute(:token, nil)

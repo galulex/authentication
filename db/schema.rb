@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220231830) do
+ActiveRecord::Schema.define(:version => 20130221200248) do
 
   create_table "companies", :force => true do |t|
     t.string   "slug"
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(:version => 20130220231830) do
   end
 
   add_index "logins", ["user_id"], :name => "index_logins_on_user_id"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "message"
+    t.boolean  "read",       :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "product_drafts", :force => true do |t|
     t.integer  "company_id"

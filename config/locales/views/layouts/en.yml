@@ -22,8 +22,10 @@ en:
       show: Administration
     admin_partners:
       new: Create New Partner
+      create: Create New Partner
       index: Partner Administration
       edit: Manage Partner
+      update: Manage Partner
     admin_people:
       index: Manage People
       invites: Sent Invitations
@@ -35,6 +37,7 @@ en:
       show: Product Administration
     admin_companies:
       edit: Manage Company
+      update: Manage Company
     reports:
       dashboard: Dashboard Report
       registration: Registration Report
@@ -42,6 +45,10 @@ en:
       index: Reports
     admin_products:
       index: Manage Products
+      new: Add a New Product
+      create: Add a New Product
+      edit: Edit Product
+      update: Edit Product
     notifications:
       index: Notifications
     users:

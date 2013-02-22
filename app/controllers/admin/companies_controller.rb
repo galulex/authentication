@@ -15,6 +15,7 @@ class Admin::CompaniesController < AdminsController
         render :edit
       else
         @company.submit!
+        CompanyNotifier.perform_async(:submitted, user_id: current_user.id)
         redirect_to admin_path, notice: I18n.t('flash.company.submitted')
       end
     else
