@@ -140,8 +140,7 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "product_reviews", ["product_id"], :name => "index_product_reviews_on_product_id"
-  add_index "product_reviews", ["user_id"], :name => "index_product_reviews_on_user_id"
+  add_index "product_reviews", ["product_id", "user_id"], :name => "index_product_reviews_on_product_id_and_user_id", :unique => true
 
   create_table "products", :force => true do |t|
     t.integer  "company_id"

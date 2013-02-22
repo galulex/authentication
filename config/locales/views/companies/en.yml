@@ -1,0 +1,5 @@
+en:
+  companies:
+    show:
+      website: Website
+      products: Products(%{count})

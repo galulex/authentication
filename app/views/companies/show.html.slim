@@ -11,3 +11,11 @@
       .product-info
         p.company-description= @company.description
     .span2
+      .website
+        i.icon-external-link ='
+        = link_to t('.website'), @company.website, target: '_blank' if @company.website
+    .span8
+      .products-collection
+        h3.title= t('.products', count: @company.products.size)
+        ul.unstyled
+          = render partial: 'product', collection: @company.products
