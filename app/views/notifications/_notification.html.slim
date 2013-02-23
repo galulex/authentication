@@ -1,0 +1,5 @@
+li.notification.row-fluid class=('unread' unless notification.read?) id="notification_#{notification.id}"
+  .span2.datetime= time_ago_in_words(notification.created_at)
+  .span9= notification.message.html_safe
+  .span1
+    h4= link_to '×', notification_path(notification), method: :delete, remote: true

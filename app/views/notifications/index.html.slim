@@ -1,1 +1,5 @@
-
+- unless @notifications.blank?
+  = content_for :title_links do
+    .text-right= link_to t('clear_all'), notification_path(:all), method: :delete
+  ul.unstyled
+    = render @notifications

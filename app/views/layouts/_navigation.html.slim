@@ -5,7 +5,11 @@ ul.nav
       = t('.welcome')
       strong= current_user.name
     li
-      a.icon-globe href=notifications_path
+      - if current_user.notifications.unread.blank?
+        a.icon-globe href=notifications_path
+      - else
+        = link_to notifications_path do
+          span.badge= current_user.notifications.unread.count
     li
       = link_to t('.administration'), admin_path
     li

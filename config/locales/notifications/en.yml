@@ -3,7 +3,7 @@ en:
     company_submitted: "<p>%{user}, of %{company}, submitted a request to publish a Company Profile for Facebook on %{date}.</p><p><a href='%{link}'>Click here</a> to respond to this request.</p>"
     company_declined: "<p>An AppZone Marketplace Administrator has declined to publish the %{company} Company Profile in the AppZone Marketplace for the following reason: %{reason}</p><p>View <a href='%{link}'>more details</a>.</p>"
     company_approved: "<p>The Company Profile for %{company} has been approved by an AppZone Marketplace administrator.</p><p>The Company Profile will be visible in the Marketplace provided there is also an approved Product.</p>"
-    product_submitted: "<p>%{user} of %{company} submitted a request to publish the product, %{product}, on %{date}.</p><p><a href='%{link}>View more details.</a></p>"
+    product_submitted: "<p>%{user} of %{company} submitted a request to publish the product, %{product}, on %{date}.</p><p><a href='%{link}'>View more details.</a></p>"
     product_retracted: "<p>%{company} partner administrator, %{user}, has retracted the product %{product} from the AppZone Marketplace.</p>"
     product_published: "<p>The %{company} product, %{product}, has been approved by an AppZone Marketplace administrator.</p><p>The solution will be visible in the Marketplace provided there is also a published Company Profile.</p>"
     product_declined: "<p>An AppZone Marketplace Administrator has declined to publish your product, %{product}, in the AppZone Marketplace for the following reason: %{reason}</p><p><a href='%{link}>View more details.</a></p>"
