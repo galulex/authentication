@@ -7,7 +7,7 @@ Authentication::Application.routes.draw do
     resources :product_reviews, except: :index
   end
   resources :companies, only: :show
-  resources :notifications, only: :index
+  resources :notifications, only: [:index, :destroy]
   resources :all_logins, only: [:index, :show]
 
   resource :admin, only: :show

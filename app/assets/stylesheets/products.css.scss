@@ -6,10 +6,10 @@
 
 .review { padding: 0 10px; list-style: none; }
 
-.product-rating {
+.product-rating .user-rating {
   text-align: left;
   direction: rtl;
-  span.user:hover {
+  & span:hover {
     a:before { content: "\f006"; }
     & > a:hover:before, & > a:hover ~ a:before { content: "\f005"; }
   }

@@ -1,4 +1,4 @@
 = simple_form_for @product, as: :product, url: admin_product_path(@product), multipart: true do |f|
   = render partial: 'admin/partner_products/form', locals: { f: f }
-  = f.button :submit, t('save_draft'), name: :save
-  = f.button :submit
+  =' f.button :submit, t('save_draft'), name: :save
+  =' f.button :submit

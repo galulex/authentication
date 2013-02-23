@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @success = @partner.valid?
       @partner.role_id = User::ROLES.invert[User::ADMIN]
       @partner.save
-      UserMailer.confirmation(@partner).deliver
+      UserNotifier.perform_async(:confirmation, user_id: @partner.id)
       flash[:notice] = I18n.t('flash.user.registration_mail_sent')
     end
   end

@@ -19,6 +19,7 @@ class Admin::PartnersController < AdminsController
   def create
     @partner = User::Partner.new(params[:user])
     if @partner.save
+      UserNotifier.perform_async(:admin_invite, user_id: @partner.id)
       redirect_to admin_partners_path, notice: I18n.t('flash.partner.created')
     else
       render :new

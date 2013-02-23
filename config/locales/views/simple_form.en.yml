@@ -51,7 +51,7 @@ en:
         synopsis: Recommended maximum 120 characters. Primary focus of your business. Eg. ABC Company is a leading provider of XYZ
         description: Broad company overview. Areas of emphasis or target markets. Value of your business products to your customers.
       user:
-        password: 'Password must be a minimum of 8 characters and must include 3 out of the following 4 character sets: upper case, lower case, numeric or special characters'
+        password: 'Password must be at list 8 characters long and include upper case, lower case, & numeric characters'
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'

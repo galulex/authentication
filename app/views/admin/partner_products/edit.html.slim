@@ -1,7 +1,7 @@
 = simple_form_for @product, as: :product, url: admin_partner_product_path(@product), multipart: true do |f|
   = render partial: 'admin/partner_products/form', locals: { f: f }
-  = link_to t('unpublish'), admin_partner_product_path(@product), remote: true, class: :btn if @product.published?
-  = link_to t('decline'), admin_partner_product_path(@product), remote: true, class: :btn, disabled: !@product.pending?
-  = f.button :submit, t('save_draft'), name: :save, disabled: !@product.pending?
-  = f.button :submit, t('preview'), name: :preview, disabled: !@product.pending?
-  = f.button :submit, t('publish'), name: :publish, disabled: @product.retracted?
+  =' link_to t('unpublish'), admin_partner_product_path(@product), remote: true, class: :btn if @product.published?
+  =' link_to t('decline'), admin_partner_product_path(@product), remote: true, class: :btn, disabled: !@product.pending?
+  =' f.button :submit, t('save_draft'), name: :save, disabled: !@product.pending?
+  =' f.button :submit, t('preview'), name: :preview, disabled: !@product.pending?
+  =' f.button :submit, t('publish'), name: :publish, disabled: @product.retracted?

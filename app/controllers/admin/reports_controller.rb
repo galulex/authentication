@@ -11,7 +11,7 @@ class Admin::ReportsController < ApplicationController
   def show
     @report = "Reports::#{params[:id].classify}".constantize.new(params)
     if params[:export]
-      send_data @report.csv, type: "application/csv", disposition: "attachment", filename: "#{report_class.name}.csv"
+      send_data @report.csv, type: "application/csv", disposition: "attachment", filename: "#{@report.class}.csv"
     end
   end
 

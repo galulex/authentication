@@ -13,7 +13,7 @@ en:
       deleted: "%{name} is no longer associated to your company."
       registered: Registration completed
     reset_password:
-      mail_sent: Mail Sent
+      email_sent: Mail Sent
       email_blank: Email Blank
       done: Done
       expired: Expired

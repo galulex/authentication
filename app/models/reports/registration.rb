@@ -7,7 +7,7 @@ class Reports::Registration
   def initialize(params)
     @activated_users_count = User.where(token: nil).size
     @not_activated_users_count = User.where('token IS NOT NULL').size
-    @users = User.includes(:company).all_by_activation_status(params[:user_status])
+    @users = User.includes(:company).all_by_activation_status(params[:user_status]).where('created_at >= ? AND created_at <= ?', params[:start], params[:end])
   end
 
   def csv(options = {})

@@ -2,19 +2,19 @@
   h4.title= t('.customer_ratings')
   - if current_user
     h5.title= t('.your_rating')
-    span.user
-      - 5.downto(1) do |i|
-        = link_to '', product_path(@product, score: i), method: :put, remote: true, class: (@product.user_rating(current_user) >= i ? 'icon-star icon-2x' : 'icon-star-empty icon-2x')
+    .user-rating
+      span.user
+        - 5.downto(1) do |i|
+          = link_to '', product_path(@product, score: i), method: :put, remote: true, class: (@product.user_rating(current_user) >= i ? 'icon-star icon-2x' : 'icon-star-empty icon-2x')
   - unless @product.ratings.blank?
     .average
       h5.title= t('.average_rating')
-      - 4.downto(0) do |i|
-        i.icon-2x class=((@product.rating_average.to_i > i) ? 'icon-star' : 'icon-star-empty')
+      - 5.times do |i|
+        i.icon-2x class=((i < @product.rating_average.to_i) ? 'icon-star' : 'icon-star-empty')
     .total
       - 5.downto(1) do |i|
         .row-fluid
           .span5.offset1
-            - 5.downto(1) do |t|
-              i class=((t <= i) ? 'icon-star' : 'icon-star-empty')
+              = render_rating(i)
           .span3
             = @product.ratings.select { |p| p.score == i }.count

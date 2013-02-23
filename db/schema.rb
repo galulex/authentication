@@ -77,10 +77,11 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
 
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
-    t.text     "message"
-    t.boolean  "read",       :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.string   "notification_type"
+    t.text     "data"
+    t.boolean  "read",              :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
@@ -140,7 +141,8 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "product_reviews", ["product_id", "user_id"], :name => "index_product_reviews_on_product_id_and_user_id", :unique => true
+  add_index "product_reviews", ["product_id"], :name => "index_product_reviews_on_product_id"
+  add_index "product_reviews", ["user_id"], :name => "index_product_reviews_on_user_id"
 
   create_table "products", :force => true do |t|
     t.integer  "company_id"

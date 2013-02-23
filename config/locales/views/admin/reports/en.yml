@@ -8,6 +8,7 @@ en:
         registration_report_desc: Get reporting on registration status and totals.
       show:
         filter_by_range: Filter By Range
+        filter_by_month: Filter By Month
         all_users: All users (Activated and Non-activated)
         activated: Users who have registered and been activated
         not_activated: Users who have been registered but not activated

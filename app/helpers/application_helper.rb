@@ -16,7 +16,7 @@ module ApplicationHelper
 
   #TODO Move to registration helper
   def show_csv_button?
-    params[:id] == 'registration' && params[:commit]
+    params[:id] == 'registration' && params[:commit] && @report.users.present?
   end
 
   def user_product_rating(product, user)

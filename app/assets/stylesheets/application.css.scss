@@ -12,12 +12,9 @@
  *= require_tree .
 */
 
-body, html { height: 100%; }
-#wrap { min-height: 96%; }
-
 .translation_missing { background: red; color: black; }
 
-.content { background: white; padding: 20px 50px; }
+.content { background: white; padding: 20px 50px; min-height: 400px; }
 
 .text-left { text-align: left; }
 .text-center { text-align: center; }
@@ -35,4 +32,13 @@ body, html { height: 100%; }
 .title {
   color: #76a426;
   font-weight: lighter;
+}
+
+li.notification {
+  padding: 10px 0;
+  border-bottom: 1px dotted #cccccc;
+  margin: 5px;
+  &.unread { background: #d2d9df; }
+  .datetime { background: #d2d9df; padding: 10px; }
+  a.close { margin-right: 10px; }
 }

@@ -6,7 +6,7 @@ class PasswordResetsController < ApplicationController
     user = User.find_by_email(params[:email])
     if @success = user && !flash[:error]
       user.reset_password
-      UserMailer.password_reset(user).deliver
+      UserNotifier.perform_async(:password_reset, user_id: user.id)
       flash[:notice] = I18n.t('flash.reset_password.email_sent')
     else
       flash.now[:error] = params[:email].blank? ? I18n.t('flash.reset_password.email_blank') : I18n.t('flash.reset_password.user_does_not_exist')

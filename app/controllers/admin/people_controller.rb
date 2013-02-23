@@ -18,6 +18,7 @@ class Admin::PeopleController < AdminsController
     end
     company.users << @users
     if company.valid?
+      UserNotifier.perform_async(:invite, user_ids: @users.map(&:id), admin_id: current_user.id)
       redirect_to invites_admin_people_path, notice: I18n.t('flash.user.invite_sent')
     else
       render :new

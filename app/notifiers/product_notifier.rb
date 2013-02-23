@@ -18,8 +18,8 @@ class ProductNotifier
     date = I18n.l(Time.now)
     User::Tenant.admins.each do |admin|
       ProductMailer.submitted(admin, user, company, product, date).deliver
-      message = I18n.t('notifications.product.submitted', user: user.name, company: company.name, product: product.name, date: date, link: admin_partner_products_path)
-      admin.notifications.create(message: message)
+      data = { user: user.name, company: company.name, product: product.name,  date: date, link: admin_partner_products_path }
+      admin.notifications.create(notification_type: 'product_submitted', data: data)
     end
   end
 
@@ -29,8 +29,8 @@ class ProductNotifier
     company = product.company
     User::Tenant.admins.each do |admin|
       ProductMailer.retracted(admin, user, company, product).deliver
-      message = I18n.t('notifications.product.retracted', user: user.name, company: company.name, product: product.name)
-      admin.notifications.create(message: message)
+      data = { user: user.name, company: company.name, product: product.name }
+      admin.notifications.create(notification_type: 'product_retracted', data: data)
     end
   end
 
@@ -39,7 +39,8 @@ class ProductNotifier
     company = product.company
     company.users.admins.each do |admin|
       ProductMailer.published(admin, company, product).deliver
-      admin.notifications.create(message: I18n.t('notifications.product.published', product: product.name, company: company.name))
+      data = { company: company.name, product: product.name }
+      admin.notifications.create(notification_type: 'product_published', data: data)
     end
   end
 
@@ -47,8 +48,8 @@ class ProductNotifier
     product = Product.find(params['product_id'])
     product.company.users.admins.each do |admin|
       ProductMailer.declined(admin, product, params['reason']).deliver
-      message = I18n.t('notifications.product.declined', product: product.name, reason: params['reason'], link: admin_products_path)
-      admin.notifications.create(message: message)
+      data = { product: product.name, reason: params['reason'], link: admin_products_path }
+      admin.notifications.create(notification_type: 'product_declined', data: data)
     end
   end
 
@@ -56,8 +57,8 @@ class ProductNotifier
     product = Product.find(params['product_id'])
     product.company.users.admins.each do |admin|
       ProductMailer.unpublished(admin, product, params['reason']).deliver
-      message = I18n.t('notifications.product.unpublished', product: product.name, reason: params['reason'], link: admin_products_path)
-      admin.notifications.create(message: message)
+      data = { product: product.name, reason: params['reason'], link: admin_products_path }
+      admin.notifications.create(notification_type: 'product_unpublished', data: data)
     end
   end
 

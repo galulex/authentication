@@ -11,4 +11,14 @@ class UserMailer < ActionMailer::Base
     mail to: user.email, subject: "AppZone Marketplace Notification"
   end
 
+  def invite(user, admin)
+    @user, @admin = user, admin
+    mail to: user.email, subject: "AppZone Marketplace Notification"
+  end
+
+  def admin_invite(user)
+    @user = user
+    mail to: user.email, subject: "AppZone Marketplace Notification"
+  end
+
 end

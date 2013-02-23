@@ -1,8 +1,9 @@
 .modal-header
   button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
   h2= t('enter_new_password')
-.modal-body
-  = simple_form_for @user, url: password_reset_path(params[:id]), remote: true do |f|
-    = f.input :password
-    = f.input :password_confirmation
-    = f.button :submit
+.modal-body.row
+  .span4
+    = simple_form_for @user, url: password_reset_path(params[:id]), remote: true do |f|
+      = f.input :password
+      = f.input :password_confirmation
+      = f.button :submit
