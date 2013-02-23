@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/galulex/has_draft.git
-  revision: 969d8967a2e635988eecf02a16bd746cf57f2d37
-  specs:
-    has_draft (1.1.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -220,7 +212,6 @@ DEPENDENCIES
   ffaker
   font-awesome-sass-rails
   friendly_id
-  has_draft!
   jquery-rails
   kaminari
   letter_opener

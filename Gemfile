@@ -6,7 +6,6 @@ gem 'bcrypt-ruby', '~> 3.0.0', require: "bcrypt"
 gem 'slim'
 gem 'slim-rails'
 gem 'simple_form'
-gem 'has_draft', git: 'git://github.com/galulex/has_draft.git'
 gem 'paperclip'
 gem 'state_machine'
 gem 'thin'

@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  include HasDraft
 
   extend FriendlyId
   friendly_id :name, use: :slugged
