@@ -7,14 +7,12 @@
     .span2
       p
         = image_tag(@company.logo.url)
-    .span8
-      .product-info
-        p.company-description= @company.description
-    .span2
       .website
         i.icon-external-link ='
         = link_to t('.website'), @company.website, target: '_blank' if @company.website
     .span8
+      .product-info
+        p.company-description= @company.description
       .products-collection
         h3.title= t('.products', count: @company.products.size)
         ul.unstyled

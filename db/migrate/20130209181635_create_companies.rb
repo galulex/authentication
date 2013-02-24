@@ -5,7 +5,7 @@ class CreateCompanies < ActiveRecord::Migration
         t.references  :company if table == :company_drafts
         t.string      :slug
         t.string      :name
-        t.attachment  :logo
+        t.string      :logo
         t.text        :synopsis
         t.text        :description
         t.integer     :employee_limit, default: 20

@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
   include HasDraft
+  mount_uploader :icon, LogoUploader
+  mount_uploader :image, ImageUploader
+  mount_uploader :banner, BannerUploader
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -11,12 +14,10 @@ class Product < ActiveRecord::Base
   attr_accessible :description, :features, :name, :summary, :support, :version, :icon
   validates :description, :features, :name, :summary, presence: true
 
-
-  has_attached_file :icon
-  has_attached_file :image
-  has_attached_file :banner
-
   has_draft do
+    mount_uploader :icon, LogoUploader
+    mount_uploader :image, ImageUploader
+    mount_uploader :banner, BannerUploader
 
     def company
       product.company
@@ -31,9 +32,6 @@ class Product < ActiveRecord::Base
     end
 
     validates :name, :description, presence: true
-    has_attached_file :icon
-    has_attached_file :image
-    has_attached_file :banner
 
     state_machine :status, initial: 'draft' do
       event :submit do

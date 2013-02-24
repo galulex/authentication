@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
   include HasDraft
+  mount_uploader :logo, LogoUploader
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -9,16 +10,15 @@ class Company < ActiveRecord::Base
 
   attr_accessible :name, :logo, :synopsis, :description, :street1, :street2, :city, :country, :state, :postal_code, :phone, :website
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, :logo, :synopsis, :description, :street1, :city, :website, :country, :state, presence: true, on: :update
+  validates :name, uniqueness: true
 
-  has_attached_file :logo, :styles => { one: '55x55', two: '78x78', three: '114x114', four: '144x144', original: '190x90' }
 
   has_draft do
 
-    validates :name, :synopsis, :description, :street1, :city, :website, :country, :state, presence: true, on: :update
-    validates_attachment :logo, attachment_presence: true, content_type: { content_type: /^image\/(png|gif|jpeg)/ }, on: :update
+    mount_uploader :logo, LogoUploader
 
-    has_attached_file :logo, :styles => { one: '55x55', two: '78x78', three: '114x114', four: '144x144', original: '190x90' }
+    validates :name, :logo, :synopsis, :description, :street1, :city, :website, :country, :state, presence: true, on: :update
 
     state_machine :status, :initial => 'draft' do
       event :submit do

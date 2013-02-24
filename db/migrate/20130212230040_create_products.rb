@@ -4,10 +4,10 @@ class CreateProducts < ActiveRecord::Migration
       create_table table do |t|
         t.references  :company
         t.references  :product if table == :product_drafts
-        t.attachment  :software
-        t.attachment  :icon
-        t.attachment  :image
-        t.attachment  :banner
+        t.string      :software
+        t.string      :icon
+        t.string      :image
+        t.string      :banner
         t.string      :slug
         t.string      :name
         t.string      :version

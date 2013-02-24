@@ -16,15 +16,12 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
   create_table "companies", :force => true do |t|
     t.string   "slug"
     t.string   "name"
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.string   "logo"
     t.text     "synopsis"
     t.text     "description"
-    t.integer  "employee_limit",    :default => 20
+    t.integer  "employee_limit", :default => 20
     t.string   "website"
-    t.string   "status",            :default => "draft"
+    t.string   "status",         :default => "draft"
     t.string   "street1"
     t.string   "street2"
     t.string   "country"
@@ -32,9 +29,9 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "phone"
-    t.boolean  "featured",          :default => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.boolean  "featured",       :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "companies", ["slug"], :name => "index_companies_on_slug", :unique => true
@@ -43,15 +40,12 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
     t.integer  "company_id"
     t.string   "slug"
     t.string   "name"
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.string   "logo"
     t.text     "synopsis"
     t.text     "description"
-    t.integer  "employee_limit",    :default => 20
+    t.integer  "employee_limit", :default => 20
     t.string   "website"
-    t.string   "status",            :default => "draft"
+    t.string   "status",         :default => "draft"
     t.string   "street1"
     t.string   "street2"
     t.string   "country"
@@ -59,9 +53,9 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
     t.string   "postal_code"
     t.string   "city"
     t.string   "phone"
-    t.boolean  "featured",          :default => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.boolean  "featured",       :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "company_drafts", ["company_id"], :name => "index_company_drafts_on_company_id"
@@ -89,22 +83,10 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
   create_table "product_drafts", :force => true do |t|
     t.integer  "company_id"
     t.integer  "product_id"
-    t.string   "software_file_name"
-    t.string   "software_content_type"
-    t.integer  "software_file_size"
-    t.datetime "software_updated_at"
-    t.string   "icon_file_name"
-    t.string   "icon_content_type"
-    t.integer  "icon_file_size"
-    t.datetime "icon_updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.string   "banner_file_name"
-    t.string   "banner_content_type"
-    t.integer  "banner_file_size"
-    t.datetime "banner_updated_at"
+    t.string   "software"
+    t.string   "icon"
+    t.string   "image"
+    t.string   "banner"
     t.string   "slug"
     t.string   "name"
     t.string   "version"
@@ -112,11 +94,11 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
     t.text     "description"
     t.text     "features"
     t.text     "support"
-    t.string   "status",                                              :default => "draft"
+    t.string   "status",                                       :default => "draft"
     t.boolean  "featured"
-    t.decimal  "rating_average",        :precision => 3, :scale => 2, :default => 0.0
-    t.datetime "created_at",                                                               :null => false
-    t.datetime "updated_at",                                                               :null => false
+    t.decimal  "rating_average", :precision => 3, :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
   end
 
   add_index "product_drafts", ["product_id"], :name => "index_product_drafts_on_product_id"
@@ -141,27 +123,14 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "product_reviews", ["product_id"], :name => "index_product_reviews_on_product_id"
-  add_index "product_reviews", ["user_id"], :name => "index_product_reviews_on_user_id"
+  add_index "product_reviews", ["product_id", "user_id"], :name => "index_product_reviews_on_product_id_and_user_id", :unique => true
 
   create_table "products", :force => true do |t|
     t.integer  "company_id"
-    t.string   "software_file_name"
-    t.string   "software_content_type"
-    t.integer  "software_file_size"
-    t.datetime "software_updated_at"
-    t.string   "icon_file_name"
-    t.string   "icon_content_type"
-    t.integer  "icon_file_size"
-    t.datetime "icon_updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.string   "banner_file_name"
-    t.string   "banner_content_type"
-    t.integer  "banner_file_size"
-    t.datetime "banner_updated_at"
+    t.string   "software"
+    t.string   "icon"
+    t.string   "image"
+    t.string   "banner"
     t.string   "slug"
     t.string   "name"
     t.string   "version"
@@ -169,11 +138,11 @@ ActiveRecord::Schema.define(:version => 20130221200248) do
     t.text     "description"
     t.text     "features"
     t.text     "support"
-    t.string   "status",                                              :default => "draft"
+    t.string   "status",                                       :default => "draft"
     t.boolean  "featured"
-    t.decimal  "rating_average",        :precision => 3, :scale => 2, :default => 0.0
-    t.datetime "created_at",                                                               :null => false
-    t.datetime "updated_at",                                                               :null => false
+    t.decimal  "rating_average", :precision => 3, :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
   end
 
   add_index "products", ["company_id"], :name => "index_products_on_company_id"
