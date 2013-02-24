@@ -31,7 +31,7 @@ class Product < ActiveRecord::Base
       product.slug
     end
 
-    validates :name, :description, presence: true
+    validates :description, :features, :name, :summary, presence: true
 
     state_machine :status, initial: 'draft' do
       event :submit do
@@ -91,7 +91,7 @@ class Product < ActiveRecord::Base
 
   def user_rating(user)
     rate = ratings.find_by_user_id(user.id)
-    return rate.score if user && rate
+    return rate.score if rate
     0
   end
 

@@ -40,10 +40,6 @@ class Company < ActiveRecord::Base
 
   end
 
-  def company_id
-    id
-  end
-
   def before_instantiate_draft
     self.status = 'draft'
   end
@@ -59,10 +55,6 @@ class Company < ActiveRecord::Base
 
   def published?
     status != 'draft'
-  end
-
-  def published_at
-    created_at if published?
   end
 
 end

@@ -11,6 +11,7 @@
       = f.input :email, input_html: { class: 'input-xlarge' }
       = f.input :password, input_html: { class: 'input-xlarge' }
       = f.input :password_confirmation, input_html: { class: 'input-xlarge' }
+      = f.input :role_id, as: :hidden, input_html: { value: User::ROLES.invert[User::ADMIN] }
       = f.button :submit, t('sign_up')
   .span3.offset1
     h4.gray= t('already_a_member')

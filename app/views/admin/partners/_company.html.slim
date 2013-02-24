@@ -2,6 +2,6 @@ tr
   td= link_to company.name, edit_admin_partner_path(company)
   td= company.users.count
   td= company.products.size
-  td= l(company.published_at, format: :default) if company.published?
+  td= l(company.created_at, format: :default) if company.published?
   td= company.company_status.titleize
   td= t("#{company.featured?}")

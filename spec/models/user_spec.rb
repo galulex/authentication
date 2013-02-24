@@ -12,6 +12,7 @@ describe User do
     it { should have_many(:notifications) }
     it { should have_many(:product_reviews) }
     it { should belong_to(:company) }
+    it { should accept_nested_attributes_for(:company) }
   end
 
   describe 'validations' do
