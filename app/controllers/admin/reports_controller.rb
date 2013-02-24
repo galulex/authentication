@@ -1,4 +1,6 @@
-class Admin::ReportsController < ApplicationController
+class Admin::ReportsController < AdminsController
+
+  before_filter :authorize, :require_tenant
 
   add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
   add_breadcrumb I18n.t('breadcrumbs.reports'), :admin_reports_path, except: :index

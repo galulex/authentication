@@ -1,7 +1,6 @@
 en:
   flash:
     user:
-      not_authorized: Not Authorized
       your_account_not_activated: Your Account Not Activated
       invalid_email_or_password: Invalid Email Or Password
       logged_out: Logged Out
@@ -21,6 +20,7 @@ en:
       saved: Saved
       submitted: Submitted
       published: Published
+      blank_reason: Please fill out the reason.
     product:
       published: Published
       saved: Saved

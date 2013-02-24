@@ -4,11 +4,9 @@ tr
   td
   td
   td
-  td
-  td
   td= l(product.updated_at)
   td
     - if product.published?
-      =' link_to t('retract'), admin_product_path(product), method: :delete
+      =' link_to t('retract'), admin_product_path(product), method: :delete, confirm: t('.retract_message'), 'data-title' => t('.retract_title', name: product.name)
       ' |
     = link_to t('edit'), edit_admin_product_path(product) unless product.pending?

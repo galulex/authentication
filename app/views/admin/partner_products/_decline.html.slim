@@ -1,8 +1,9 @@
 .modal-header
   button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
-  h2= t("#{@action}_reason")
+  h2= t("#{action = @product.pending? ? 'decline' : 'unpublish'}_reason")
 .modal-body
    = form_tag admin_partner_product_path(@product), method: :delete, remote: true do
     = text_area_tag :reason, nil, class: 'input-xxlarge', rows: 7
+    = error_tag(flash[:error])
     .form-buttons
-      = submit_tag t(@action), class: :btn
+      = submit_tag t(action), class: :btn

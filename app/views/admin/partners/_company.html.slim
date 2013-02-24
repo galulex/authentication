@@ -3,6 +3,5 @@ tr
   td= company.users.count
   td= company.products.count
   td= l(company.published_at, format: :default) if company.published?
-  td= company.company_status
+  td= company.company_status.titleize
   td= t("#{company.featured?}")
-  td= link_to t('.login'), ''

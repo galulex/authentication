@@ -14,7 +14,6 @@ gem 'kaminari'
 gem 'breadcrumbs_on_rails'
 gem 'friendly_id'
 gem 'sidekiq'
-#gem 'sidekiq-mailer'
 #gem 'thinking-sphinx'
 gem 'acts_as_rateable'
 

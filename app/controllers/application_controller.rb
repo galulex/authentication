@@ -9,11 +9,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to new_session_path, error: I18n.t('flash.user.not_authorized') if current_user.nil?
+    redirect_to_back_or_default if current_user.nil?
   end
 
-  def require_admin
-
+  def redirect_to_back_or_default
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 
 end

@@ -10,12 +10,9 @@ ul.nav
       - else
         = link_to notifications_path do
           span.badge= current_user.notifications.unread.count
-    li
-      = link_to t('.administration'), admin_path
-    li
-      = link_to t('.visit_marketplace'), root_path
-    li
-      = link_to t('.my_account'), edit_user_path(current_user), remote: true
+    li= link_to t('.administration'), admin_path if current_user.admin?
+    li= link_to t('.visit_marketplace'), root_path
+    li= link_to t('.my_account'), edit_user_path(current_user), remote: true
     li
       = link_to session_path, method: :delete do
         i class='icon-off'
@@ -24,7 +21,5 @@ ul.nav
     li
       = t('.welcome')
       strong= t('.guest')
-    li
-      = link_to t('.register'), new_user_path, remote: true
-    li
-      = link_to t('.login'), new_session_path, remote: true
+    li= link_to t('.register'), new_user_path, remote: true
+    li= link_to t('.login'), new_session_path, remote: true

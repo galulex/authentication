@@ -33,4 +33,6 @@ $(function() {
     $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
   });
 
+  $('a[disabled]').click(function(){ return false })
+
 });

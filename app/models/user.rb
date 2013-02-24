@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   scope :activated, where(token: nil)
   scope :all_by_activation_status, ->(status) { where("token IS #{'NOT' if status != 'activated'} NULL") unless status.blank? }
   scope :admins, where(role_id: ROLES.invert[ADMIN])
+  scope :employees, where(role_id: ROLES.invert[EMPLOYEE])
 
   def activate
     self.update_attribute(:token, nil)
@@ -38,6 +39,10 @@ class User < ActiveRecord::Base
 
   def activated?
     token.nil?
+  end
+
+  def admin?
+    role_id == ROLES.invert[ROLE::EMPLOYEE]
   end
 
   def reset_password
@@ -59,6 +64,10 @@ class User < ActiveRecord::Base
 
   def tenant?
     is_a?(User::Tenant)
+  end
+
+  def partner?
+    is_a?(User::Partner)
   end
 
   def authenticate(unencrypted_password)

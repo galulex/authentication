@@ -18,11 +18,9 @@ html
           .column
             h4= link_to company.name, all_login_path(company.users.first)
             ul
-              li
-                = "Admins:"
-                = link_to company.users.first.name, all_login_path(company.users.first)
-              li= "Employees:"
-              li= "Marketers:"
-              li= "Sales Managers:"
-              li= "Sales Reps:"
+              - User::ROLES.each_pair do |k, v|
+                li
+                  =' t("roles.#{v}").pluralize << ':'
+                  - company.users.where(role_id: k).each do |u|
+                    =' link_to u.name, all_login_path(u)
       = paginate @companies

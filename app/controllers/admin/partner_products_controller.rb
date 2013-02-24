@@ -1,5 +1,7 @@
 class Admin::PartnerProductsController < AdminsController
 
+  before_filter :authorize, :require_tenant
+
   add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
   add_breadcrumb I18n.t('breadcrumbs.partner_products'), :admin_partner_products_path, except: :index
 
@@ -23,19 +25,18 @@ class Admin::PartnerProductsController < AdminsController
 
   def show
     product
-    @action = product.pending? ? 'decline' : 'unpublish'
   end
 
   def destroy
-    @success = product.decline! if product.pending?
-    @success = product.unpublish! if product.published?
-    product_id = product.is_a?(Product::Draft) ? product.product_id : product.id
-    if product.declined?
-      flash[:notice] = I18n.t('flash.product.declined')
-      ProductNotifier.perform_async(:declined, product_id: product_id, reason: params[:reason])
+    if params[:reason].blank?
+      product
+      flash[:error] = I18n.t('flash.company.blank_reason')
     else
-      flash[:notice] = I18n.t('flash.product.unpublished')
-      ProductNotifier.perform_async(:unpublished, product_id: product_id, reason: params[:reason])
+      @success = product.decline! if product.pending?
+      @success = product.unpublish! if product.published?
+      product_id = product.is_a?(Product::Draft) ? product.product_id : product.id
+      flash[:notice] = I18n.t("flash.product.#{product.status}")
+      ProductNotifier.perform_async(product.status, product_id: product_id, reason: params[:reason])
     end
   end
 

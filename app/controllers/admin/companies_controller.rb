@@ -1,5 +1,7 @@
 class Admin::CompaniesController < AdminsController
 
+  before_filter :authorize, :require_partner
+
   add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
 
   def edit

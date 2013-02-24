@@ -1,12 +1,14 @@
 class Admin::PartnersController < AdminsController
 
+  before_filter :authorize, :require_tenant
+
   add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
   add_breadcrumb I18n.t('breadcrumbs.partners'), :admin_partners_path, except: :index
 
   before_filter :find_company, except: [:new, :create, :index]
 
   def index
-    @companies = Company.page(params[:page])
+    @companies = Company.includes(:draft).order('company_drafts.status DESC, companies.name ASC').page(params[:page])
   end
 
   def new
@@ -44,7 +46,9 @@ class Admin::PartnersController < AdminsController
   end
 
   def destroy
-    unless params[:reason].blank?
+    if params[:reason].blank?
+      flash.now[:error] = I18n.t('flash.company.blank_reason')
+    else
       @success = @company.decline!
       CompanyNotifier.perform_async(:declined, company_id: @company.company_id, reason: params[:reason])
     end
