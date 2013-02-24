@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
                     uniqueness: true,
                     format: { with: /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, allow_blank: true }
 
-  validates :password, presence: true, if: :validate_password?
+  validates :password, presence: true, confirmation: true, if: :validate_password?
 
   before_create { generate_token(:auth_token); generate_token(:token) }
 
@@ -34,15 +34,11 @@ class User < ActiveRecord::Base
   scope :employees, where(role_id: ROLES.invert[EMPLOYEE])
 
   def activate
-    self.update_attribute(:token, nil)
+    self.update_column(:token, nil)
   end
 
   def activated?
     token.nil?
-  end
-
-  def admin?
-    role_id == ROLES.invert[ROLE::EMPLOYEE]
   end
 
   def reset_password

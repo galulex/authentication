@@ -3,20 +3,19 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0', require: "bcrypt"
-gem 'slim'
-gem 'slim-rails'
-gem 'simple_form'
-gem 'mini_magick'
-gem 'carrierwave'
-gem 'state_machine'
-gem 'thin'
-gem 'carmen-rails', '~> 1.0.0.beta3'
-gem 'kaminari'
-gem 'breadcrumbs_on_rails'
-gem 'friendly_id'
-gem 'sidekiq'
-#gem 'thinking-sphinx'
-gem 'acts_as_rateable'
+gem 'slim' # A lightweight templating engine
+gem 'slim-rails' # A lightweight templating engine
+gem 'simple_form' # SimpleForm - Rails forms made easy
+gem 'mini_magick' # Mini replacement for RMagick
+gem 'carrierwave' # Classier solution for file uploads
+gem 'state_machine' # Adds support for creating state machines for attributes
+gem 'thin' # A very fast & simple Ruby web server
+gem 'carmen-rails', '~> 1.0.0.beta3' # A repository of geographic regions
+gem 'kaminari' # A Scope & Engine based, clean, powerful, customizable paginator
+gem 'breadcrumbs_on_rails' # Plugin for creating and managing a breadcrumb navigation
+gem 'friendly_id' # Allows you to create pretty URL’s
+gem 'sidekiq' # Simple, efficient message processing
+gem 'sunspot_rails' # Solr-powered search
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,7 +37,8 @@ group :development, :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'quiet_assets'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
+  gem 'fuubar'
 end
 
 group :production do
