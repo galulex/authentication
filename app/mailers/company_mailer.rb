@@ -8,7 +8,7 @@ class CompanyMailer < ActionMailer::Base
   #
   def submitted(*args)
     @admin, @user, @company, @date = args
-    mail to: @user.email, subject: "AppZone Marketplace Notification"
+    mail to: @admin.email, subject: "AppZone Marketplace Notification"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

@@ -1,18 +1,23 @@
 FactoryGirl.define do
-  factory :product do |p|
-    p.association :company
-    p.name Faker::Name.name
-    p.summary Faker::Lorem.paragraph
-    p.description Faker::Lorem.paragraphs
-    p.features Faker::Lorem.paragraphs
-    p.support Faker::Lorem.paragraph
+  factory :product do
+    association :company
+    name Faker::Name.name
+    summary Faker::Lorem.paragraph
+    description Faker::Lorem.paragraphs
+    features Faker::Lorem.paragraphs
+    support Faker::Lorem.paragraph
   end
 
-  factory :product_review do |r|
-    r.association :product
-    r.association :user
-    r.title Faker::Name.name
-    r.review Faker::Lorem.paragraph
+  factory :product_review do
+    association :product
+    association :user
+    title Faker::Name.name
+    review Faker::Lorem.paragraph
   end
 
+  factory :product_rating do
+    association :product
+    association :user
+    score 1
+  end
 end

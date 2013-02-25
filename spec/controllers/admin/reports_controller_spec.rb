@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Admin::ReportsController do
 
-  let(:admin) { FactoryGirl.create(:admin)}
+  let(:admin) { FactoryGirl.create(:admin) }
+
   before { controller.stub!(:current_user).and_return(admin) }
 
   describe 'GET index' do
@@ -35,9 +36,10 @@ describe Admin::ReportsController do
 
     context 'with export option' do
       before { get :show, id: :registration, filter: :range, start: 1.day.ago, export: true }
-      controller.expects(:send_data).with("foo").returns(:success)
+      it 'sends data' do
+        controller.expects(:send_data).with("csv").returns(:success)
+      end
       it { should respond_with(:success) }
-      it { should render_template(:show) }
       it { should assign_to(:report) }
     end
   end

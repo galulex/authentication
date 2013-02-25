@@ -71,6 +71,9 @@ describe UsersController do
       it { should assign_to(:success).with(true) }
       it { should redirect_to(root_path)  }
       it { should set_the_flash[:notice].to(I18n.t('flash.user.registered')) }
+      it 'should authorize user' do
+        cookies[:auth_token].should be_eql(new_user.auth_token)
+      end
     end
 
     context 'HTML with invalid params' do

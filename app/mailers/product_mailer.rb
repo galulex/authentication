@@ -3,12 +3,12 @@ class ProductMailer < ActionMailer::Base
 
   def submitted(*args)
     @admin, @user, @company, @product, @date = args
-    mail to: @user.email, subject: "AppZone Marketplace Notification"
+    mail to: @admin.email, subject: "AppZone Marketplace Notification"
   end
 
   def retracted(*args)
     @admin, @user, @company, @product = args
-    mail to: @user.email, subject: "AppZone Marketplace Notification"
+    mail to: @admin.email, subject: "AppZone Marketplace Notification"
   end
 
   def declined(*args)
