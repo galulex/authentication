@@ -39,6 +39,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'simplecov', require: false
   gem 'fuubar'
+  gem 'sunspot_solr'
 end
 
 group :production do

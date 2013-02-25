@@ -1,0 +1,11 @@
+.products
+  hr.nav-border
+  = render partial: 'layouts/search'
+  .container.row-fluid
+    .span12
+      h1.page-title= 'Products'
+    .span12
+      - @products.each do |product|
+        .entry
+          = image_tag(product.image_url)
+          h3= link_to product.name, product
