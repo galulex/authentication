@@ -199,6 +199,7 @@ GEM
     sunspot_rails (1.3.3)
       nokogiri
       sunspot (= 1.3.3)
+    sunspot_solr (1.3.3)
     temple (0.5.5)
     thin (1.5.0)
       daemons (>= 1.0.9)
@@ -250,5 +251,6 @@ DEPENDENCIES
   slim-rails
   state_machine
   sunspot_rails
+  sunspot_solr
   thin
   uglifier (>= 1.0.3)

@@ -100,4 +100,9 @@ class Product < ActiveRecord::Base
     review.id if review
   end
 
+  searchable do
+    text :name, :description
+  end
+
+
 end

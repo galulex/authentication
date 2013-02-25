@@ -2,7 +2,7 @@
     .span8
       p.quote= t('quote')
     .span4
-      = form_tag root_path do
+      = form_tag products_path, method: :get do
         .input-append
           = search_field_tag :search, params[:search], placeholder: t('search_appzone_products'), class: 'input-xlarge'
           = submit_tag t('search'), class: :btn

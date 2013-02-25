@@ -2,6 +2,13 @@ class ProductsController < ApplicationController
 
   layout 'dashboard'
 
+  def index
+    @search = Product.search do
+      fulltext params[:search]
+    end
+    @products = @search.results
+  end
+
   def show
     @product = Product.where(slug: params[:id]).includes(reviews: :user).first
     if current_user
