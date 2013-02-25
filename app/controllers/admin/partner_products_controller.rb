@@ -30,7 +30,7 @@ class Admin::PartnerProductsController < AdminsController
   def destroy
     if params[:reason].blank?
       product
-      flash[:error] = I18n.t('flash.company.blank_reason')
+      flash.now[:error] = I18n.t('flash.company.blank_reason')
     else
       @success = product.decline! if product.pending?
       @success = product.unpublish! if product.published?

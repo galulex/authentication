@@ -3,7 +3,8 @@ require 'spec_helper'
 describe PasswordResetsController do
 
   let(:user) { FactoryGirl.create(:user) }
-  let(:user_params) {{ password: 'P@ssword', password_confirmaion: 'P@ssword' }}
+  let(:user_params) {{ password: 'P@ssword', password_confirmation: 'P@ssword' }}
+  let(:invalid_params) {{ password: 'P@ssword', password_confirmation: 'pass' }}
 
   describe 'GET new' do
     before { xhr :get, :new }
@@ -64,7 +65,8 @@ describe PasswordResetsController do
     end
 
     context 'with invalid params' do
-      before { user.reset_password; xhr :put, :update, id: user.password_reset_token, user: { password: '' }}
+      before { user.reset_password; xhr :put, :update, id: user.password_reset_token, user: invalid_params }
+      it { should assign_to(:success).with(false) }
       it { should render_template(:update) }
     end
   end

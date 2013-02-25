@@ -5,8 +5,8 @@ describe Admin::ProductsController do
   let(:product) { FactoryGirl.create(:product, company: company)}
   let(:company) { FactoryGirl.create(:company)}
   let(:user) { FactoryGirl.create(:user, company: company)}
-  let(:published_product) { FactoryGirl.create(:product, status: :published)}
-  let(:pending_product) { FactoryGirl.create(:product, status: :pending)}
+  let(:published_product) { FactoryGirl.create(:product, company: company, status: :published)}
+  let(:pending_product) { FactoryGirl.create(:product, company: company, status: :pending)}
   let(:product_params) { FactoryGirl.attributes_for(:product) }
   let(:invalid_params) { FactoryGirl.attributes_for(:product, name: '')}
 
@@ -60,7 +60,7 @@ describe Admin::ProductsController do
     context 'pending product' do
       before { get :edit, id: pending_product }
       it { should redirect_to(admin_products_path)  }
-      #it { should set_the_flash[:alert].to(I18n.t('flash.product.pending')) }
+      it { should set_the_flash[:alert].to(I18n.t('flash.product.pending')) }
     end
 
     context 'not pending product' do
@@ -77,9 +77,9 @@ describe Admin::ProductsController do
     end
 
     context 'submit with valid params' do
-      before { put :update, id: product, product: product_params, submit: true }
+      before { put :update, id: product, product: product_params }
       it { should set_the_flash[:notice].to(I18n.t('flash.product.submitted')) }
-      it { should redirect_to(admin_products_path)  }
+      it { should redirect_to(admin_products_path) }
     end
 
     context 'with invalid params' do
@@ -89,15 +89,11 @@ describe Admin::ProductsController do
   end
 
   describe 'DELETE destroy' do
-    context 'product' do
-      before { delete :destroy, id: product }
-      it { should assign_to(:product) }
-      it { should redirect_to(admin_products_path)  }
-    end
-
-    context 'published product' do
-      before { delete :destroy, id: published_product }
-      #TO DO
+    before { delete :destroy, id: published_product }
+    it { should assign_to(:product) }
+    it { should redirect_to(admin_products_path)  }
+    it 'retracts the product' do
+      expect(published_product.reload.retracted?).to be_true
     end
   end
 end

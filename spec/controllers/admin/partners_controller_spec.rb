@@ -3,10 +3,13 @@ require 'spec_helper'
 describe Admin::PartnersController do
 
   let(:company) { FactoryGirl.create(:company, status: 'published')}
-  let(:company_draft) { FactoryGirl.create(:company_draft, company: company, status: 'pending')}
-  let(:partner) { FactoryGirl.create(:user, company: company)}
-  let(:user_params) { FactoryGirl.attributes_for(:user)}
+  let(:company_draft) { company.instantiate_draft! }
+  let(:admin) { FactoryGirl.create(:admin, company: company)}
+  let(:partner) { FactoryGirl.reload; FactoryGirl.create(:user, company: company)}
+  let(:user_params) { FactoryGirl.reload; FactoryGirl.attributes_for(:user)}
   let(:company_params) { FactoryGirl.attributes_for(:company, status: 'draft')}
+
+  before { controller.stub!(:current_user).and_return(admin) }
 
   describe 'GET index' do
     before { get :index }
@@ -75,12 +78,23 @@ describe Admin::PartnersController do
 
 
   describe 'DELETE destroy' do
-    before { xhr :delete, :destroy, id: company_draft }
-    it { should respond_with(:success) }
-    it { should render_template(:destroy) }
-    it { should assign_to(:company) }
-    it { should assign_to(:success) }
+    context 'with valid params' do
+      before do
+        company_draft.submit!
+        xhr :delete, :destroy, id: company_draft, reason: 'reason'
+      end
+      it { should respond_with(:success) }
+      it { should render_template(:destroy) }
+      it { should assign_to(:company) }
+      it { should assign_to(:success) }
+    end
+    context 'with invalid params' do
+      before { xhr :delete, :destroy, id: company, reason: '' }
+      it { should render_template(:destroy) }
+      it 'sets the flash' do
+        expect(flash[:error]).to eql(I18n.t('flash.company.blank_reason'))
+      end
+    end
   end
-
 
 end
