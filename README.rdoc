@@ -1,13 +1,13 @@
 == Welcome to Rails
 
-1. `rake db:create` - Creates database
+`rake db:create` - Creates database
 
-2. `rake sunspot:solr:start` - Starts Solr in development mode
+`rake sunspot:solr:start` - Starts Solr in development mode
 
-3. 'rake db:setup' - Runs migrations and seeds
+`rake db:setup` - Runs migrations and seeds
 
-4. `rake sunspot:solr:start RAILS_ENV=test` - Starts Solr in test mode
+`rake sunspot:solr:start RAILS_ENV=test` - Starts Solr in test mode
 
-5. `bundle exec rake sidekiq` - Starts background jobs
+`bundle exec rake sidekiq` - Starts background jobs
 
-6. `rake spec` - Runs the specs
+`rake spec` - Runs the specs
