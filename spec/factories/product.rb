@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :product do
     association :company
     name Faker::Name.name
+    image { fixture_file_upload('spec/support/product_images/impro-f.png', 'image/png') }
     summary Faker::Lorem.paragraph
     description Faker::Lorem.paragraphs
     features Faker::Lorem.paragraphs

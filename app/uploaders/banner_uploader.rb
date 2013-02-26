@@ -8,8 +8,12 @@ class BannerUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  def cache_dir
+    "#{Rails.root}/tmp/uploads/#{Rails.env}/banners"
+  end
+
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def extension_white_list
