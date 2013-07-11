@@ -7,19 +7,17 @@ describe NotificationsController do
   let(:user) { FactoryGirl.create(:user, company: company)}
   let(:notification) { FactoryGirl.create(:notification, user: user, data: { company: company.name, product: product.name }) }
 
-  before { controller.stub!(:current_user).and_return(user) }
+  before { controller.stub(:current_user).and_return(user) }
 
   describe 'GET index' do
     before { get :index }
     it { should render_template(:index) }
     it { should respond_with(:success) }
-    it { should assign_to(:notifications) }
   end
 
   describe 'DELETE destroy' do
     context 'singilar notification' do
       before { xhr :delete, :destroy, id: notification }
-      it { should assign_to(:notification) }
       it { should respond_with(:success) }
       it { should render_template(:destroy) }
     end

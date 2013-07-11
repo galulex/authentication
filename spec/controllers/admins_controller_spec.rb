@@ -6,7 +6,7 @@ describe AdminsController do
 
   describe 'GET show' do
     context 'authentacated user' do
-      before {controller.stub!(:current_user).and_return(admin); get :show  }
+      before {controller.stub(:current_user).and_return(admin); get :show  }
       it { should respond_with(:success) }
       it { should render_template(:show) }
     end

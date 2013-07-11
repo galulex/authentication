@@ -9,14 +9,12 @@ describe AllLoginsController do
       before { get :index, char: 'a' }
       it { should respond_with(:success) }
       it { should render_template(:index) }
-      it { should assign_to(:companies) }
     end
 
     context 'without char parameter' do
       before { get :index  }
       it { should respond_with(:success) }
       it { should render_template(:index) }
-      it { should assign_to(:companies) }
     end
   end
 

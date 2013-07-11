@@ -8,18 +8,16 @@ describe Admin::PeopleController do
   let(:user_params) { FactoryGirl.reload; FactoryGirl.attributes_for(:user)}
   let(:invalid_params) { FactoryGirl.attributes_for(:user, email: '')}
 
-  before { controller.stub!(:current_user).and_return(user) }
+  before { controller.stub(:current_user).and_return(user) }
 
   describe 'GET index' do
     before { get :index }
     it { should respond_with(:success) }
     it { should render_template(:index) }
-    it { should assign_to(:people) }
   end
 
   describe 'GET new' do
     before { get :new }
-    it { should assign_to(:users) }
     it { should render_template(:new) }
     it { should respond_with(:success) }
   end
@@ -27,14 +25,12 @@ describe Admin::PeopleController do
   describe 'POST create' do
     context 'with valid params' do
       before { post :create , users: [user_params]}
-      it { should assign_to(:users) }
       it { should set_the_flash[:notice].to(I18n.t('flash.user.invite_sent')) }
       it { should redirect_to(invites_admin_people_path)  }
     end
 
     context 'with invalid params' do
       before { post :create, users: [invalid_params] }
-      it { should assign_to(:users) }
       it { should render_template(:new) }
     end
   end
@@ -43,7 +39,6 @@ describe Admin::PeopleController do
     before { get :invites }
     it { should respond_with(:success) }
     it { should render_template(:invites) }
-    it { should assign_to(:users) }
   end
 
   describe 'PUT update' do
@@ -59,14 +54,12 @@ describe Admin::PeopleController do
   describe 'DELETE destroy' do
     context 'activated users' do
       before { delete :destroy , id: user}
-      it { should assign_to(:user) }
       it { should set_the_flash[:notice].to(I18n.t('flash.user.deleted', name: user.name)) }
       it { should redirect_to(admin_people_path)  }
     end
 
     context 'not activated users' do
       before { delete :destroy, id: new_user }
-      it { should assign_to(:user) }
       it { should set_the_flash[:notice].to(I18n.t('flash.user.invite_canceled')) }
       it { should redirect_to(invites_admin_people_path)  }
     end

@@ -13,9 +13,9 @@
         = link_to t('privacy')
       li
         = link_to t('support')
-
-#developer-bar
-  .container
-    =' link_to t('all_logins'), all_logins_path
-    = link_to t('login_as_appzone'), all_login_path(User::Tenant.first)
+- if Rails.env.development?
+  #developer-bar
+    .container
+      =' link_to t('all_logins'), all_logins_path
+      = link_to t('login_as_appzone'), all_login_path(User::Tenant.first)
 

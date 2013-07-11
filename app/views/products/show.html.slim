@@ -10,7 +10,7 @@
       p
         b=' t('.company')
         = link_to @product.company.name, company_path(@product.company)
-      = render partial: 'rating'
+      = render partial: 'products/rating'
     .span8
       .product-info
         p.product-description= @product.description

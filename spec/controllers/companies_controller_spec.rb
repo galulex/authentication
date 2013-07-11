@@ -8,6 +8,5 @@ describe CompaniesController do
     before { get :show, id: company }
     it { should respond_with(:success) }
     it { should render_template(:show) }
-    it { should assign_to(:company) }
   end
 end

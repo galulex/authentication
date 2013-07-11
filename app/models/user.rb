@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   SALES_MANAGER = 'sales_manager'
   MARKETER = 'marketer'
 
-  ROLES = { 1 => ADMIN, 2 => SALES_REP, 3 => SALES_MANAGER, 4 => MARKETER,  5 => EMPLOYEE }
+  ROLES = [ADMIN, SALES_REP, SALES_MANAGER, MARKETER, EMPLOYEE]
 
   has_many :logins
   has_many :product_reviews
@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
   scope :invited, where(invited: true)
   scope :activated, where(token: nil)
   scope :all_by_activation_status, ->(status) { where("token IS #{'NOT' if status != 'activated'} NULL") unless status.blank? }
-  scope :admins, where(role_id: ROLES.invert[ADMIN])
-  scope :employees, where(role_id: ROLES.invert[EMPLOYEE])
+  scope :admins, where(role_id: ROLES.index(ADMIN))
+  scope :employees, where(role_id: ROLES.index(EMPLOYEE))
 
   def activate
     self.update_column(:token, nil)

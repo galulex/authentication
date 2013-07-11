@@ -16,7 +16,6 @@ describe PasswordResetsController do
     context 'with valid params' do
       before { xhr :post, :create, email: user.email }
       it { should render_template(:create) }
-      it { should assign_to(:success).with(true) }
       it { should set_the_flash[:notice].to(I18n.t('flash.reset_password.email_sent')) }
     end
 
@@ -42,7 +41,6 @@ describe PasswordResetsController do
       before { user.reset_password; xhr :get, :edit, id: user.password_reset_token }
       it { should respond_with(:success) }
       it { should render_template(:edit) }
-      it { should assign_to(:user).with(user) }
     end
 
     context 'invalid params' do
@@ -60,13 +58,11 @@ describe PasswordResetsController do
     context 'with valid params' do
       before { user.reset_password; xhr :put, :update, id: user.password_reset_token, user: user_params }
       it { should render_template(:update) }
-      it { should assign_to(:success).with(true) }
       it { should set_the_flash[:notice].to(I18n.t('flash.reset_password.done')) }
     end
 
     context 'with invalid params' do
       before { user.reset_password; xhr :put, :update, id: user.password_reset_token, user: invalid_params }
-      it { should assign_to(:success).with(false) }
       it { should render_template(:update) }
     end
   end

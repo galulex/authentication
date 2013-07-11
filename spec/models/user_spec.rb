@@ -2,39 +2,25 @@ require 'spec_helper'
 
 describe User do
 
-  let(:company) { FactoryGirl.build(:company) }
-  let(:user) { FactoryGirl.create(:not_activated_user, company: company) }
-  let(:tenant) { FactoryGirl.build(:admin, company: company) }
-  let(:partner) { FactoryGirl.build(:user, company: company) }
-
-  describe 'associations' do
-    it { should have_many(:logins) }
-    it { should have_many(:notifications) }
-    it { should have_many(:product_reviews) }
-    it { should belong_to(:company) }
-    it { should accept_nested_attributes_for(:company) }
-  end
-
-  describe 'validations' do
-    it { should validate_presence_of(:first_name) }
-    it { should validate_presence_of(:last_name) }
-    it { should validate_confirmation_of(:password) }
-    it { should validate_uniqueness_of(:email) }
-  end
+  let(:user) { FactoryGirl.build(:not_activated_user) }
+  let(:tenant) { FactoryGirl.build(:admin) }
+  let(:partner) { FactoryGirl.build(:user) }
 
   describe '#activate' do
     it 'activates user' do
+      user.save
       expect { user.activate }.to change(user, :token).to(nil)
     end
   end
 
   describe '#activated?' do
     it 'returns false if user is not activated' do
+      user.token = 'token'
       expect(user.activated?).to be_false
     end
 
     it 'returns true if user is activated' do
-      user.activate
+      user.token = nil
       expect(user.activated?).to be_true
     end
   end
@@ -60,7 +46,7 @@ describe User do
 
   describe '#admin?' do
     it 'returns false if user is not admin' do
-      user.role_id = User::ROLES.invert[User::EMPLOYEE]
+      user.role_id = User::ROLES.index(User::EMPLOYEE)
       expect(user.admin?).to be_false
     end
 

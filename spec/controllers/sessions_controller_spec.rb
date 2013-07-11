@@ -14,7 +14,6 @@ describe SessionsController do
     context 'valid params' do
       before { xhr :post, :create, email: user.email, password: user.password }
       it { should render_template(:create) }
-      it { should assign_to(:success).with(user) }
       it 'should authorize user' do
         cookies[:auth_token].should be_eql(user.auth_token)
       end
@@ -23,14 +22,11 @@ describe SessionsController do
     context 'invalid params' do
       before { xhr :post, :create, email: user.email, password: '' }
       it { should render_template(:create) }
-      it { should assign_to(:success).with(false) }
-      it { should assign_to(:error) }
     end
 
     context 'not activated user' do
       before { user.update_attribute(:token, 'token'); xhr :post, :create, email: user.email, password: user.password }
       it { should render_template(:create) }
-      it { should assign_to(:error) }
     end
   end
 

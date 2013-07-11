@@ -11,20 +11,18 @@ describe Admin::PartnerProductsController do
   let(:invalid_params) { FactoryGirl.attributes_for(:product, name: '')}
   let(:admin) { FactoryGirl.create(:admin, company: company)}
 
-  before { controller.stub!(:current_user).and_return(admin) }
+  before { controller.stub(:current_user).and_return(admin) }
 
   describe 'GET index' do
     before { get :index }
     it { should respond_with(:success) }
     it { should render_template(:index) }
-    it { should assign_to(:products) }
   end
 
   describe 'GET edit' do
     before { get :edit, id: product }
     it { should respond_with(:success) }
     it { should render_template(:edit) }
-    it { should assign_to(:product) }
   end
 
   describe 'PUT update' do
@@ -35,14 +33,12 @@ describe Admin::PartnerProductsController do
 
     context 'publish product draft with valid params' do
       before { put :update, id: product.instantiate_draft!, publish: true }
-      it { should assign_to(:product) }
       it { should set_the_flash[:notice].to(I18n.t('flash.product.published')) }
       it { should redirect_to(admin_partner_products_path)  }
     end
 
     context 'publish product with valid params' do
       before { put :update, id: product, publish: true }
-      it { should assign_to(:product) }
       it { should set_the_flash[:notice].to(I18n.t('flash.product.published')) }
       it { should redirect_to(admin_partner_products_path)  }
     end
@@ -63,7 +59,6 @@ describe Admin::PartnerProductsController do
     before { get :show, id: product }
     it { should respond_with(:success) }
     it { should render_template(:show) }
-    it { should assign_to(:product) }
   end
 
   describe 'DELETE destroy' do

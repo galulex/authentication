@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0', require: "bcrypt"
 gem 'slim' # A lightweight templating engine
@@ -40,11 +40,4 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'fuubar'
   gem 'sunspot_solr'
-end
-
-group :production do
-  # gems specifically for Heroku go here
-  gem 'factory_girl_rails'
-  gem 'ffaker'
-  gem "pg"
 end

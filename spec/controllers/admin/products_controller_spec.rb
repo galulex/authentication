@@ -11,32 +11,28 @@ describe Admin::ProductsController do
   let(:invalid_params) { FactoryGirl.attributes_for(:product, name: '')}
 
 
-  before { controller.stub!(:current_user).and_return(user) }
+  before { controller.stub(:current_user).and_return(user) }
 
   describe 'GET index' do
     before { get :index, id: product }
     it { should respond_with(:success) }
     it { should render_template(:index) }
-    it { should assign_to(:products) }
   end
 
   describe 'GET new' do
     before { get :new }
     it { should respond_with(:success) }
     it { should render_template(:new) }
-    it { should assign_to(:product) }
   end
 
   describe 'POST create' do
     context 'save with valid params' do
       before { post :create, product: product_params, save: true}
       it { should render_template(:edit)}
-      it { should assign_to(:product) }
     end
 
     context 'submit with valid params' do
       before { post :create, product: product_params, submit: true}
-      it { should assign_to(:product) }
       it { should redirect_to(admin_products_path)  }
       it { should set_the_flash[:notice].to(I18n.t('flash.product.submitted')) }
     end
@@ -44,14 +40,12 @@ describe Admin::ProductsController do
     context 'with invalid params' do
       before { post :create, product: invalid_params}
       it { should render_template(:new) }
-      it { should assign_to(:product) }
     end
   end
 
   describe 'GET show' do
     before { get :show, id: product }
     it { should respond_with(:success) }
-    it { should assign_to(:product) }
     it { should render_template('products/show') }
     it { should render_with_layout('dashboard') }
   end
@@ -90,7 +84,6 @@ describe Admin::ProductsController do
 
   describe 'DELETE destroy' do
     before { delete :destroy, id: published_product }
-    it { should assign_to(:product) }
     it { should redirect_to(admin_products_path)  }
     it 'retracts the product' do
       expect(published_product.reload.retracted?).to be_true

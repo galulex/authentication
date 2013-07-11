@@ -24,7 +24,7 @@ describe ApplicationHelper do
     end
 
     it 'returns page_title if it is not assigned' do
-      helper.stub!(:params).and_return({ controller: 'test', action: 'test' })
+      helper.stub(:params).and_return({ controller: 'test', action: 'test' })
       expect(helper.render_title).to eql(I18n.t("page_titles.test.test"))
     end
   end
@@ -38,7 +38,7 @@ describe ApplicationHelper do
     it 'returns true' do
       user
       assign(:report,Reports::Registration.new(start: 1.day.ago, end: Time.now))
-      helper.stub!(:params).and_return({ id: 'registration', commit: true })
+      helper.stub(:params).and_return({ id: 'registration', commit: true })
       expect(helper.show_csv_button?).to be_true
     end
   end
