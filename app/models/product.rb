@@ -19,12 +19,20 @@ class Product < ActiveRecord::Base
     mount_uploader :image, ImageUploader
     mount_uploader :banner, BannerUploader
 
+    def user_rating(user)
+      product.user_rating(user)
+    end
+
     def company
       product.company
     end
 
     def reviews
       product.reviews
+    end
+
+    def ratings
+      product.ratings
     end
 
     def to_param

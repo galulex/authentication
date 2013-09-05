@@ -8,7 +8,7 @@ class Admin::PeopleController < AdminsController
   end
 
   def new
-    @users = [company.users.build(role_id: User::ROLES.invert[User::EMPLOYEE] )]
+    @users = [company.users.build(role_id: User::ROLES.index(User::EMPLOYEE) + 1)]
   end
 
   def create
