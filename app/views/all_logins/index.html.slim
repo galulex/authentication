@@ -2,14 +2,13 @@ doctype html
 html
   = render 'layouts/head'
   body
-
     .container
       h2 All Logins
       .alphabets_index_action_links
         - alphabets = ('a' .. 'z').to_a
         - alphabets.each do |char|
           = link_to char, all_logins_path(char: char)
-          '&nbsp
+          '
         = link_to 'ALL', all_logins_path
       = paginate @companies
       .all_logins
@@ -17,9 +16,9 @@ html
           .column
             h4= link_to company.name, all_login_path(company.users.first)
             ul
-              - User::ROLES.each_pair do |k, v|
+              - User::ROLES.each_with_index do |v, i|
                 li
                   =' t("roles.#{v}").pluralize << ':'
-                  - company.users.where(role_id: k).each do |u|
+                  - company.users.where(role_id: i + 1).each do |u|
                     =' link_to u.name, all_login_path(u)
       = paginate @companies
