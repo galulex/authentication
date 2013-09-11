@@ -48,7 +48,7 @@ describe UserMailer do
     let(:mail) { UserMailer.admin_invite(user) }
 
     it 'sends with subject' do
-      expect(mail.subject).to eq('AppZone Marketplace Notification')
+      expect(mail.subject).to eq('Marketplace Notification')
     end
 
     it 'sends to user' do
@@ -56,11 +56,11 @@ describe UserMailer do
     end
 
     it 'sends from markeplace' do
-      expect(mail.from).to eq(['marketplace@partnerpedia.com'])
+      expect(mail.from).to eq(['marketplace@mail.com'])
     end
 
     it 'renders the body' do
-      mail.body.encoded.should match("invited to become the AppZone Marketplace administrator")
+      mail.body.encoded.should match("invited to become the Marketplace administrator")
     end
   end
 

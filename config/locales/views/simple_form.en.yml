@@ -45,7 +45,7 @@ en:
         state: State
         postal_code: Postal / Zip Code
         phone: Phone Number
-        website: Company's AppZone Relationship Webpage
+        website: Company's Relationship Webpage
     hints:
       company:
         synopsis: Recommended maximum 120 characters. Primary focus of your business. Eg. ABC Company is a leading provider of XYZ

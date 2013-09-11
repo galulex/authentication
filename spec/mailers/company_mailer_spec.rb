@@ -12,7 +12,7 @@ describe CompanyMailer do
     let(:mail) { CompanyMailer.submitted(admin, user, company, date) }
 
     it 'sends with subject' do
-      expect(mail.subject).to eq('AppZone Marketplace Notification')
+      expect(mail.subject).to eq('Marketplace Notification')
     end
 
     it 'sends to admin' do
@@ -20,7 +20,7 @@ describe CompanyMailer do
     end
 
     it 'sends from markeplace' do
-      expect(mail.from).to eq(['marketplace@partnerpedia.com'])
+      expect(mail.from).to eq(['marketplace@mail.com'])
     end
 
     it 'renders the body' do
@@ -36,7 +36,7 @@ describe CompanyMailer do
     end
 
     it 'renders the body' do
-      mail.body.encoded.should match("An AppZone Marketplace Administrator has declined to publish")
+      mail.body.encoded.should match("An Marketplace Administrator has declined to publish")
     end
   end
 
@@ -48,7 +48,7 @@ describe CompanyMailer do
     end
 
     it 'renders the body' do
-      mail.body.encoded.should match("has been approved by an AppZone Marketplace administrator")
+      mail.body.encoded.should match("has been approved by an Marketplace administrator")
     end
   end
 

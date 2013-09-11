@@ -15,4 +15,4 @@ en:
         no_products: No Products
       product:
         retract_title: "Retract Application: %{name}"
-        retract_message: Retracting this product will unpublish it from the AppZone Marketplace. Once retracted, your product will need to go through the product approval steps to be republished. Click confirm to retract the product.
+        retract_message: Retracting this product will unpublish it from the Marketplace. Once retracted, your product will need to go through the product approval steps to be republished. Click confirm to retract the product.

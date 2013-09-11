@@ -1,9 +1,9 @@
 p= "Hello #{@user.name},"
-p= "You have been invited to become the AppZone Marketplace administrator for #{@user.company.name}."
-p A Partner Administrator account has been created for you in the AppZone Marketplace. Follow the link below to complete your registration.
-p After completing your registration and logging in to the Marketplace, click “Administration” and then “Manage My Company” to begin the creation of your Company Profile. Use “Manage Products” to add products and “Manage People” to add others in your organization to your AppZone Marketplace team.
+p= "You have been invited to become the Marketplace administrator for #{@user.company.name}."
+p A Partner Administrator account has been created for you in the Marketplace. Follow the link below to complete your registration.
+p After completing your registration and logging in to the Marketplace, click “Administration” and then “Manage My Company” to begin the creation of your Company Profile. Use “Manage Products” to add products and “Manage People” to add others in your organization to your Marketplace team.
 p
   =' link_to 'Click here', edit_user_url(@user.token)
   to complete your registration.
 p Thank you,
-p AppZone Marketplace
+p Marketplace

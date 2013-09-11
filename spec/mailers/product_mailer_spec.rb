@@ -41,7 +41,7 @@ describe ProductMailer do
     end
 
     it 'renders the body' do
-      mail.body.encoded.should match("An AppZone Marketplace Administrator has declined to publish")
+      mail.body.encoded.should match("An Marketplace Administrator has declined to publish")
     end
   end
 
@@ -49,7 +49,7 @@ describe ProductMailer do
     let(:mail) { ProductMailer.published(user, company, product) }
 
     it 'sends with subject' do
-      expect(mail.subject).to eq('AppZone Marketplace Notification')
+      expect(mail.subject).to eq('Marketplace Notification')
     end
 
     it 'sends to user' do
@@ -57,7 +57,7 @@ describe ProductMailer do
     end
 
     it 'sends from markeplace' do
-      expect(mail.from).to eq(['marketplace@partnerpedia.com'])
+      expect(mail.from).to eq(['marketplace@mail.com'])
     end
 
     it 'renders the body' do
@@ -73,7 +73,7 @@ describe ProductMailer do
     end
 
     it 'renders the body' do
-      mail.body.encoded.should match("An AppZone Marketplace Administrator has unpublished your product")
+      mail.body.encoded.should match("An Marketplace Administrator has unpublished your product")
     end
   end
 

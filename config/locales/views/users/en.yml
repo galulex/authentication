@@ -1,9 +1,9 @@
 en:
   users:
     edit:
-      title: Establish your Personal Profile for the AppZone Marketplace
-      desc:  'You have been invited to join the AppZone Marketplace.'
-      note: 'NOTE: Your AppZone Marketplace login is unique and distinct from your Marketplace program login.'
-      instructions: 'Please provide your email address and password so that we can create an account for you in the AppZone Marketplace. The email address and password you create will be your login credentials for the AppZone Marketplace, and all related correspondence will be forwarded to this email.'
-      help: 'If you have any questions please contact AppZoneReady@partnerpedia.com'
-      best_regards: Best regards, AppZone
+      title: Establish your Personal Profile for the Marketplace
+      desc:  'You have been invited to join the Marketplace.'
+      note: 'NOTE: Your Marketplace login is unique and distinct from your Marketplace program login.'
+      instructions: 'Please provide your email address and password so that we can create an account for you in the Marketplace. The email address and password you create will be your login credentials for the Marketplace, and all related correspondence will be forwarded to this email.'
+      help: 'If you have any questions please contact admin@marketplace.com'
+      best_regards: Best regards, Marketplace

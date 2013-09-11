@@ -3,7 +3,7 @@ include ActionDispatch::TestProcess
 
 [Company, Product, User].each(&:delete_all)
 
-admin = FactoryGirl.create(:admin, first_name: 'AppZone', last_name: 'Admin', email: 'marketplace@partnerpedia.com')
+admin = FactoryGirl.create(:admin, first_name: 'Super', last_name: 'Admin', email: 'marketplace@mail.com')
 20.times do
   FactoryGirl.reload
   logo = File.new(Dir.glob(Rails.root + 'spec/support/company_logos/*').sample)

@@ -16,7 +16,7 @@ en:
   submit_for_approval: Submit For Approval
   country_select: Please select a country
   search: Search
-  search_appzone_products: Search AppZone Products
+  search_products: Search Products
   log_in: Log In
   sign_up: Sign Up
   sign_in: Sign In
@@ -25,7 +25,7 @@ en:
   enter_new_password: Enter New Password
   write_review: Write a Review for %{name}
   remember_me: Remember Me
-  appzone_login: AppZone Marketplace Log In
+  login: Marketplace Log In
   not_a_member: Not a member yet?
   already_a_member: Alreary a member?
   register_now: Register Now
@@ -33,8 +33,8 @@ en:
   personal_account_settings: Personal Account Settings
   quote: By 2014, 60% of corporate IT will deploy private app stores - Gartner
   all_logins: All Logins
-  login_as_appzone: Login as AppZone
-  copyright: Copyright 2012 Partnerpedia Solutions Inc.
+  login_as_admin: Login as Admin
+  copyright: Copyright 2013 Solutions Inc.
   all_rights_reserved: All Rights Reserved
   contact_us: Contact Us
   legal: Legal

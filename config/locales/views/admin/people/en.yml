@@ -30,4 +30,4 @@ en:
         add_user: Add another user
         invite_users: Invite Users
       person:
-        delete_message: Confirming this action will remove user from the AppZone Marketplace. This user will be removed from your company. This action cannot be undone.
+        delete_message: Confirming this action will remove user from the Marketplace. This user will be removed from your company. This action cannot be undone.
