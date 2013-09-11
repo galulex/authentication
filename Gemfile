@@ -23,12 +23,13 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass'
-  gem 'font-awesome-sass-rails'
+  gem 'font-awesome-rails'
   gem 'bootstrap-datepicker-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
+  gem 'pry'
   gem 'letter_opener'
   gem 'mysql2'
   gem 'rspec'

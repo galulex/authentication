@@ -1,6 +1,7 @@
 .product-rating
   h4.title= t('.customer_ratings')
   - if current_user
+    = @product.rating_average
     h5.title= t('.your_rating')
     .user-rating
       span.user
@@ -9,8 +10,7 @@
   - unless @product.ratings.blank?
     .average
       h5.title= t('.average_rating')
-      - 5.times do |i|
-        i.icon-2x class=((i < @product.rating_average.to_i) ? 'icon-star' : 'icon-star-empty')
+      = rating_average(@product.rating_average)
     .total
       - 5.downto(1) do |i|
         .row-fluid

@@ -5,7 +5,8 @@ ul.nav
       strong= current_user.name
     li
       - if current_user.notifications.unread.blank?
-        a.icon-globe href=notifications_path
+        a href=notifications_path
+          i.icon-globe
       - else
         = link_to notifications_path do
           span.badge= current_user.notifications.unread.count
@@ -15,6 +16,7 @@ ul.nav
     li
       = link_to session_path, method: :delete do
         i class='icon-off'
+        '
         = t('.logout')
   - else
     li
