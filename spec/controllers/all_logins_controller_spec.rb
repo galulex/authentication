@@ -7,22 +7,19 @@ describe AllLoginsController do
   describe 'GET index' do
     context 'with char parameter' do
       before { get :index, char: 'a' }
-      it { should respond_with(:success) }
-      it { should render_template(:index) }
+      it { expect(response).to render_template(:index) }
     end
 
     context 'without char parameter' do
       before { get :index  }
-      it { should respond_with(:success) }
-      it { should render_template(:index) }
+      it { expect(response).to render_template(:index) }
+      it { expect(assigns[:companies]).to_not be_nil }
     end
   end
 
   describe 'GET show' do
     before { get :show, id: user }
     it { should redirect_to(root_path)  }
-    it 'should authorize user' do
-      cookies[:auth_token].should be_eql(user.auth_token)
-    end
+    it { expect(cookies[:auth_token]).to eql(user.auth_token) }
   end
 end

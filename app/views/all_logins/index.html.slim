@@ -19,6 +19,6 @@ html
               - User::ROLES.each_with_index do |v, i|
                 li
                   =' t("roles.#{v}").pluralize << ':'
-                  - company.users.where(role_id: i + 1).each do |u|
+                  - company.users.where(role_id: i).each do |u|
                     =' link_to u.name, all_login_path(u)
       = paginate @companies

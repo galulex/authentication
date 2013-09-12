@@ -7,13 +7,12 @@ describe AdminsController do
   describe 'GET show' do
     context 'authentacated user' do
       before {controller.stub(:current_user).and_return(admin); get :show  }
-      it { should respond_with(:success) }
-      it { should render_template(:show) }
+      it { expect(response).to render_template(:show) }
     end
 
     context 'not authentacated user' do
       before { get :show  }
-      it { should redirect_to(root_path)  }
+      it { expect(response).to redirect_to(root_path) }
     end
   end
 

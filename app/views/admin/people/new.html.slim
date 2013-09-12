@@ -20,7 +20,7 @@
           .span2
             = f.input :job, input_html: { class: 'input-medium' }
           .span2
-            = f.input :role_id, collection: User::ROLES.map { |r| [I18n.t("roles.#{r}"), User::ROLES.index(r) + 1]}, include_blank: false, input_html: { class: 'input-medium' }
+            = f.input :role_id, collection: User::ROLES.map { |r| [I18n.t("roles.#{r}"), User::ROLES.index(r)]}, include_blank: false, input_html: { class: 'input-medium' }
           .span2
             = f.input :invited, as: :hidden, input_html: { value: true }
             =link_to t('remove'), '', class: 'remove-user hide'

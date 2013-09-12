@@ -36,7 +36,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ffaker'
-  gem 'shoulda-matchers'
   gem 'quiet_assets'
   gem 'simplecov', require: false
   gem 'fuubar'

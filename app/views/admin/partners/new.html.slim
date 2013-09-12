@@ -7,7 +7,7 @@
       = f.input :email, input_html: { class: 'input-xlarge' }
       = f.input :job, input_html: { class: 'input-xlarge' }
       = f.input :invited, as: :hidden, input_html: { value: true }
-      = f.input :role_id, as: :hidden, input_html: { value: User::ROLES.invert[User::ADMIN] }
+      = f.input :role_id, as: :hidden, input_html: { value: User::ROLES.index(User::ADMIN) }
     fieldset
       legend.green= t('.company_info')
       = f.fields_for :company, @partner.company || @partner.build_company do |form|

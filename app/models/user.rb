@@ -51,11 +51,11 @@ class User < ActiveRecord::Base
   end
 
   def role
-    ROLES[role_id + 1]
+    ROLES[role_id]
   end
 
   def admin?
-    role_id == ROLES.index(ADMIN) + 1
+    role_id == ROLES.index(ADMIN)
   end
 
   def tenant?

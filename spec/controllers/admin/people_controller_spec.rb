@@ -42,12 +42,12 @@ describe Admin::PeopleController do
   end
 
   describe 'PUT update' do
-    before { xhr :put, :update, id: user, role_id: User::ROLES.invert[User::EMPLOYEE] }
+    before { xhr :put, :update, id: user, role_id: User::ROLES.index(User::EMPLOYEE) }
     it 'sets the flash' do
       expect(flash[:notice]).to eql(I18n.t('flash.user.role_updated'))
     end
     it 'updates user role' do
-      expect(user.reload.role_id).to eql(User::ROLES.invert[User::EMPLOYEE])
+      expect(user.reload.role_id).to eql(User::ROLES.index(User::EMPLOYEE))
     end
   end
 
