@@ -10,23 +10,22 @@ describe ProductsController do
 
   describe 'GET index' do
     before { get :index }
-    it { should respond_with(:success) }
-    it { should render_template(:index) }
+    it { expect(assigns[:search]).to_not be_nil }
+    it { expect(assigns[:products]).to_not be_nil }
+    it { expect(response).to render_template(:index) }
   end
 
   describe 'GET show' do
     before { get :show, id: product }
-    it { should respond_with(:success) }
-    it { should render_template(:show) }
+    it { expect(assigns[:product]).to_not be_nil }
+    it { expect(response).to render_template(:show) }
   end
 
   describe 'PUT update' do
     before { xhr :put, :update, id: product, score: 1 }
-    it { should respond_with(:success) }
-    it { should render_template(:update) }
-    it 'rates the product' do
-      expect(product.ratings).to_not be_blank
-    end
+    it { expect(assigns[:product]).to_not be_nil }
+    it { expect(response).to render_template(:update) }
+    it { expect(product.ratings).to_not be_blank }
   end
 
 end

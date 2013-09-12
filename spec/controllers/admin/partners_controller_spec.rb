@@ -13,58 +13,63 @@ describe Admin::PartnersController do
 
   describe 'GET index' do
     before { get :index }
-    it { should respond_with(:success) }
-    it { should render_template(:index) }
+    it { expect(assigns[:companies]).to_not be_nil }
+    it { expect(response).to render_template(:index) }
   end
 
   describe 'GET new' do
     before { get :new }
-    it { should respond_with(:success) }
-    it { should render_template(:new) }
+    it { expect(assigns[:partner]).to_not be_nil }
+    it { expect(response).to render_template(:new) }
   end
 
   describe 'GET show' do
     before { xhr :get, :show, id: partner.company }
-    it { should respond_with(:success) }
-    it { should render_template(:show) }
+    it { expect(assigns[:company]).to_not be_nil }
+    it { expect(response).to render_template(:show) }
   end
 
   describe 'POST create' do
     context 'with valid params' do
       before { post :create, user: user_params }
-      it { should set_the_flash[:notice].to(I18n.t('flash.partner.created')) }
-      it { should redirect_to(admin_partners_path)  }
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(response).to redirect_to(admin_partners_path) }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.partner.created')) }
     end
 
     context 'with invalid params' do
       before { post :create, user: user_params.merge!(email: nil) }
-      it { should render_template(:new) }
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(response).to render_template(:new) }
     end
   end
 
 
   describe 'GET edit' do
     before { get :edit, id: company }
-    it { should respond_with(:success) }
-    it { should render_template(:edit) }
+    it { expect(assigns[:company]).to_not be_nil }
+    it { expect(response).to render_template(:edit) }
   end
 
   describe 'PUT update' do
     context 'save with valid params' do
       before { put :update, id: company, company: company_params, save: true }
-      it { should set_the_flash[:notice].to(I18n.t('flash.company.saved')) }
-      it { should render_template(:edit) }
+      it { expect(assigns[:company]).to_not be_nil }
+      it { expect(response).to render_template(:edit) }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.company.saved')) }
     end
 
     context 'submit with valid params' do
       before { put :update, id: company, company: company_params }
-      it { should set_the_flash[:notice].to(I18n.t('flash.company.published')) }
-      it { should redirect_to(admin_partners_path)  }
+      it { expect(assigns[:company]).to_not be_nil }
+      it { expect(response).to redirect_to(admin_partners_path) }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.company.published')) }
     end
 
     context 'with invalid params' do
       before { put :update, id: company, company: company_params.merge!(name: '') }
-      it { should render_template(:edit) }
+      it { expect(assigns[:company]).to_not be_nil }
+      it { expect(response).to render_template(:edit) }
     end
   end
 
@@ -75,15 +80,13 @@ describe Admin::PartnersController do
         company_draft.submit!
         xhr :delete, :destroy, id: company_draft, reason: 'reason'
       end
-      it { should respond_with(:success) }
-      it { should render_template(:destroy) }
+      it { expect(assigns[:success]).to be_true }
+      it { expect(response).to render_template(:destroy) }
     end
     context 'with invalid params' do
       before { xhr :delete, :destroy, id: company, reason: '' }
-      it { should render_template(:destroy) }
-      it 'sets the flash' do
-        expect(flash[:error]).to eql(I18n.t('flash.company.blank_reason'))
-      end
+      it { expect(response).to render_template(:destroy) }
+      it { expect(flash[:error]).to eql(I18n.t('flash.company.blank_reason')) }
     end
   end
 

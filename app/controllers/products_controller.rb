@@ -3,9 +3,7 @@ class ProductsController < ApplicationController
   layout 'dashboard'
 
   def index
-    @search = Product.search do
-      fulltext params[:search]
-    end
+    @search = Product.search { fulltext params[:search] }
     @products = @search.results
   end
 

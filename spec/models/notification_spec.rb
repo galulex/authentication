@@ -7,8 +7,6 @@ describe Notification do
   let(:product) { FactoryGirl.create(:product, company: company) }
   let(:notification) { FactoryGirl.create(:notification, user: user, data: { company: company.name, product: product.name }) }
 
-  it { should belong_to(:user) }
-
   describe '#message' do
     it 'returns notification message' do
       expect(notification.message).to include(product.name)

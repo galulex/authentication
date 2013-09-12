@@ -4,11 +4,6 @@ describe Company do
 
   let(:company) { FactoryGirl.build(:company) }
 
-  describe 'associations' do
-    it { should have_many(:users) }
-    it { should have_many(:products) }
-  end
-
   describe '#before_instantiate_draft' do
     it 'sets status to draft' do
       company.before_instantiate_draft

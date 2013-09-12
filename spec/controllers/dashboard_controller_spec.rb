@@ -4,9 +4,8 @@ describe DashboardController do
 
   describe "GET 'index'" do
     before { get :index }
-    it { should respond_with(:success) }
-    it { should render_template(:index) }
-    it { should render_with_layout(:dashboard) }
+    it { expect(response).to render_template(:index) }
+    it { expect(assigns[:products]).to_not be_nil }
   end
 
 end

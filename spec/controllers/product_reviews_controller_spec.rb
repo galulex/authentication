@@ -13,38 +13,37 @@ describe ProductReviewsController do
 
   describe 'GET new' do
     before { xhr :get, :new, product_id: product }
-    it { should render_template(:new) }
-    it { should respond_with(:success) }
+    it { expect(response).to render_template(:new) }
   end
 
   describe 'POST create' do
     context 'save with valid params' do
       before { xhr :post, :create, product_id: product, product_review: review_params }
-      it { should render_template(:create) }
-      it { should respond_with(:success) }
+      it { expect(response).to render_template(:create) }
+      it { expect(assigns[:success]).to be_true }
+      it { expect(assigns[:review]).to_not be_nil }
     end
 
     context 'save with invalid params' do
       before { xhr :post, :create, product_id: product, product_review: invalid_params }
-      it { should render_template(:create) }
-      it { should respond_with(:success) }
+      it { expect(response).to render_template(:create) }
+      it { expect(assigns[:success]).to be_false }
     end
   end
 
   describe 'GET edit' do
     before { xhr :get, :edit, product_id: product, id: product_review }
-    it { should respond_with(:success) }
-    it { should render_template(:edit) }
+    it { expect(response).to render_template(:edit) }
   end
 
   describe 'PUT update' do
     before { xhr :put, :update, product_id: product, id: product_review, product_review: review_params }
-    it { should render_template(:update) }
+    it { expect(response).to render_template(:update) }
+    it { expect(assigns[:success]).to be_true }
   end
 
   describe 'DELETE destroy' do
     before { xhr :delete, :destroy, product_id: product, id: product_review }
-    it { should respond_with(:success) }
-    it { should render_template(:destroy) }
+    it { expect(response).to render_template(:destroy) }
   end
 end

@@ -6,37 +6,35 @@ describe SessionsController do
 
   describe 'GET new' do
     before { xhr :get, :new }
-    it { should respond_with(:success) }
-    it { should render_template(:new) }
+    it { expect(response).to render_template(:new) }
   end
 
   describe 'POST create' do
     context 'valid params' do
       before { xhr :post, :create, email: user.email, password: user.password }
-      it { should render_template(:create) }
-      it 'should authorize user' do
-        cookies[:auth_token].should be_eql(user.auth_token)
-      end
+      it { expect(response).to render_template(:create) }
+      it { expect(assigns[:success]).to be_true }
+      it { expect(cookies[:auth_token]).to eql(user.auth_token) }
     end
 
     context 'invalid params' do
       before { xhr :post, :create, email: user.email, password: '' }
-      it { should render_template(:create) }
+      it { expect(response).to render_template(:create) }
+      it { expect(assigns[:error]).to eql(I18n.t('flash.user.invalid_email_or_password')) }
     end
 
     context 'not activated user' do
       before { user.update_attribute(:token, 'token'); xhr :post, :create, email: user.email, password: user.password }
-      it { should render_template(:create) }
+      it { expect(response).to render_template(:create) }
+      it { expect(assigns[:error]).to eql(I18n.t('flash.user.your_account_not_activated')) }
     end
   end
 
   describe 'DELETE destroy' do
     before { delete :destroy }
-    it { should redirect_to(root_path)  }
-    it { should set_the_flash[:notice] }
-    it 'should destroy session' do
-      cookies[:auth_token].should be_nil
-    end
+    it { expect(flash[:notice]).to eql(I18n.t('flash.user.logged_out')) }
+    it { expect(response).to redirect_to(root_path) }
+    it { expect(cookies[:auth_token]).to be_nil }
   end
 
 end

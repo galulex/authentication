@@ -6,7 +6,7 @@ describe CompaniesController do
 
   describe 'GET show' do
     before { get :show, id: company }
-    it { should respond_with(:success) }
-    it { should render_template(:show) }
+    it { expect(response).to render_template(:show) }
+    it { expect(assigns[:company]).to_not be_nil }
   end
 end

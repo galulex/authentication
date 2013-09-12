@@ -12,56 +12,55 @@ describe Admin::PeopleController do
 
   describe 'GET index' do
     before { get :index }
-    it { should respond_with(:success) }
-    it { should render_template(:index) }
+    it { expect(assigns[:people]).to_not be_nil }
+    it { expect(response).to render_template(:index) }
   end
 
   describe 'GET new' do
     before { get :new }
-    it { should render_template(:new) }
-    it { should respond_with(:success) }
+    it { expect(assigns[:users]).to_not be_nil }
+    it { expect(response).to render_template(:new) }
   end
 
   describe 'POST create' do
     context 'with valid params' do
       before { post :create , users: [user_params]}
-      it { should set_the_flash[:notice].to(I18n.t('flash.user.invite_sent')) }
-      it { should redirect_to(invites_admin_people_path)  }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.user.invite_sent')) }
+      it { expect(assigns[:users]).to_not be_nil }
+      it { expect(response).to redirect_to(invites_admin_people_path) }
     end
 
     context 'with invalid params' do
       before { post :create, users: [invalid_params] }
-      it { should render_template(:new) }
+      it { expect(assigns[:users]).to_not be_nil }
+      it { expect(response).to render_template(:new) }
     end
   end
 
   describe 'GET invites' do
     before { get :invites }
-    it { should respond_with(:success) }
-    it { should render_template(:invites) }
+    it { expect(assigns[:users]).to_not be_nil }
+    it { expect(response).to render_template(:invites) }
   end
 
   describe 'PUT update' do
     before { xhr :put, :update, id: user, role_id: User::ROLES.index(User::EMPLOYEE) }
-    it 'sets the flash' do
-      expect(flash[:notice]).to eql(I18n.t('flash.user.role_updated'))
-    end
-    it 'updates user role' do
-      expect(user.reload.role_id).to eql(User::ROLES.index(User::EMPLOYEE))
-    end
+    it { expect(flash[:notice]).to eql(I18n.t('flash.user.role_updated')) }
+    it { expect(user.reload.role_id).to eql(User::ROLES.index(User::EMPLOYEE)) }
   end
 
   describe 'DELETE destroy' do
     context 'activated users' do
       before { delete :destroy , id: user}
-      it { should set_the_flash[:notice].to(I18n.t('flash.user.deleted', name: user.name)) }
-      it { should redirect_to(admin_people_path)  }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.user.deleted', name: user.name)) }
+      it { expect(assigns[:user]).to_not be_nil }
+      it { expect(response).to redirect_to(admin_people_path) }
     end
 
     context 'not activated users' do
       before { delete :destroy, id: new_user }
-      it { should set_the_flash[:notice].to(I18n.t('flash.user.invite_canceled')) }
-      it { should redirect_to(invites_admin_people_path)  }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.user.invite_canceled')) }
+      it { expect(response).to redirect_to(invites_admin_people_path) }
     end
   end
 end

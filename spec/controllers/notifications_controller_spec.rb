@@ -11,23 +11,21 @@ describe NotificationsController do
 
   describe 'GET index' do
     before { get :index }
-    it { should render_template(:index) }
-    it { should respond_with(:success) }
+    it { expect(response).to render_template(:index) }
+    it { expect(assigns[:notifications]).to_not be_nil }
   end
 
   describe 'DELETE destroy' do
     context 'singilar notification' do
       before { xhr :delete, :destroy, id: notification }
-      it { should respond_with(:success) }
-      it { should render_template(:destroy) }
+      it { expect(response).to render_template(:destroy) }
+      it { expect(assigns[:notification]).to_not be_nil }
     end
 
     context 'all notifications' do
       before { delete :destroy, id: :all }
-      it { should redirect_to(notifications_path)  }
-      it 'delete all user notifications' do
-        expect(user.notifications).to be_blank
-      end
+      it { expect(response).to redirect_to(notifications_path) }
+      it { expect(user.notifications).to be_blank }
     end
   end
 end

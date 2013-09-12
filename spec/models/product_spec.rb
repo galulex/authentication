@@ -7,19 +7,6 @@ describe Product do
   let(:product) { FactoryGirl.create(:product, company: company) }
   let(:product_review) { FactoryGirl.create(:product_review, user: user, product: product) }
 
-  describe 'associations' do
-    it { should have_many(:reviews) }
-    it { should have_many(:ratings) }
-    it { should belong_to(:company) }
-  end
-
-  describe 'validations' do
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:description) }
-    it { should validate_presence_of(:features) }
-    it { should validate_presence_of(:summary) }
-  end
-
   describe '#company' do
     it 'returns product company' do
       product.instantiate_draft!

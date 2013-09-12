@@ -10,19 +10,23 @@ describe UsersController do
 
   describe 'GET new' do
     before { xhr :get, :new }
-    it { should render_template(:new) }
+    it { expect(assigns[:partner]).to_not be_nil }
+    it { expect(response).to render_template(:new) }
   end
 
   describe 'POST create' do
     context 'with valid params' do
       before { xhr :post, :create, user: user_params }
-      it { should render_template(:create) }
-      it { should set_the_flash[:notice].to(I18n.t('flash.user.registration_mail_sent')) }
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(assigns[:success]).to be_true }
+      it { expect(response).to render_template(:create) }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.user.registration_mail_sent')) }
     end
 
     context 'with invalid params' do
       before { xhr :post, :create, user: invalid_params }
-      it { should render_template(:create) }
+      it { expect(assigns[:success]).to be_false }
+      it { expect(response).to render_template(:create) }
     end
   end
 
@@ -32,42 +36,46 @@ describe UsersController do
         controller.stub(:current_user).and_return(user)
         xhr :get, :edit, id: user
       end
-      it { should render_template(:edit) }
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(response).to render_template(:edit) }
     end
 
     context 'not logged in and invited' do
       before { get :edit, id: invited_user.token }
-      it { should render_template(:edit) }
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(response).to render_template(:edit) }
     end
 
     context 'not logged in and not invited' do
       before { get :edit, id: new_user.token }
-      it { should set_the_flash[:notice].to(I18n.t('flash.user.registration_confirmed')) }
-      it { should redirect_to(root_path)  }
-      it 'activates a user' do
-        expect(new_user.reload.token).to be_nil
-      end
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(response).to redirect_to(root_path) }
+      it { expect(new_user.reload.token).to be_nil }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.user.registration_confirmed')) }
     end
   end
 
   describe 'PUT update' do
     context 'JS' do
       before { xhr :put, :update, id: user, user: user_params }
-      it { should render_template(:update) }
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(assigns[:success]).to be_true }
+      it { expect(response).to render_template(:update) }
     end
 
     context 'HTML with valid params' do
       before { put :update, id: new_user, user: user_params }
-      it { should redirect_to(root_path)  }
-      it { should set_the_flash[:notice].to(I18n.t('flash.user.registered')) }
-      it 'should authorize user' do
-        cookies[:auth_token].should be_eql(new_user.auth_token)
-      end
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(response).to redirect_to(root_path) }
+      it { expect(flash[:notice]).to eql(I18n.t('flash.user.registered')) }
+      it { cookies[:auth_token].should be_eql(new_user.auth_token) }
     end
 
     context 'HTML with invalid params' do
       before { put :update, id: new_user, user: invalid_params }
-      it { should render_template(:edit) }
+      it { expect(assigns[:partner]).to_not be_nil }
+      it { expect(assigns[:success]).to be_false }
+      it { expect(response).to render_template(:edit) }
     end
 
   end

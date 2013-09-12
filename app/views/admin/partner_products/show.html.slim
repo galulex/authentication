@@ -1,3 +1,3 @@
 = @product.name
 br
-= image_tag(@product.icon.url) if @product && @product.icon.exists?
+= image_tag(@product.icon.url) if @product && @product.icon?
