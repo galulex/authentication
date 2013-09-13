@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe AdminsController do
 
-  let(:admin) { FactoryGirl.create(:admin)}
+  let(:admin) { FactoryGirl.build(:admin)}
 
   describe 'GET show' do
     context 'authentacated user' do
-      before {controller.stub(:current_user).and_return(admin); get :show  }
+      before do
+        controller.stub(:current_user).and_return(admin)
+        admin.stub(:to_param).and_return(:id)
+        get :show
+      end
       it { expect(response).to render_template(:show) }
     end
 
