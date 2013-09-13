@@ -13,6 +13,8 @@ class Company < ActiveRecord::Base
   validates :name, :logo, :synopsis, :description, :street1, :city, :website, :country, :state, presence: true, on: :update
   validates :name, uniqueness: true
 
+  scope :starts_with, ->(char) { where('name LIKE ?', "#{char}%") if char }
+
 
   has_draft do
 

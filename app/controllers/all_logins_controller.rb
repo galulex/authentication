@@ -2,11 +2,7 @@ class AllLoginsController < ApplicationController
   layout false
 
   def index
-    if params[:char]
-      @companies = Company.where('name LIKE ?', "#{params[:char]}%").page(params[:page]).per(5)
-    else
-      @companies = Company.page(params[:page]).per(5)
-    end
+    @companies = Company.starts_with(params[:char]).includes(:users).page(params[:page]).per(5)
   end
 
   def show

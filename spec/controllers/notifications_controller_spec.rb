@@ -2,12 +2,20 @@ require 'spec_helper'
 
 describe NotificationsController do
 
-  let(:company) { FactoryGirl.create(:company)}
-  let(:product) { FactoryGirl.create(:product, company: company)}
-  let(:user) { FactoryGirl.create(:user, company: company)}
-  let(:notification) { FactoryGirl.create(:notification, user: user, data: { company: company.name, product: product.name }) }
+  let(:company) { FactoryGirl.build(:company)}
+  let(:product) { FactoryGirl.build(:product, company: company)}
+  let(:user) { FactoryGirl.build(:user, company: company)}
+  let(:notification) { FactoryGirl.build(:notification, user: user, data: { company: company.name, product: product.name }) }
 
-  before { controller.stub(:current_user).and_return(user) }
+  before do
+    notification.stub(:to_param).and_return(:id)
+    notification.stub(:created_at).and_return(Time.now)
+    user.stub(:to_param).and_return(:id)
+    user.stub_chain(:notifications, :order, :to_a).and_return([notification])
+    user.stub_chain(:notifications, :unread, :update_all).and_return(true)
+    user.stub_chain(:notifications, :unread, :count).and_return(1)
+    controller.stub(:current_user).and_return(user)
+  end
 
   describe 'GET index' do
     before { get :index }
@@ -17,15 +25,21 @@ describe NotificationsController do
 
   describe 'DELETE destroy' do
     context 'singilar notification' do
-      before { xhr :delete, :destroy, id: notification }
+      before do
+        user.stub_chain(:notifications, :find).and_return(notification)
+        notification.should_receive(:delete)
+        xhr :delete, :destroy, id: notification
+      end
       it { expect(response).to render_template(:destroy) }
       it { expect(assigns[:notification]).to_not be_nil }
     end
 
     context 'all notifications' do
-      before { delete :destroy, id: :all }
+      before do
+        user.stub_chain(:notifications, :delete_all)
+        delete :destroy, id: :all
+      end
       it { expect(response).to redirect_to(notifications_path) }
-      it { expect(user.notifications).to be_blank }
     end
   end
 end
