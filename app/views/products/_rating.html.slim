@@ -9,7 +9,7 @@
   - unless @product.ratings.blank?
     .average
       h5.title= t('.average_rating')
-      = rating_average(@product.rating_average)
+      = rating_average(@product.rating_average, 'icon-2x')
     .total
       - 5.downto(1) do |i|
         .row-fluid

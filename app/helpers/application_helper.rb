@@ -32,14 +32,14 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def rating_average(score)
+  def rating_average(score, element_class = nil)
     html = ''
     5.times do |i|
       if i + 1 <= score
-        html << content_tag('i', '', class: "icon-2x icon-star")
+        html << content_tag('i', '', class: "icon-star #{ element_class }")
       else
         klass = (score - i) > 0.4 ? 'icon-star-half-empty' : 'icon-star-empty'
-        html << content_tag('i', '', class: "icon-2x #{ klass }")
+        html << content_tag('i', '', class: "#{ klass } #{ element_class }")
       end
     end
     html.html_safe

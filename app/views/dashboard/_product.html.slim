@@ -6,5 +6,5 @@
         b= link_to product.name, product_path(product)
       .title
         b= link_to t('.by', name: product.company.name), company_path(product.company)
-      span.product-rating= render_rating(product.rating_average.to_i)
+      span.product-rating= rating_average(product.rating_average)
   p.span12= truncate(product.description, length: 200)
