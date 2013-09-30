@@ -112,5 +112,4 @@ class Product < ActiveRecord::Base
     text :name, :description
   end
 
-
 end
