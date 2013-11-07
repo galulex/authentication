@@ -16,19 +16,18 @@ describe User do
   describe '#activated?' do
     it 'returns false if user is not activated' do
       user.token = 'token'
-      expect(user.activated?).to be_false
+      expect(user).to_not be_activated
     end
 
     it 'returns true if user is activated' do
       user.token = nil
-      expect(user.activated?).to be_true
+      expect(user).to be_activated
     end
   end
 
   describe '#reset_password' do
     it 'generates password_reset_token' do
-      user.reset_password
-      expect(user.password_reset_token).to_not be_nil
+      expect { user.reset_password }.to change(user, :password_reset_token)
     end
   end
 
@@ -47,31 +46,31 @@ describe User do
   describe '#admin?' do
     it 'returns false if user is not admin' do
       user.role_id = User::ROLES.index(User::EMPLOYEE)
-      expect(user.admin?).to be_false
+      expect(user).to_not be_admin
     end
 
     it 'returns true if user is admin' do
-      expect(user.admin?).to be_true
+      expect(user).to be_admin
     end
   end
 
   describe '#tenant?' do
     it 'returns false if user is not tenant' do
-      expect(user.tenant?).to be_false
+      expect(user).to_not be_tenant
     end
 
     it 'returns true if user is tenant' do
-      expect(tenant.tenant?).to be_true
+      expect(tenant).to be_tenant
     end
   end
 
   describe '#partner?' do
     it 'returns false if user is not partner' do
-      expect(tenant.partner?).to be_false
+      expect(tenant).to_not be_partner
     end
 
     it 'returns true if user is partner' do
-      expect(user.partner?).to be_true
+      expect(user).to be_partner
     end
   end
 

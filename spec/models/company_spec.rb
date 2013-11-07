@@ -24,29 +24,29 @@ describe Company do
 
   describe '#pending?' do
     it 'returns nil if no company draft' do
-      expect(company.pending?).to be_nil
+      expect(company).to_not be_pending
     end
 
     it 'returns false if company draft is not pending' do
       company.instantiate_draft
-      expect(company.pending?).to be_false
+      expect(company).to_not be_pending
     end
 
     it 'returns true if company draft is pending' do
       company.instantiate_draft!
       company.draft.submit!
-      expect(company.pending?).to be_true
+      expect(company).to be_pending
     end
   end
 
   describe '#published?' do
     it 'returns false if company is not published' do
       company.status = 'draft'
-      expect(company.published?).to be_false
+      expect(company).to_not be_published
     end
 
     it 'returns true if company is published' do
-      expect(company.published?).to be_true
+      expect(company).to be_published
     end
   end
 
