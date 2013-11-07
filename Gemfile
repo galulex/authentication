@@ -1,9 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.1'
+gem 'mysql2'
+
+gem 'sass-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'bcrypt-ruby', '~> 3.0.0', require: "bcrypt"
-gem 'slim' # A lightweight templating engine
+gem 'turbolinks'
+gem 'jquery-turbolinks'
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'bootstrap-datepicker-rails'
+
+gem 'bcrypt-ruby', '~> 3.0.0', require: 'bcrypt'
 gem 'slim-rails' # A lightweight templating engine
 gem 'simple_form' # SimpleForm - Rails forms made easy
 gem 'mini_magick' # Mini replacement for RMagick
@@ -16,22 +26,16 @@ gem 'breadcrumbs_on_rails' # Plugin for creating and managing a breadcrumb navig
 gem 'friendly_id' # Allows you to create pretty URL’s
 gem 'sidekiq' # Simple, efficient message processing
 gem 'sunspot_rails' # Solr-powered search
+gem 'protected_attributes'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'bootstrap-sass'
-  gem 'font-awesome-rails'
-  gem 'bootstrap-datepicker-rails'
-  gem 'uglifier', '>= 1.0.3'
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
 end
 
 group :development, :test do
   gem 'pry'
   gem 'letter_opener'
-  gem 'mysql2'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
