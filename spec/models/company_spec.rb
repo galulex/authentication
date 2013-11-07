@@ -3,13 +3,7 @@ require 'spec_helper'
 describe Company do
 
   let(:company) { FactoryGirl.build(:company) }
-
-  describe '#before_instantiate_draft' do
-    it 'sets status to draft' do
-      company.before_instantiate_draft
-      expect(company.status).to eql('draft')
-    end
-  end
+  let(:draft) { FactoryGirl.build(:company_draft, company: company, status: 'draft') }
 
   describe '#company_status' do
     it 'returns company status' do
@@ -17,7 +11,7 @@ describe Company do
     end
 
     it 'returns company draft status' do
-      company.instantiate_draft!
+      company.draft = draft
       expect(company.company_status).to eql('draft')
     end
   end
@@ -28,14 +22,12 @@ describe Company do
     end
 
     it 'returns false if company draft is not pending' do
-      company.instantiate_draft
-      expect(company).to_not be_pending
+      expect(draft.company).to_not be_pending
     end
 
     it 'returns true if company draft is pending' do
-      company.instantiate_draft!
-      company.draft.submit!
-      expect(company).to be_pending
+      draft.submit
+      expect(draft.company).to be_pending
     end
   end
 
@@ -50,11 +42,10 @@ describe Company do
     end
   end
 
-  describe '#to_param' do
-    it 'returns company id' do
-      company.instantiate_draft!
-      expect(company.draft.to_param).to eql(company.id)
-    end
-  end
+#   describe '#to_param' do
+#     it 'returns company id' do
+#       expect(draft.to_param).to eql(company.id)
+#     end
+#   end
 
 end

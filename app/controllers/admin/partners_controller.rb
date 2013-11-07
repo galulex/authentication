@@ -34,9 +34,7 @@ class Admin::PartnersController < AdminsController
         flash[:notice] = I18n.t('flash.company.saved')
         render :edit
       else
-        @company.approve!
-        @company.company.replace_with_draft!
-        @company.company.destroy_draft!
+        @company.publish!
         CompanyNotifier.perform_async(:approved, company_id: @company.company_id)
         redirect_to admin_partners_path, notice: I18n.t('flash.company.published')
       end
@@ -58,7 +56,7 @@ class Admin::PartnersController < AdminsController
 
   def find_company
     company = Company.friendly.find(params[:id])
-    @company = company.draft || company.instantiate_draft!
+    @company = company.draft || company.build_draft(company.attributes)
   end
 
 end

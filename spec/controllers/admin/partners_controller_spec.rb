@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Admin::PartnersController do
 
   let(:company) { FactoryGirl.create(:company, status: 'published')}
-  let(:company_draft) { company.instantiate_draft! }
+  let(:company_draft) { FactoryGirl.create(:company_draft, company: company, status: 'draft')}
   let(:admin) { FactoryGirl.create(:admin, company: company)}
   let(:partner) { FactoryGirl.reload; FactoryGirl.create(:user, company: company)}
   let(:user_params) { FactoryGirl.reload; FactoryGirl.attributes_for(:user)}

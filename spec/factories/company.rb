@@ -14,8 +14,8 @@ FactoryGirl.define do
     c.phone Faker::PhoneNumber.phone_number
   end
 
-  #factory :company_draft, class: Company::Draft, parent: :company do
-
-  #end
+  factory :company_draft, class: CompanyDraft, parent: :company do
+    association :company
+  end
 
 end

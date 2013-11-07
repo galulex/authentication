@@ -5,12 +5,12 @@ class Admin::CompaniesController < AdminsController
   add_breadcrumb I18n.t('breadcrumbs.administration'), :admin_path
 
   def edit
-    @company = current_user.company.draft || current_user.company.instantiate_draft!
+    @company = current_user.company.draft || current_user.company.build_draft
   end
 
   def update
     company = current_user.company
-    @company = company.draft || company.instantiate_draft!
+    @company = company.draft || company.build_draft
     if @company.update_attributes(params[:company])
       if params[:save]
         flash.now[:notice] = I18n.t('flash.company.saved')

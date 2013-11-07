@@ -7,44 +7,18 @@ class Company < ActiveRecord::Base
 
   has_many :users
   has_many :products
+  has_one :draft, class_name: CompanyDraft
 
-  attr_accessible :name, :logo, :synopsis, :description, :street1, :street2, :city, :country, :state, :postal_code, :phone, :website
+  attr_accessible :name, :logo, :synopsis, :description, :street1, :street2,
+                  :city, :country, :state, :postal_code, :phone, :website
 
-  validates :name, :logo, :synopsis, :description, :street1, :city, :website, :country, :state, presence: true, on: :update
+  validates :name, :logo, :synopsis, :description, :street1, :city, :website,
+            :country, :state, presence: true, on: :update
   validates :name, uniqueness: true
 
   scope :starts_with, ->(char) { where('name LIKE ?', "#{char}%") if char }
 
-
-  has_draft do
-
-    mount_uploader :logo, LogoUploader
-
-    validates :name, :logo, :synopsis, :description, :street1, :city, :website, :country, :state, presence: true, on: :update
-
-    state_machine :status, :initial => 'draft' do
-      event :submit do
-        transition to: 'pending', from: %w(draft declined)
-      end
-
-      event :approve do
-        transition to: 'approved', from: %w(draft declined pending)
-      end
-
-      event :decline do
-        transition to: 'declined', from: 'pending'
-      end
-    end
-
-    def to_param
-      company_id
-    end
-
-  end
-
-  def before_instantiate_draft
-    self.status = 'draft'
-  end
+  # delegate :slug, to: :draft
 
   def company_status
     return draft.status if draft
