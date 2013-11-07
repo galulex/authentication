@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:jim/carmen-rails.git
+  revision: 076dd251e075d07408e0b5268f886956ef2a347c
+  specs:
+    carmen-rails (1.0.0)
+      carmen (~> 1.0.0)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -31,15 +39,12 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-datepicker-rails (1.1.1.9)
       railties (>= 3.0)
-    bootstrap-sass (3.0.0.0)
+    bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     breadcrumbs_on_rails (2.3.0)
     builder (3.1.4)
     carmen (1.0.0)
       unicode_utils (~> 1.4.0)
-    carmen-rails (1.0.0)
-      carmen (~> 1.0.0.beta2)
-      rails
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -66,7 +71,7 @@ GEM
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
     ffaker (1.20.0)
-    font-awesome-rails (4.0.3.0)
+    font-awesome-rails (3.2.1.3)
       railties (>= 3.2, < 5.0)
     friendly_id (5.0.1)
       activerecord (~> 4.0.0)
@@ -195,13 +200,12 @@ GEM
       sprockets (~> 2.8)
     state_machine (1.2.0)
     subexec (0.2.3)
-    sunspot (2.1.0)
+    sunspot (2.0.0)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
-    sunspot_rails (2.1.0)
+    sunspot_rails (2.0.0)
       nokogiri
-      rails (>= 3)
-      sunspot (= 2.1.0)
+      sunspot (= 2.0.0)
     sunspot_solr (2.1.0)
     temple (0.6.7)
     thin (1.6.1)
@@ -230,14 +234,14 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-datepicker-rails
-  bootstrap-sass
+  bootstrap-sass (= 2.3.2.2)
   breadcrumbs_on_rails
-  carmen-rails (~> 1.0.0.beta3)
+  carmen-rails!
   carrierwave
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   ffaker
-  font-awesome-rails
+  font-awesome-rails (= 3.2.1.3)
   friendly_id
   fuubar
   jquery-rails
@@ -259,7 +263,7 @@ DEPENDENCIES
   simplecov
   slim-rails
   state_machine
-  sunspot_rails
+  sunspot_rails (= 2.0.0)
   sunspot_solr
   thin
   turbolinks

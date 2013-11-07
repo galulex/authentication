@@ -9,8 +9,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'bootstrap-sass'
-gem 'font-awesome-rails'
+gem 'bootstrap-sass', '2.3.2.2'
+gem 'font-awesome-rails', '3.2.1.3'
 gem 'bootstrap-datepicker-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.0', require: 'bcrypt'
@@ -20,12 +20,12 @@ gem 'mini_magick' # Mini replacement for RMagick
 gem 'carrierwave' # Classier solution for file uploads
 gem 'state_machine' # Adds support for creating state machines for attributes
 gem 'thin' # A very fast & simple Ruby web server
-gem 'carmen-rails', '~> 1.0.0.beta3' # A repository of geographic regions
+gem 'carmen-rails', git: 'git@github.com:jim/carmen-rails.git' # A repository of geographic regions
 gem 'kaminari' # A Scope & Engine based, clean, powerful, customizable paginator
 gem 'breadcrumbs_on_rails' # Plugin for creating and managing a breadcrumb navigation
 gem 'friendly_id' # Allows you to create pretty URL’s
 gem 'sidekiq' # Simple, efficient message processing
-gem 'sunspot_rails' # Solr-powered search
+gem 'sunspot_rails', '2.0.0' # Solr-powered search
 gem 'protected_attributes'
 
 group :doc do

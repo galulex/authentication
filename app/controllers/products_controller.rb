@@ -3,8 +3,9 @@ class ProductsController < ApplicationController
   layout 'dashboard'
 
   def index
-    @search = Product.search { fulltext params[:search] }
-    @products = @search.results
+    # @search = Product.search { fulltext params[:search] }
+    # @products = @search.results
+    @products  = Product.search(params[:search])
   end
 
   def show
@@ -15,7 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
     @product.rate_it!(current_user, params[:score])
   end
 

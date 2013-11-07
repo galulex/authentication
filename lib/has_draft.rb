@@ -20,8 +20,8 @@ module HasDraft
                         :foreign_key => draft_foreign_key,
                         :dependent => :destroy
 
-        scope :with_draft, includes(:draft).where("#{draft_table_name}.id IS NOT NULL")
-        scope :without_draft, includes(:draft).where("#{draft_table_name}.id IS NULL")
+        scope :with_draft, -> { includes(:draft).where("#{draft_table_name}.id IS NOT NULL") }
+        scope :without_draft, -> { includes(:draft).where("#{draft_table_name}.id IS NULL") }
       end
 
       # Dynamically Create Model::Draft Class

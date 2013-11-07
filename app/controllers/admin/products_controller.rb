@@ -55,7 +55,7 @@ class Admin::ProductsController < AdminsController
   end
 
   def destroy
-    @product = current_user.company.products.find(params[:id])
+    @product = current_user.company.products.friendly.find(params[:id])
     if @product.published?
       @product.retract!
       ProductNotifier.perform_async(:retracted, user_id: current_user.id, product_id: @product.id)
@@ -66,7 +66,7 @@ class Admin::ProductsController < AdminsController
   private
 
   def product
-    product = current_user.company.products.find(params[:id])
+    product = current_user.company.products.friendly.find(params[:id])
     if !product.published?
       @product = product
     else

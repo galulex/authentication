@@ -14,6 +14,8 @@ class Product < ActiveRecord::Base
   attr_accessible :description, :features, :name, :summary, :support, :version, :icon
   validates :description, :features, :name, :summary, presence: true
 
+  scope :search, ->(q) { where(['name LIKE ?', "%#{q}%"]) }
+
   has_draft do
     mount_uploader :icon, LogoUploader
     mount_uploader :image, ImageUploader
@@ -92,7 +94,7 @@ class Product < ActiveRecord::Base
   end
 
   def rate_it!(user, score)
-    r = ratings.find_or_initialize_by_user_id(user.id)
+    r = ratings.find_or_initialize_by(user_id: user.id)
     r.update_attributes(score: score)
     reload
   end
@@ -108,8 +110,8 @@ class Product < ActiveRecord::Base
     review.id if review
   end
 
-  searchable do
-    text :name, :description
-  end
+  # searchable do
+    # text :name, :description
+  # end
 
 end

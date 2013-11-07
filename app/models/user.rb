@@ -27,11 +27,11 @@ class User < ActiveRecord::Base
 
   before_create { generate_token(:auth_token); generate_token(:token) }
 
-  scope :invited, where(invited: true)
-  scope :activated, where(token: nil)
+  scope :invited, -> { where(invited: true) }
+  scope :activated, -> { where(token: nil) }
   scope :all_by_activation_status, ->(status) { where("token IS #{'NOT' if status != 'activated'} NULL") unless status.blank? }
-  scope :admins, where(role_id: ROLES.index(ADMIN))
-  scope :employees, where(role_id: ROLES.index(EMPLOYEE))
+  scope :admins, -> { where(role_id: ROLES.index(ADMIN)) }
+  scope :employees, -> { where(role_id: ROLES.index(EMPLOYEE)) }
 
   def activate
     self.update_column(:token, nil)

@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   layout 'dashboard'
 
   def show
-    @company = Company.find(params[:id])
+    @company = Company.friendly.find(params[:id])
   end
 
 end

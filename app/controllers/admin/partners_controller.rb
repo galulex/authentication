@@ -57,7 +57,7 @@ class Admin::PartnersController < AdminsController
   private
 
   def find_company
-    company = Company.find(params[:id])
+    company = Company.friendly.find(params[:id])
     @company = company.draft || company.instantiate_draft!
   end
 

@@ -10,7 +10,6 @@ describe ProductsController do
 
   describe 'GET index' do
     before { get :index }
-    it { expect(assigns[:search]).to_not be_nil }
     it { expect(assigns[:products]).to_not be_nil }
     it { expect(response).to render_template(:index) }
   end

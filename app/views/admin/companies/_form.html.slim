@@ -6,7 +6,8 @@
 = f.input   :street1, input_html: { class: 'input-xxlarge' }
 = f.input   :street2, label: false, input_html: { class: 'input-xxlarge' }
 = f.input   :city, input_html: { class: 'input-xxlarge' }
-= f.input   :country, as: :carmen_country, priority: %w(AU CA GB US), prompt: t('country_select')
+= f.input   :country do
+  = f.country_select :country, { priority: %w(AU CA GB US), prompt: t('country_select') }
 = f.input   :state
 = f.input   :postal_code
 = f.input   :phone
