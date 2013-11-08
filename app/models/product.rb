@@ -45,8 +45,8 @@ class Product < ActiveRecord::Base
   end
 
   def user_rating(user)
-    rate = ratings.find_by_user_id(user.id)
-    return rate.score if rate
+    @rate ||= ratings.find_by_user_id(user.id)
+    return @rate.score if @rate
     0
   end
 

@@ -31,4 +31,10 @@ class Company < ActiveRecord::Base
     status != 'draft'
   end
 
+  def draft_or_build
+    draft || build_draft(attributes)
+    draft.logo = logo unless draft.logo?
+    draft
+  end
+
 end

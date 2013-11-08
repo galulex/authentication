@@ -13,10 +13,6 @@ class LogoUploader < CarrierWave::Uploader::Base
   # storage :fog
   #
 
-  def cache_dir
-    "#{Rails.root}/tmp/uploads/#{Rails.env}/logos"
-  end
-
   def store_dir
     "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end

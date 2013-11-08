@@ -2,7 +2,7 @@ class ProductRating < ActiveRecord::Base
 
   belongs_to :product
   belongs_to :user
-  attr_accessible :score
+  attr_accessible :score, :user_id
 
   validates :score, presence: true
 
