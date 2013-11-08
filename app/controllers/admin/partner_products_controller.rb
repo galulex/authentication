@@ -34,9 +34,8 @@ class Admin::PartnerProductsController < AdminsController
     else
       @success = product.decline! if product.pending?
       @success = product.unpublish! if product.published?
-      product_id = product.is_a?(Product::Draft) ? product.product_id : product.id
       flash[:notice] = I18n.t("flash.product.#{product.status}")
-      ProductNotifier.perform_async(product.status, product_id: product_id, reason: params[:reason])
+      ProductNotifier.perform_async(product.status, product_id: product.product_id, reason: params[:reason])
     end
   end
 
@@ -48,14 +47,8 @@ class Admin::PartnerProductsController < AdminsController
   end
 
   def publish
-     @product.publish! unless @product.published?
-    if @product.is_a?(Product::Draft)
-      @product.product.replace_with_draft!
-      @product.product.destroy_draft!
-      ProductNotifier.perform_async(:published, product_id: @product.product_id)
-    else
-      ProductNotifier.perform_async(:published, product_id: @product.id)
-    end
+    @product.approve!
+    ProductNotifier.perform_async(:published, product_id: @product.product_id)
     redirect_to admin_partner_products_path, notice: I18n.t('flash.product.published')
   end
 

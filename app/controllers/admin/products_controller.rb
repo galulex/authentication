@@ -70,7 +70,7 @@ class Admin::ProductsController < AdminsController
     if !product.published?
       @product = product
     else
-      @product = product.draft || product.instantiate_draft!
+      @product = product.draft || product.build_draft(product.attributes)
     end
   end
 

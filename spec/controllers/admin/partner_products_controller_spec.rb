@@ -4,6 +4,7 @@ describe Admin::PartnerProductsController do
 
   let(:company) { FactoryGirl.create(:company)}
   let(:product) { FactoryGirl.create(:product, company: company)}
+  let(:product_draft) { FactoryGirl.create(:product_draft, product: product) }
   let(:published_product) { FactoryGirl.create(:product, company: company, status: :published)}
   let(:pending_product) { FactoryGirl.create(:product, company: company, status: :pending)}
   let(:declined_product) { FactoryGirl.create(:product, company: company, status: :declined)}
@@ -33,7 +34,7 @@ describe Admin::PartnerProductsController do
     end
 
     context 'publish product draft with valid params' do
-      before { put :update, id: product.instantiate_draft!, publish: true }
+      before { put :update, id: product_draft, publish: true }
       it { expect(flash[:notice]).to eql(I18n.t('flash.product.published')) }
       it { expect(response).to redirect_to(admin_partner_products_path) }
     end

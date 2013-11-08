@@ -9,29 +9,22 @@ describe Product do
 
   describe '#company' do
     it 'returns product company' do
-      product.instantiate_draft!
+      product.build_draft
       expect(product.draft.company).to eql(product.company)
     end
   end
 
   describe '#reviews' do
     it 'returns product reviews' do
-      product.instantiate_draft!
+      product.build_draft
       expect(product.draft.reviews).to_not be_nil
     end
   end
 
   describe '#to_param' do
     it 'returns product slug' do
-      product.instantiate_draft!
+      product.build_draft
       expect(product.draft.to_param).to eql(product.slug)
-    end
-  end
-
-  describe '#before_instantiate_draft' do
-    it 'sets status to draft' do
-      product.before_instantiate_draft
-      expect(product.status).to eql('draft')
     end
   end
 

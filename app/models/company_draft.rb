@@ -32,9 +32,9 @@ class CompanyDraft < ActiveRecord::Base
   end
 
   def publish!
-    self.approve
-    company.update_attributes(self.attributes)
-    self.destroy
+    approve
+    company.update_attributes(attributes)
+    destroy
   end
 
 end

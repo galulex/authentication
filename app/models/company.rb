@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  include HasDraft
+
   mount_uploader :logo, LogoUploader
 
   extend FriendlyId
@@ -17,8 +17,6 @@ class Company < ActiveRecord::Base
   validates :name, uniqueness: true
 
   scope :starts_with, ->(char) { where('name LIKE ?', "#{char}%") if char }
-
-  # delegate :slug, to: :draft
 
   def company_status
     return draft.status if draft
