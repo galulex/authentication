@@ -45,13 +45,34 @@ en:
         state: State
         postal_code: Postal / Zip Code
         phone: Phone Number
-        website: Company's Relationship Webpage
+        website: Company's AppZone Relationship Webpage
+      product:
+        platform: Platform
+        name: Application Name
+        version: Application Version
+        software: Software
+        single_pricing: Single
+        summary: Summary
+        icon: Application Icon
+        image: Feature Banner
+        banner: Feature Banner
+        description: Description
+        features: Features and Benefits
+        support: Support
+        images: Screenshots
+        videos: Application Video URL
+        resources: Application Resources
+        featured: Featured on Homepage
     hints:
       company:
         synopsis: Recommended maximum 120 characters. Primary focus of your business. Eg. ABC Company is a leading provider of XYZ
         description: Broad company overview. Areas of emphasis or target markets. Value of your business products to your customers.
       user:
         password: 'Password must be at list 8 characters long and include upper case, lower case, & numeric characters'
+      product:
+        icon: 144 x 144 pixels, PNG
+        image: 270 x 170 pixels, PNG
+        banner: 1100 x 270 pixels, PNG
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'

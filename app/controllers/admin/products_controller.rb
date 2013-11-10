@@ -20,8 +20,7 @@ class Admin::ProductsController < AdminsController
         render :edit
       else
         @product.submit!
-        product_id = @product.is_a?(Product) ? @product.id : @product.product_id
-        ProductNotifier.perform_async(:submitted, user_id: current_user.id, product_id: product_id)
+        ProductNotifier.perform_async(:submitted, user_id: current_user.id, product_id: @product.product_id)
         redirect_to admin_products_path, notice: I18n.t('flash.product.submitted')
       end
     else
@@ -45,8 +44,7 @@ class Admin::ProductsController < AdminsController
         render :edit
       else
         product.submit!
-        product_id = @product.is_a?(Product) ? @product.id : @product.product_id
-        ProductNotifier.perform_async(:submitted, user_id: current_user.id, product_id: product_id)
+        ProductNotifier.perform_async(:submitted, user_id: current_user.id, product_id: @product.product_id)
         redirect_to admin_products_path,  notice: I18n.t('flash.product.submitted')
       end
     else
@@ -70,7 +68,7 @@ class Admin::ProductsController < AdminsController
     if !product.published?
       @product = product
     else
-      @product = product.draft || product.build_draft(product.attributes)
+      @product = product.draft_or_build
     end
   end
 

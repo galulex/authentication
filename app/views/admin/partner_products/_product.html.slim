@@ -1,8 +1,8 @@
 tr
   td= link_to product.name, admin_partner_product_path(product)
   td= product.company.name
-  td
-  td
-  td
+  td= product.platform.titleize
+  td= t("#{product.published?}")
+  td= product.product_status.titleize
   td= l(product.updated_at)
   td = link_to '', edit_admin_partner_product_path(product), class: 'icon-edit'

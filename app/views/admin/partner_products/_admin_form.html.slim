@@ -1,0 +1,5 @@
+= f.label :featured, requred: true
+= f.label :featured, class: 'checkbox' do
+  = f.check_box :featured
+  ' Yes
+= f.association :categories, as: :check_boxes

@@ -1,41 +1,42 @@
-.span12
-  ul
-    - if current_user.partner?
+.row-fluid
+  .span12
+    ul
+      - if current_user.partner?
+        li.menu-item
+          .span2
+            i.icon-random.icon-3x
+          .span10
+            h4= link_to t('.manage_products'), admin_products_path
+            p= t('.manage_products_desc')
       li.menu-item
         .span2
-          i.icon-random.icon-3x
+          i.icon-group.icon-3x
         .span10
-          h4= link_to t('.manage_products'), admin_products_path
-          p= t('.manage_products_desc')
-    li.menu-item
-      .span2
-        i.icon-group.icon-3x
-      .span10
-        h4= link_to t('.manage_people'), admin_people_path
-        p= t('.manage_people_desc')
-    - if current_user.tenant?
-      li.menu-item
-        .span2
-          i.icon-bar-chart.icon-3x
-        .span10
-          h4= link_to t('.reports'), admin_reports_path
-          p= t('.reports_desc')
-      li.menu-item
-        .span2
-          i.icon-user-md.icon-3x
-        .span10
-          h4= link_to t('.manage_partners'), admin_partners_path
-          p= t('.manage_partners_desc')
-      li.menu-item
-        .span2
-          i.icon-folder-close.icon-3x
-        .span10
-          h4= link_to t('.manage_partner_products'), admin_partner_products_path
-          p= t('.manage_partner_products_desc')
-    - else
-      li.menu-item
-        .span2
-          i.icon-picture.icon-3x
-        .span10
-          h4= link_to t('.manage_company'), edit_admin_company_path
-          p= t('.manage_company_desc')
+          h4= link_to t('.manage_people'), admin_people_path
+          p= t('.manage_people_desc')
+      - if current_user.tenant?
+        li.menu-item
+          .span2
+            i.icon-bar-chart.icon-3x
+          .span10
+            h4= link_to t('.reports'), admin_reports_path
+            p= t('.reports_desc')
+        li.menu-item
+          .span2
+            i.icon-user-md.icon-3x
+          .span10
+            h4= link_to t('.manage_partners'), admin_partners_path
+            p= t('.manage_partners_desc')
+        li.menu-item
+          .span2
+            i.icon-folder-close.icon-3x
+          .span10
+            h4= link_to t('.manage_partner_products'), admin_partner_products_path
+            p= t('.manage_partner_products_desc')
+      - else
+        li.menu-item
+          .span2
+            i.icon-picture.icon-3x
+          .span10
+            h4= link_to t('.manage_company'), edit_admin_company_path
+            p= t('.manage_company_desc')

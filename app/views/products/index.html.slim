@@ -1,9 +1,19 @@
-.products
-  hr.nav-border
-  = render partial: 'layouts/search'
-  .container.row-fluid
-    .span12
-      h1.page-title= 'Products'
-  #featured_apps.container.row-fluid
-    .carousel-inner
-      = render partial: 'dashboard/product', collection: @products
+.span12.text-right
+  = link_to t('.create_new_product'), new_admin_product_path, class: :btn
+.span12
+  - if @products.blank?
+    = t('.no_products')
+  - else
+    table.table.table-hover.table-striped
+      thead
+        tr
+          th= t('.product_name')
+          th= t('.company')
+          th= t('.platform')
+          th= t('.published?')
+          th= t('.update')
+          th= t('.updated_at')
+          th= t('.actions')
+        tbody
+        = render @products
+    = paginate @products

@@ -1,9 +1,15 @@
 require 'factory_girl_rails'
+require 'csv'
 include ActionDispatch::TestProcess
 
-[Company, Product, User].each(&:delete_all)
+Rake::Task['db:reset'].invoke
 
-admin = FactoryGirl.create(:admin, first_name: 'Super', last_name: 'Admin', email: 'marketplace@mail.com')
+categories = CSV.parse(File.new("#{Rails.root}/db/seeds/categories.csv")).flatten.first
+categories.strip.split(',').each do |category|
+  Category.create(name: category)
+end
+
+admin = FactoryGirl.create(:admin, first_name: 'AppZone', last_name: 'Admin', email: 'marketplace@partnerpedia.com')
 20.times do
   FactoryGirl.reload
   logo = File.new(Dir.glob(Rails.root + 'spec/support/company_logos/*').sample)

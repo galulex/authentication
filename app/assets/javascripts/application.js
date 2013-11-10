@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.uk
+//= require jquery_nested_form
 //= require_tree .
 
 $(function() {

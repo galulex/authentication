@@ -27,6 +27,7 @@ gem 'friendly_id' # Allows you to create pretty URL’s
 gem 'sidekiq' # Simple, efficient message processing
 gem 'sunspot_rails', '2.0.0' # Solr-powered search
 gem 'protected_attributes'
+gem 'nested_form'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

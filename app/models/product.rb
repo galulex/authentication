@@ -1,42 +1,15 @@
 class Product < ActiveRecord::Base
-  mount_uploader :icon, LogoUploader
-  mount_uploader :image, ImageUploader
-  mount_uploader :banner, BannerUploader
-
+  include BaseProduct
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_many :reviews, class_name: ProductReview
-  has_many :ratings, class_name: ProductRating
-  has_one  :draft,   class_name: ProductDraft
+  has_many :reviews, class_name: ProductReview, dependent: :delete_all
+  has_many :ratings, class_name: ProductRating, dependent: :delete_all
+  has_one  :draft,   class_name: ProductDraft, dependent: :destroy
   belongs_to :company
 
-  attr_accessible :description, :features, :name, :summary, :support, :version, :icon
-  validates :description, :features, :name, :summary, presence: true
-
   scope :search, ->(q) { where(['name LIKE ?', "%#{q}%"]) }
-
-  state_machine :status, initial: 'draft' do
-    event :submit do
-      transition to: 'pending', from: %w(draft declined retracted unpublished)
-    end
-
-    event :publish do
-      transition to: 'published', from: %w(draft declined pending)
-    end
-
-    event :decline do
-      transition to: 'declined', from: 'pending'
-    end
-
-    event :retract do
-      transition to: 'retracted', from: 'published'
-    end
-
-    event :unpublish do
-      transition to: 'unpublished', from: 'published'
-    end
-  end
+  scope :sorted, -> { includes(:draft).order('product_drafts.status DESC, products.name ASC') }
 
   def rate_it!(user, score)
     r = ratings.find_or_initialize_by(user_id: user.id)
@@ -63,8 +36,26 @@ class Product < ActiveRecord::Base
     publish! unless published?
   end
 
-  # searchable do
-    # text :name, :description
-  # end
+  def product_status
+    return draft.status if draft
+    status
+  end
+
+  def draft_or_build
+    draft || build_draft(attributes)
+    draft.icon = icon unless draft.icon?
+    draft.image = image unless draft.image?
+    draft.banner = banner unless draft.banner?
+    draft
+  end
+
+  private
+
+  def delete_associations
+    images.delete_all
+    videos.delete_all
+    resources.delete_all
+    pricings.delete_all
+  end
 
 end

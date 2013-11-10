@@ -1,0 +1,6 @@
+= f.fields_for :videos, video do |form|
+  .row
+    .span4
+      = form.input :url, label: false, input_html: { class: 'input-xlarge' }
+    .span1
+      = form.link_to_remove '', class: 'icon-minus-sign'

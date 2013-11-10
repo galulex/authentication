@@ -1,13 +1,7 @@
 # encoding: utf-8
 
-class LogoUploader < CarrierWave::Uploader::Base
+class SoftwareUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-
-  process resize_to_fill: [144, 144]
-
-  version :small do
-    process resize_to_fill: [55, 55]
-  end
 
   storage :file
   # storage :fog
@@ -18,7 +12,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(apk)
   end
 
 end

@@ -1,0 +1,10 @@
+= f.fields_for :resources, resource do |form|
+  = resource.file.url if resource.file?
+  .row
+    .span3
+      = form.input :title, label: false
+    .span3
+      = form.input :file, label: false, input_html: { class: 'span3' }
+    .span1
+      = form.link_to_remove '', class: 'icon-minus-sign'
+

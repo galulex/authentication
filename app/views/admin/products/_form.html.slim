@@ -1,8 +1,92 @@
-= f.input   :name, input_html: { class: 'input-xxlarge' }
-= f.input   :version, input_html: { class: 'input-xxlarge' }
-= image_tag(@product.icon.url) if @product && @product.icon?
-= f.input   :icon, required: true, input_html: { class: 'input-xxlarge' }
-= f.input   :description, input_html: { class: 'input-xxlarge', rows: 7 }
-= f.input   :summary, input_html: { class: 'input-xxlarge', rows: 7 }
-= f.input   :features, input_html: { class: 'input-xxlarge', rows: 7 }
-= f.input   :support, input_html: { class: 'input-xxlarge', rows: 7 }
+.row
+  .span3
+    = f.label :platform do
+      abbr title='required'=' '*'
+      = t('.platform')
+    br
+    = f.label :platform_android, class: 'radio pull-left' do
+      = f.radio_button :platform, :android
+      = t('.android')
+    .span1
+      = f.label :platform_ios, class: 'radio pull-left' do
+        = f.radio_button :platform, :ios
+        = t('.ios')
+  .span3
+    = f.label :form_factor do
+      abbr title='required'=' '*'
+      = t('.form_factor')
+    br
+    = f.label :phone_form_factor, class: 'checkbox pull-left' do
+      = f.check_box :phone_form_factor
+      = t('.phone')
+    .span1
+      = f.label :tablet_form_factor, class: 'checkbox pull-left' do
+        = f.check_box :tablet_form_factor
+        = t('.tablet')
+    .clearfix
+    .control-group.error= f.error :phone_form_factor
+
+fieldset
+  legend.page-title= t('.basic_info')
+  = f.input :name, input_html: { class: 'input-xxlarge' }
+  = f.input :version, input_html: { class: 'input-xxlarge' }
+  = @product.software.filename if @product && @product.software?
+  = f.input :software, input_html: { class: 'input-xxlarge' }
+  = f.label :pricing, required: true
+  br
+  .row
+    .span2
+      = f.label :pricing_type_single, class: 'radio' do
+        = f.radio_button :pricing_type, :single
+        = t('.single')
+      = f.input :single_pricing, label: false, input_html: { class: 'input-small' }
+    .span5
+      = f.label :pricing_type_volume, class: 'radio' do
+        = f.radio_button :pricing_type, :volume
+        = t('.volume')
+      - if @product.pricings.blank?
+        = render partial: 'admin/products/pricing_fields', locals: { f: f, pricing: @product.pricings.build }
+      - else
+        = render partial: 'admin/products/pricing_fields', collection: @product.pricings, as: :pricing, locals: { f: f }
+      = f.link_to_add t('.add_pricing'), :pricings, class: 'icon-plus-sign'
+
+  = f.input :summary, input_html: { class: 'input-xxlarge', rows: 7 }
+  .row
+    .span3
+      = image_tag(@product.icon.url) if @product && @product.icon?
+      = f.input :icon, input_html: { class: 'input-xxlarge' }
+    .span3
+      = image_tag(@product.image.url) if @product && @product.image?
+      = f.input :image, input_html: { class: 'input-xxlarge' }
+    .span6
+      = image_tag(@product.banner.url) if @product && @product.banner?
+      = f.input :banner, input_html: { class: 'input-xxlarge' }, wrapper_html: { class: 'product-banner' }, hint: false
+      = f.hint :banner, class: 'help-block'
+
+fieldset
+  legend.page-title= t('.additional_info')
+  = f.input :description, input_html: { class: 'input-xxlarge', rows: 7 }
+  = f.input :features, input_html: { class: 'input-xxlarge', rows: 7 }
+  = f.input :support, input_html: { class: 'input-xxlarge', rows: 7 }
+  = f.label :images
+  - if @product.images.blank?
+    = render partial: 'admin/products/image_fields', locals: { f: f, image: @product.images.build }
+  - else
+    = render partial: 'admin/products/image_fields', collection: @product.images, as: :image, locals: { f: f }
+  = f.link_to_add t('.add_image'), :images, class: 'icon-plus-sign'
+
+fieldset
+  legend.page-title= t('.collateral')
+  = f.label :videos
+  - if @product.videos.blank?
+    = render partial: 'admin/products/video_fields', locals: { f: f, video: @product.videos.build }
+  - else
+    = render partial: 'admin/products/video_fields', collection: @product.videos, as: :video, locals: { f: f }
+  = f.link_to_add t('.add_video'), :videos, class: 'icon-plus-sign'
+
+  = f.label :resources
+  - if @product.resources.blank?
+    = render partial: 'admin/products/resource_fields', locals: { f: f, resource: @product.resources.build }
+  - else
+    = render partial: 'admin/products/resource_fields', collection: @product.resources, as: :resource, locals: { f: f }
+  = f.link_to_add t('.add_resource'), :resources, class: 'icon-plus-sign'

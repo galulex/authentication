@@ -1,0 +1,7 @@
+= f.fields_for :images, image do |form|
+  .row-fluid
+    .span4
+      = image_tag(image.file.url) if image.file?
+      = form.input :file, label: false, input_html: { class: 'span12' }
+    .span1
+      = form.link_to_remove '', class: 'icon-minus-sign'

@@ -1,0 +1,11 @@
+= f.fields_for :pricings, pricing do |form|
+  .row-fluid.control-group
+    .span6
+      =' 'From'
+      =' form.number_field :from, class: 'span4'
+      =' 'To'
+      =' form.number_field :to, class: 'span4'
+    .span6
+      =' 'Price'
+      =' form.number_field :price, class: 'span6 decimal'
+      = form.link_to_remove '', class: 'icon-minus-sign'

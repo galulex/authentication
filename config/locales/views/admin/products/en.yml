@@ -15,4 +15,20 @@ en:
         no_products: No Products
       product:
         retract_title: "Retract Application: %{name}"
-        retract_message: Retracting this product will unpublish it from the Marketplace. Once retracted, your product will need to go through the product approval steps to be republished. Click confirm to retract the product.
+        retract_message: Retracting this product will unpublish it from the AppZone Marketplace. Once retracted, your product will need to go through the product approval steps to be republished. Click confirm to retract the product.
+      form:
+        basic_info: Basic Application Information
+        additional_info: Additional Application Information
+        collateral: Application Collateral
+        form_factor: Form Factor
+        phone: Phone
+        tablet: Tablet
+        platform: Platform
+        android: Android
+        ios: IOS
+        single: Single
+        volume: Volume
+        add_pricing: Add another pricing level
+        add_image: Add another screenshot
+        add_video: Add another video
+        add_resource: Add another resource

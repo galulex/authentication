@@ -6,7 +6,7 @@ class Admin::PartnerProductsController < AdminsController
   add_breadcrumb I18n.t('breadcrumbs.partner_products'), :admin_partner_products_path, except: :index
 
   def index
-    @products = Product.page(params[:page])
+    @products = Product.sorted.page(params[:page])
   end
 
   def edit
