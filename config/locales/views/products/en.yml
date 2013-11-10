@@ -1,5 +1,8 @@
 en:
   products:
+    index:
+      search_results: Search Results (%{count})
+      criteria: 'Search Criteria:'
     show:
       company: Company
       summary: Summary

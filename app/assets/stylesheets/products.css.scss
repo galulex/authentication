@@ -1,4 +1,8 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
 .product-banner { margin: 0; }
+
 .product { min-height: 96%; }
 .product-info .tab-content, .product-description, .reviews { min-height: 100px; }
 .product-info { margin: 20px; }
@@ -18,5 +22,63 @@
     text-decoration: none;
     color: #99cc00;
   }
-  .total div { min-height: auto; }
+}
+
+.search-panel {
+  h4, h6 { margin: 0 10px 0 0; }
+  .filters {
+    background: #eee; padding: 5px 0;
+    form { margin: 0 0 0 5px; }
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    padding: 0;
+    b { line-height: 28px; }
+    i.icon-sort { margin-left: 10px; }
+    li {
+      padding: 5px 10px;
+      position: relative;
+      height: 30px;
+      &:after {
+        content: '';
+        display: block;
+        border-right: 1px solid white;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
+    .first {
+      @include gradient-horizontal(#fbfbfb, #efefef);
+      border-right: 1px solid #e1e1e1;
+    }
+    .last {
+      border: none;
+      &:after { border: none; }
+      width: 100px;
+      @include gradient-horizontal(#efefef, #fbfbfb);
+    }
+  }
+  .categories-dropdown:hover, .platforms-dropdown:hover {
+    .hide { display: block; }
+  }
+  .categories, .platforms {
+    background: #fbfbfb;
+    @include gradient-vertical(#efefef, #fbfbfb);
+    padding: 20px;
+    border: 1px solid #e1e1e1;
+    width: 500px;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    label { float: left; width: 230px; }
+  }
+  .platforms { width: 100px; }
+  .label-info {
+    padding-right: 20px;
+    position: relative;
+    label { position: absolute; top: -1px; right: 5px; }
+  }
+  .search-categories { min-height: 20px; }
 }

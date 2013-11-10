@@ -55,3 +55,8 @@ en:
       default: "%B %d, %Y"
     am: am
     pm: pm
+  platform:
+    android: Android
+    ios: IOS
+  os: OS
+  categories: Categories

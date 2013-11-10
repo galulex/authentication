@@ -1,7 +1,14 @@
-.product-cart.row-fluid
-  .span3= image_tag(product.icon.url, size: '55x55')
-  .span9
-    .title: b= link_to product.name, product_path(product)
-    .title: b= link_to t('.by', name: product.company.name), company_path(product.company)
-    span.product-rating= rating_average(product.rating_average)
-  p.span12= truncate(product.description, length: 200)
+.product-wrapper.pull-left
+  .product-cart
+    .body.row-fluid
+      .span12
+        .span3= image_tag(product.icon.url, size: '55x55')
+        .span9
+          .title
+            b= link_to product.name, product_path(product)
+          .title
+            b= link_to t('.by', name: product.company.name), company_path(product.company)
+          span.product-rating= render_rating(product.rating_average.to_i)
+
+      p.span12= truncate(product.description, length: 200)
+    .image= image_tag(product.image.url)

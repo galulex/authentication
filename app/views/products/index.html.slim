@@ -1,19 +1,62 @@
-.span12.text-right
-  = link_to t('.create_new_product'), new_admin_product_path, class: :btn
-.span12
-  - if @products.blank?
-    = t('.no_products')
-  - else
-    table.table.table-hover.table-striped
-      thead
-        tr
-          th= t('.product_name')
-          th= t('.company')
-          th= t('.platform')
-          th= t('.published?')
-          th= t('.update')
-          th= t('.updated_at')
-          th= t('.actions')
-        tbody
-        = render @products
-    = paginate @products
+.products
+  hr.nav-border
+  = render partial: 'layouts/search'
+  .container.row-fluid
+    .search-panel
+      .criteria
+        h4.pull-left.title= t('.search_results', count: @products.count)
+        h4.pull-left.icon-tags
+        h6.pull-left.title= t('.criteria')
+        ul.pull-left.search-categories
+          - if platforms = params[:platforms]
+            - platforms.each do |platform|
+              ='
+              li.label.label-info id="label_platform_#{platform}"
+                = t("platform.#{platform}")
+                label for="platform_#{platform}" ×
+          - if ids = params[:category_ids]
+            - ids.each do |id|
+              ='
+              li.label.label-info id="label_category_#{id}"
+                = @categories.find(id).name
+                label for="category_#{id}" ×
+      .clearfix
+      = form_tag products_path, method: :get do
+        ul.unstyled.filters
+          li.pull-left.first
+            .input-append
+              = text_field_tag :search, params[:search]
+              = button_tag class: 'btn' do
+                i.icon-search
+          li.pull-left.platforms-dropdown
+            b
+              = t('os')
+              i.icon-sort
+            .platforms.hide
+              = label_tag 'platform_android', class: 'checkbox' do
+                = check_box_tag 'platforms[]', 'android', params[:platforms] && params[:platforms].include?('android'), id: "platform_android"
+                = t('platform.android')
+              = label_tag 'platform_ios', class: 'checkbox' do
+                = check_box_tag 'platforms[]', 'ios', params[:platforms] && params[:platforms].include?('ios'), id: "platform_ios"
+                = t('platform.ios')
+          li.pull-left.categories-dropdown
+            b
+              = t('categories')
+              i.icon-sort
+            .categories.hide
+              - @categories.each do |c|
+                = label_tag "category_#{c.id}", class: 'checkbox' do
+                  = check_box_tag "category_ids[]", c.id, params[:category_ids] && params[:category_ids].include?(c.id.to_s), id: "category_#{c.id}"
+                  = c.name
+              .clearfix
+          li.last.pull-right
+          .clearfix
+    .row-fluid
+      .span12
+        #search-carousel.main-carousel.carousel.slide data-interval=""
+          .carousel-inner
+            - @products.each_slice(24).with_index do |products, i|
+              = content_tag(:div, class: i.zero? ? 'item active' : 'item') do
+                = render partial: 'dashboard/basic_product', collection: products, as: :product
+          a.carousel-control.left href="#search-carousel" data-slide="prev" &lsaquo;
+          a.carousel-control.right href="#search-carousel" data-slide="next" &rsaquo;
