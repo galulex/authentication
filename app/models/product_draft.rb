@@ -25,7 +25,8 @@ class ProductDraft < ActiveRecord::Base
 
   def approve!
     publish
-    product.update_attributes(attributes)
+    product.attributes = attributes
+    product.images = images
     destroy
   end
 

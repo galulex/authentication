@@ -43,7 +43,7 @@ class Admin::PartnerProductsController < AdminsController
 
   def product
     product = Product.friendly.find(params[:id])
-    @product = product.draft || product
+    @product ||= product.draft || product
   end
 
   def publish

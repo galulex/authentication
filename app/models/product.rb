@@ -42,10 +42,13 @@ class Product < ActiveRecord::Base
   end
 
   def draft_or_build
-    draft || build_draft(attributes)
+    return draft if draft
+    build_draft(attributes)
     draft.icon = icon unless draft.icon?
     draft.image = image unless draft.image?
     draft.banner = banner unless draft.banner?
+    draft.software = software unless draft.software?
+    draft.images = images.map(&:dup)
     draft
   end
 
