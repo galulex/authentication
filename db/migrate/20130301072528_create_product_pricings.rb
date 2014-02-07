@@ -4,7 +4,7 @@ class CreateProductPricings < ActiveRecord::Migration
       t.references  :pricingable, polymorphic: true
       t.integer     :from
       t.integer     :to
-      t.decimal     :price, precision: 3, scale: 2
+      t.decimal     :price, precision: 4, scale: 2
 
       t.timestamps
     end

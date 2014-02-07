@@ -112,13 +112,13 @@ ActiveRecord::Schema.define(version: 20130302205222) do
     t.text     "support"
     t.string   "status",                                     default: "draft"
     t.boolean  "featured"
-    t.decimal  "rating_average",     precision: 3, scale: 2, default: 0.0
+    t.decimal  "rating_average",     precision: 4, scale: 2, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "platform",                                   default: "android"
     t.boolean  "phone_form_factor",                          default: false
     t.boolean  "tablet_form_factor",                         default: false
-    t.decimal  "single_pricing",     precision: 3, scale: 2
+    t.decimal  "single_pricing",     precision: 4, scale: 2
     t.string   "pricing_type",                               default: "single"
   end
 
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20130302205222) do
     t.string   "pricingable_type"
     t.integer  "from"
     t.integer  "to"
-    t.decimal  "price",            precision: 3, scale: 2
+    t.decimal  "price",            precision: 4, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -204,13 +204,13 @@ ActiveRecord::Schema.define(version: 20130302205222) do
     t.text     "support"
     t.string   "status",                                     default: "draft"
     t.boolean  "featured"
-    t.decimal  "rating_average",     precision: 3, scale: 2, default: 0.0
+    t.decimal  "rating_average",     precision: 4, scale: 2, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "platform",                                   default: "android"
     t.boolean  "phone_form_factor",                          default: false
     t.boolean  "tablet_form_factor",                         default: false
-    t.decimal  "single_pricing",     precision: 3, scale: 2
+    t.decimal  "single_pricing",     precision: 4, scale: 2
     t.string   "pricing_type",                               default: "single"
   end
 
