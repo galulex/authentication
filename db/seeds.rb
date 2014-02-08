@@ -7,7 +7,7 @@ categories.strip.split(',').each do |category|
   Category.create(name: category)
 end
 
-admin = FactoryGirl.create(:admin, first_name: 'AppZone', last_name: 'Admin', email: 'marketplace@partnerpedia.com')
+admin = FactoryGirl.create(:admin, first_name: 'AppZone', last_name: 'Admin', email: 'admin@marketplace.com')
 20.times do
   FactoryGirl.reload
   logo = File.new(Dir.glob(Rails.root + 'spec/support/company_logos/*').sample)
