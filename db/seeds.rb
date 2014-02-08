@@ -2,8 +2,6 @@ require 'factory_girl_rails'
 require 'csv'
 include ActionDispatch::TestProcess
 
-Rake::Task['db:reset'].invoke
-
 categories = CSV.parse(File.new("#{Rails.root}/db/seeds/categories.csv")).flatten.first
 categories.strip.split(',').each do |category|
   Category.create(name: category)

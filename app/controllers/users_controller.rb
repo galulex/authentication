@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if current_user
       @partner = current_user
     else
-      @partner = User::Partner.find_by_token(params[:id])
+      @partner = User.find_by_token(params[:id])
       if @partner && !@partner.invited?
         @partner.activate
         flash[:notice] = I18n.t('flash.user.registration_confirmed')
